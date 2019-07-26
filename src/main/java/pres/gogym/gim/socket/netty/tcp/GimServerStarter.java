@@ -21,7 +21,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.handler.logging.LogLevel;
 import io.netty.handler.logging.LoggingHandler;
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterConfig;
-import pres.gogym.gim.socket.netty.tcp.listener.RedisMsgListener;
+import pres.gogym.gim.socket.netty.tcp.cluster.ClusterMsgListener;
 import pres.gogym.gim.socket.netty.tcp.listener.queue.DelayMsgQueueListener;
 import pres.gogym.gim.socket.netty.tcp.offline.OfflineConfig;
 import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
@@ -109,8 +109,8 @@ public class GimServerStarter {
 			}
 
 			// 启动redis消费者
-			RedisMsgListener redisMsgListener = new RedisMsgListener(gimConfig);
-			redisMsgListener.start();
+			ClusterMsgListener clusterMsgListener = new ClusterMsgListener(gimConfig);
+			clusterMsgListener.start();
 
 		} else {
 			// 如果没有配置，则创建一个默认的集群配置

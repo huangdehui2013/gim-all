@@ -9,19 +9,18 @@
  * 修改内容：
  */
 
-package pres.gogym.gim.socket.netty.tcp.listener;
+package pres.gogym.gim.socket.netty.tcp.cluster;
 
 import java.util.List;
 
-import pres.gogym.gim.socket.netty.tcp.cluster.ClusterEmitter;
 import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
 
-public class RedisMsgListener extends Thread {
+public class ClusterMsgListener extends Thread {
 
 	private String key;
 	private GimConfig gimConfig;
 
-	public RedisMsgListener(GimConfig gimConfig) {
+	public ClusterMsgListener(GimConfig gimConfig) {
 		this.key = gimConfig.getClusterConfig().getServerIdentify();
 		this.gimConfig = gimConfig;
 	}

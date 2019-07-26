@@ -18,7 +18,6 @@ import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.ChatServerHandler;
 import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.ConnectManageHandler;
 import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.HeartBeatServerHandler;
 import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.IpFilterRuleHandler;
-import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.NettyTrafficShapingHandler;
 import pres.gogym.gim.socket.netty.tcp.ssl.SSLContextFactory;
 import pres.gogym.gim.socket.netty.tcp.ssl.SslCheckServerHandler;
 
