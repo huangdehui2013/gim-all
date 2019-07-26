@@ -1,6 +1,5 @@
 /*
  * 文件名：SslCheckServerHandler.java
- * 版权：Copyright by www.poly.com
  * 描述：
  * 修改人：gogym
  * 修改时间：2019年7月16日
@@ -43,16 +42,6 @@ public class SslCheckServerHandler extends
 	}
 
 	@Override
-	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
-		System.out.println("服务端增加");
-	}
-
-	@Override
-	public void handlerRemoved(ChannelHandlerContext ctx) {
-		System.out.println("移除:" + ctx.channel().remoteAddress());
-	}
-
-	@Override
 	public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause)
 			throws Exception {
 		cause.printStackTrace();
@@ -64,5 +53,4 @@ public class SslCheckServerHandler extends
 			throws Exception {
 	}
 
-	
 }

@@ -60,7 +60,7 @@ public class GimServerStarter {
 		// 创建context
 		gimConfig.setGimContext(new GimContext());
 
-		// 启动新线程处理
+		// 启动
 		startQueueListener();
 		startGim();
 	}
