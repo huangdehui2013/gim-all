@@ -46,6 +46,13 @@ public class GimServerStarter {
 		this.gimConfig = gimConfig;
 	}
 
+	/**
+	 * 
+	 * Description: start
+	 * 
+	 * @throws Exception
+	 * @see
+	 */
 	public void start() throws Exception {
 
 		// 检查配置
@@ -108,13 +115,13 @@ public class GimServerStarter {
 						"[if 'HandleType'==ClusterConfig.HANDLER, the clusterMsgHandler can't be not null]");
 			}
 
-			// 启动redis消费者
+			// 启动redis消费者监听消息
 			ClusterMsgListener clusterMsgListener = new ClusterMsgListener(
 					gimConfig);
 			clusterMsgListener.start();
 
 		} else {
-			// 如果没有配置，则创建一个默认的集群配置
+			// 如果没有配置，则创建一个默认的集群配置,默认不集群
 			ClusterConfig clusterConfig = new ClusterConfig();
 			gimConfig.clusterConfig(clusterConfig);
 		}
@@ -131,7 +138,6 @@ public class GimServerStarter {
 
 			if (gimConfig.getSslConfig().isNeedClientAuth()
 					&& gimConfig.getSslConfig().getCaPath() == null) {
-
 				throw new Exception(
 						"[if needClientAuth==true, the caPath  can't be not null]");
 			}
@@ -146,14 +152,17 @@ public class GimServerStarter {
 
 	}
 
-	// 处理队列监听
+	/**
+	 * 
+	 * Description: 处理延迟队列监听
+	 * 
+	 * @see
+	 */
 	private void startQueueListener() {
-		// 启动新的线程来处理重发消息
 		new Thread() {
 			@Override
 			public void run() {
 				while (true) {
-					// 重发消息
 					DelayMsgQueueListener.takeMessage(gimConfig);
 				}
 			}
