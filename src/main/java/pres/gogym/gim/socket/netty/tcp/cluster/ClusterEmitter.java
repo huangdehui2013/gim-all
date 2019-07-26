@@ -24,7 +24,6 @@ import pres.gogym.gim.packet.SingleChatReqClass.SingleChatReq;
 import pres.gogym.gim.socket.netty.tcp.message.MessagEmitter;
 import pres.gogym.gim.socket.netty.tcp.message.MessageDelayPacket;
 import pres.gogym.gim.socket.netty.tcp.message.MessageGenerate;
-import pres.gogym.gim.socket.netty.tcp.message.PacketConfig;
 import pres.gogym.gim.socket.netty.tcp.offline.OfflineEmitter;
 import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
 import pres.gogym.gim.utils.IDGenerator;
@@ -47,7 +46,7 @@ public class ClusterEmitter {
 		JsonFormat
 				.parser()
 				.usingTypeRegistry(
-						PacketConfig.shareInstance().getTypeRegistry())
+						gimConfig.getPacketConfig().getTypeRegistry())
 				.merge(msgJson, builder);
 		int type = builder.getReqType();
 
@@ -75,7 +74,9 @@ public class ClusterEmitter {
 			System.out.println("服务器：" + builder.getServerIdentify());
 			// 发送到Redis
 			clusterConfig.getiRedisProxy().lpush(
-					"gim_" + builder.getServerIdentify(), ackMdp.msgToJson());
+					"gim_" + builder.getServerIdentify(),
+					ackMdp.msgToJson(gimConfig.getPacketConfig()
+							.getTypeRegistry()));
 			ackMdp = null;
 			// 如果是普通消息
 			if (type == Type.SINGLE_MSG_REQ) {
@@ -133,7 +134,9 @@ public class ClusterEmitter {
 
 					// 发送到Redis
 					Long size = clusterConfig.getiRedisProxy().lpush(
-							"gim_" + serverIdentify, mdp.msgToJson());
+							"gim_" + serverIdentify,
+							mdp.msgToJson(gimConfig.getPacketConfig()
+									.getTypeRegistry()));
 
 					if (null == size) {
 						// 一般不会到这里，到这里说明发送到MQ失败

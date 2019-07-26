@@ -25,13 +25,14 @@ import com.google.protobuf.util.JsonFormat.TypeRegistry;
 public class PacketConfig {
 
 	private List<Descriptor> list = new ArrayList<Descriptor>();
-	private static PacketConfig packetConfig = new PacketConfig();
 
-	public static PacketConfig shareInstance() {
-		return packetConfig;
-	}
+	// private static PacketConfig packetConfig = new PacketConfig();
+	//
+	// public static PacketConfig shareInstance() {
+	// return packetConfig;
+	// }
 
-	private PacketConfig() {
+	public PacketConfig() {
 		this.list.add(AckReq.getDescriptor());
 		this.list.add(SingleChatReq.getDescriptor());
 		this.list.add(GroupChatReq.getDescriptor());

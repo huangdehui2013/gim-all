@@ -47,10 +47,8 @@ public class MessageDelayPacket implements Delayed {
 		this.now = System.currentTimeMillis();
 	}
 
-	public String msgToJson() {
+	public String msgToJson(TypeRegistry typeRegistry) {
 
-		TypeRegistry typeRegistry = PacketConfig.shareInstance()
-				.getTypeRegistry();
 		try {
 			String msgJson = JsonFormat
 					.printer()

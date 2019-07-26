@@ -51,6 +51,8 @@ public class GimConfig {
 	// 全局流量监控
 	private GlobalTrafficConfig globalTrafficConfig;
 
+	private PacketConfig packetConfig = new PacketConfig();
+
 	private GimContext gimContext;
 
 	// 端口
@@ -121,7 +123,7 @@ public class GimConfig {
 	}
 
 	public GimConfig addPacket(com.google.protobuf.GeneratedMessageV3 packet) {
-		PacketConfig.shareInstance().addType(packet.getDescriptorForType());
+		packetConfig.addType(packet.getDescriptorForType());
 		return this;
 	}
 
@@ -225,6 +227,11 @@ public class GimConfig {
 	public void setGimContext(GimContext gimContext) {
 
 		this.gimContext = gimContext;
+	}
+
+	public PacketConfig getPacketConfig() {
+
+		return packetConfig;
 	}
 
 }
