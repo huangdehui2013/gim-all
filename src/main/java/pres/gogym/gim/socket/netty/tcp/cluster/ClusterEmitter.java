@@ -27,6 +27,7 @@ import pres.gogym.gim.socket.netty.tcp.message.MessageGenerate;
 import pres.gogym.gim.socket.netty.tcp.message.PacketConfig;
 import pres.gogym.gim.socket.netty.tcp.offline.OfflineEmitter;
 import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
+import pres.gogym.gim.utils.IDGenerator;
 
 public class ClusterEmitter {
 
@@ -61,34 +62,40 @@ public class ClusterEmitter {
 									.equals(ackReq.getAck());
 						}
 					});
-			
-			return;
+		} else {
+
+			// 返回ack给集群服务器
+			ClusterConfig clusterConfig = gimConfig.getClusterConfig();
+			Message ack = MessageGenerate.createAck(builder.getId());
+			// 把消息放到队列里
+			MessageDelayPacket ackMdp = new MessageDelayPacket(
+					clusterConfig.getServerIdentify(), "", ack, Const.msg_delay);
+
+			System.out.println("服务器：" + builder.getServerIdentify());
+			// 发送到Redis
+			clusterConfig.getiRedisProxy().lpush(
+					"gim_" + builder.getServerIdentify(), ackMdp.msgToJson());
+			ackMdp = null;
+			// 如果是普通消息
+			if (type == Type.SINGLE_MSG_REQ) {
+
+				SingleChatReq singleChatReq = builder.getBody().unpack(
+						SingleChatReq.class);
+				String userId = singleChatReq.getReceiverId();
+				MessagEmitter.sendToUser(gimConfig, userId,
+						builder.setId(IDGenerator.getUUID()).build());
+
+			} else if (type == Type.GROUP_MSG_REQ) {
+				GroupChatReq groupChatReq = builder.getBody().unpack(
+						GroupChatReq.class);
+				String groupId = groupChatReq.getGroupId();
+
+				// TODO 注意，这里因为已经是集群处理，只需发送本机存在的连接即可
+				MessagEmitter.sendToGroupOnlyServer(gimConfig, groupId, builder
+						.setId(IDGenerator.getUUID()).build());
+			}
+
 		}
-
-		// 如果是普通消息
-		if (type == Type.SINGLE_MSG_REQ) {
-
-			SingleChatReq singleChatReq = builder.getBody().unpack(
-					SingleChatReq.class);
-			String userId = singleChatReq.getReceiverId();
-			MessagEmitter.sendToUser(gimConfig, userId, builder.build());
-
-		} else if (type == Type.GROUP_MSG_REQ) {
-			GroupChatReq groupChatReq = builder.getBody().unpack(
-					GroupChatReq.class);
-			String groupId = groupChatReq.getGroupId();
-			MessagEmitter.sendToGroup(gimConfig, groupId, builder.build());
-		}
-
-		// 返回ack给集群服务器
-		ClusterConfig clusterConfig = gimConfig.getClusterConfig();
-		Message ack = MessageGenerate.createAck(builder.getId());
-		// 把消息放到队列里
-		MessageDelayPacket ackMdp = new MessageDelayPacket(
-				clusterConfig.getServerIdentify(), "", ack, Const.msg_delay);
-		// 发送到Redis
-		clusterConfig.getiRedisProxy().lpush(
-				"gim_" + builder.getServerIdentify(), ackMdp.msgToJson());
 
 	}
 
@@ -121,11 +128,10 @@ public class ClusterEmitter {
 
 					// 把消息放到队列里
 					MessageDelayPacket mdp = new MessageDelayPacket(
-							clusterConfig.getServerIdentify(), userId, msg, Const.msg_delay);
+							clusterConfig.getServerIdentify(), userId, msg,
+							Const.msg_delay);
 					gimConfig.getGimContext().delayMsgQueue.add(mdp);
 
-					// 把消息转成json字符串
-					// String msgJson = FastJsonUtils.toJSONNoFeatures(mdp);
 					// 发送到Redis
 					Long size = clusterConfig.getiRedisProxy().lpush(
 							"gim_" + serverIdentify, mdp.msgToJson());

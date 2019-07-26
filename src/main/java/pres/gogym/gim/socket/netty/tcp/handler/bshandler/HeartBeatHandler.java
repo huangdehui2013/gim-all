@@ -40,9 +40,7 @@ public class HeartBeatHandler extends AbsChatHandler<HeartBeatReq> {
 	@Override
 	public void handler(Message message, HeartBeatReq bsBody,
 			ChannelHandlerContext ctx) {
-		System.out.println("心跳");
 		// 如果集群，那么心跳时刷新集群路由映射。确保路由信息是最新的。
-
 		AttributeKey<NettyChannelAttribute> netty_channel_key = AttributeKey
 				.valueOf(Const.netty_attributeKey);
 		Attribute<NettyChannelAttribute> attr = ctx.channel().attr(

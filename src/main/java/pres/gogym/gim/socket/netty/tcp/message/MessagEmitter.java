@@ -24,6 +24,7 @@ import pres.gogym.gim.socket.netty.tcp.cluster.ClusterEmitter;
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterRoute;
 import pres.gogym.gim.socket.netty.tcp.offline.OfflineEmitter;
 import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
+import pres.gogym.gim.utils.IDGenerator;
 
 public class MessagEmitter {
 
@@ -57,7 +58,7 @@ public class MessagEmitter {
 			channel.writeAndFlush(msg);
 		} else if (gimConfig.getClusterConfig().isCluster()) {
 			// 集群发送
-			ClusterEmitter.sendToUser(gimConfig,userId, msg);
+			ClusterEmitter.sendToUser(gimConfig, userId, msg);
 		} else {
 			// 离线
 			OfflineEmitter.putOfflineMsg(gimConfig.getOfflineConfig(), msg);
@@ -78,22 +79,87 @@ public class MessagEmitter {
 
 		if (gimConfig.getClusterConfig().isCluster()) {
 
-			Set<String> set = ClusterRoute.getGroupRoute(gimConfig.getClusterConfig(),groupId);
+			Set<String> set = ClusterRoute.getGroupRoute(
+					gimConfig.getClusterConfig(), groupId);
 			for (String string : set) {
-				sendToUser(gimConfig, string, msg);
+				sendToUser(gimConfig, string,
+						msg.toBuilder().setId(IDGenerator.getUUID()).build());
 			}
 
 		} else {
-			ConcurrentMap<String, CopyOnWriteArrayList<String>> groupUserMap =gimConfig.getGimContext().groupUserMap;
+			ConcurrentMap<String, CopyOnWriteArrayList<String>> groupUserMap = gimConfig
+					.getGimContext().groupUserMap;
 			CopyOnWriteArrayList<String> list = groupUserMap.get(groupId);
 
 			if (groupUserMap.get(groupId) != null) {
 				for (String string : list) {
-					sendToUser(gimConfig, string, msg);
+					sendToUser(gimConfig, string,
+							msg.toBuilder().setId(IDGenerator.getUUID())
+									.build());
+				}
+			}
+		}
+	}
+
+	/**
+	 * 
+	 * Description:
+	 * 
+	 * @param gimConfig
+	 * @param groupId
+	 * @param msg
+	 * @see
+	 */
+	public static void sendToGroupOnlyServer(GimConfig gimConfig,
+			String groupId, Message msg) throws Exception {
+
+		if (gimConfig.getClusterConfig().isCluster()) {
+
+			Set<String> set = ClusterRoute.getGroupRoute(
+					gimConfig.getClusterConfig(), groupId);
+			for (String string : set) {
+
+				ChannelId channelId = gimConfig.getGimContext().userChannelMap
+						.get(string);
+				if (channelId != null) {
+					Channel channel = gimConfig.getGimContext().channels
+							.find(channelId);
+					if (channel == null) {
+						throw new Exception("[channel is null error]");
+					}
+
+					MessageDelayPacket mdp = new MessageDelayPacket(string,
+							msg, Const.msg_delay);
+					gimConfig.getGimContext().delayMsgQueue.put(mdp);
+					channel.writeAndFlush(msg);
 				}
 			}
 
+		} else {
+			ConcurrentMap<String, CopyOnWriteArrayList<String>> groupUserMap = gimConfig
+					.getGimContext().groupUserMap;
+			CopyOnWriteArrayList<String> list = groupUserMap.get(groupId);
+
+			if (groupUserMap.get(groupId) != null) {
+				for (String string : list) {
+					ChannelId channelId = gimConfig.getGimContext().userChannelMap
+							.get(string);
+					if (channelId != null) {
+						Channel channel = gimConfig.getGimContext().channels
+								.find(channelId);
+						if (channel == null) {
+							throw new Exception("[channel is null error]");
+						}
+
+						MessageDelayPacket mdp = new MessageDelayPacket(string,
+								msg, Const.msg_delay);
+						gimConfig.getGimContext().delayMsgQueue.put(mdp);
+						channel.writeAndFlush(msg);
+					}
+				}
+			}
 		}
 
 	}
+
 }
