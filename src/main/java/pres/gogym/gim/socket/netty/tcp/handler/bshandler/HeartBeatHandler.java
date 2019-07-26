@@ -24,13 +24,6 @@ import pres.gogym.gim.socket.netty.tcp.server.NettyChannelAttribute;
 
 public class HeartBeatHandler extends AbsChatHandler<HeartBeatReq> {
 
-	GimConfig gimConfig;
-
-	public HeartBeatHandler(GimConfig gimConfig) {
-		this.gimConfig = gimConfig;
-
-	}
-	
 	@Override
 	public Class<HeartBeatReq> bodyClass() {
 		return HeartBeatReq.class;
@@ -51,7 +44,7 @@ public class HeartBeatHandler extends AbsChatHandler<HeartBeatReq> {
 			String channelUserId = nettyChannelAttribute.getUserId();
 			if (channelUserId != null) {
 				// 绑定路由
-				ClusterRoute.setUserRoute(gimConfig.getClusterConfig(),channelUserId);
+				ClusterRoute.setUserRoute(channelUserId);
 			}
 		}
 

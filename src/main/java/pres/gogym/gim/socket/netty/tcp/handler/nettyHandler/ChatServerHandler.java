@@ -37,7 +37,7 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<Message> {
 	@Override
 	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
 		Channel incoming = ctx.channel();
-		GimBind.unbindUser(gimConfig, incoming);
+		GimBind.unbindUser(incoming);
 		System.out.println("[Client] - " + incoming.remoteAddress() + " 离开");
 
 	}

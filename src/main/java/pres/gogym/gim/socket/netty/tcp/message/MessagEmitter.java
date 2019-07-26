@@ -28,6 +28,8 @@ import pres.gogym.gim.utils.IDGenerator;
 
 public class MessagEmitter {
 
+	static GimConfig gimConfig = GimConfig.shareInstance();
+
 	/**
 	 * 
 	 * Description: send msg to user
@@ -36,8 +38,7 @@ public class MessagEmitter {
 	 * @param msg
 	 * @see
 	 */
-	public static void sendToUser(GimConfig gimConfig, String userId,
-			Message msg) throws Exception {
+	public static void sendToUser(String userId, Message msg) throws Exception {
 
 		ChannelId channelId = gimConfig.getGimContext().userChannelMap
 				.get(userId);
@@ -58,7 +59,7 @@ public class MessagEmitter {
 			channel.writeAndFlush(msg);
 		} else if (gimConfig.getClusterConfig().isCluster()) {
 			// 集群发送
-			ClusterEmitter.sendToUser(gimConfig, userId, msg);
+			ClusterEmitter.sendToUser(userId, msg);
 		} else {
 			// 离线
 			OfflineEmitter.putOfflineMsg(gimConfig.getOfflineConfig(), msg);
@@ -74,16 +75,15 @@ public class MessagEmitter {
 	 * @throws Exception
 	 * @see
 	 */
-	public static void sendToGroup(GimConfig gimConfig, String groupId,
-			Message msg) throws Exception {
+	public static void sendToGroup(String groupId, Message msg)
+			throws Exception {
 
 		if (gimConfig.getClusterConfig().isCluster()) {
 
-			Set<String> set = ClusterRoute.getGroupRoute(
-					gimConfig.getClusterConfig(), groupId);
+			Set<String> set = ClusterRoute.getGroupRoute(groupId);
 			for (String string : set) {
-				sendToUser(gimConfig, string,
-						msg.toBuilder().setId(IDGenerator.getUUID()).build());
+				sendToUser(string, msg.toBuilder().setId(IDGenerator.getUUID())
+						.build());
 			}
 
 		} else {
@@ -93,7 +93,7 @@ public class MessagEmitter {
 
 			if (groupUserMap.get(groupId) != null) {
 				for (String string : list) {
-					sendToUser(gimConfig, string,
+					sendToUser(string,
 							msg.toBuilder().setId(IDGenerator.getUUID())
 									.build());
 				}
@@ -110,13 +110,12 @@ public class MessagEmitter {
 	 * @param msg
 	 * @see
 	 */
-	public static void sendToGroupOnlyServer(GimConfig gimConfig,
-			String groupId, Message msg) throws Exception {
+	public static void sendToGroupOnlyServer(String groupId, Message msg)
+			throws Exception {
 
 		if (gimConfig.getClusterConfig().isCluster()) {
 
-			Set<String> set = ClusterRoute.getGroupRoute(
-					gimConfig.getClusterConfig(), groupId);
+			Set<String> set = ClusterRoute.getGroupRoute(groupId);
 			for (String string : set) {
 
 				ChannelId channelId = gimConfig.getGimContext().userChannelMap

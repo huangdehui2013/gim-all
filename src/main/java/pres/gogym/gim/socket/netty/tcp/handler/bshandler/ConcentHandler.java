@@ -32,13 +32,6 @@ import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
  */
 public class ConcentHandler extends AbsChatHandler<ConnectReq> {
 
-	GimConfig gimConfig;
-
-	public ConcentHandler(GimConfig gimConfig) {
-		this.gimConfig = gimConfig;
-
-	}
-
 	@Override
 	public Class<ConnectReq> bodyClass() {
 		return ConnectReq.class;
@@ -55,9 +48,9 @@ public class ConcentHandler extends AbsChatHandler<ConnectReq> {
 		String senderId = bsBody.getSenderId();
 		try {
 			// 绑定用户关系
-			GimBind.bindUser(gimConfig,senderId, ctx.channel());
+			GimBind.bindUser(senderId, ctx.channel());
 			// 绑定路由
-			ClusterRoute.setUserRoute(gimConfig.getClusterConfig(), senderId);
+			ClusterRoute.setUserRoute(senderId);
 
 			reMsg = MessageGenerate.crateConnectResp(senderId, Const.success,
 					"连接成功");

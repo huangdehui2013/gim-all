@@ -71,14 +71,16 @@ public class GimConfig {
 	// 心跳检测时间，默认120秒
 	private int readerIdleTime = 120;
 
-	// private static GimConfig gimConfig = new GimConfig();
+	private static class LazyHolder {
+		private static final GimConfig gimConfig = new GimConfig();
+	}
 
-	// private GimConfig() {
-	// }
+	private GimConfig() {
+	}
 
-	// public static GimConfig shareInstance() {
-	// return gimConfig;
-	// }
+	public static GimConfig shareInstance() {
+		return LazyHolder.gimConfig;
+	}
 
 	// 端口号
 	public GimConfig port(int port) {

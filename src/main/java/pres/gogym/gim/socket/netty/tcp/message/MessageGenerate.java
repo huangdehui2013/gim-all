@@ -12,12 +12,15 @@
 package pres.gogym.gim.socket.netty.tcp.message;
 
 import java.util.Date;
+import java.util.List;
 
 import pres.gogym.gim.common.Const;
 import pres.gogym.gim.common.Type;
 import pres.gogym.gim.packet.AckReqClass.AckReq;
 import pres.gogym.gim.packet.ConnectRespClass.ConnectResp;
+import pres.gogym.gim.packet.GroupChatReqClass.GroupChatReq;
 import pres.gogym.gim.packet.MessageClass.Message;
+import pres.gogym.gim.packet.SingleChatReqClass.SingleChatReq;
 import pres.gogym.gim.utils.IDGenerator;
 
 import com.google.protobuf.Any;
@@ -32,6 +35,84 @@ import com.google.protobuf.Any;
  * @since
  */
 public class MessageGenerate {
+
+	/**
+	 * 
+	 * Description: 创建单聊消息
+	 * 
+	 * @param sendlerId
+	 * @param receiverId
+	 * @param msgType
+	 * @param body
+	 * @return
+	 * @see
+	 */
+	public static Message createSingleChatReq(String sendlerId,
+			String receiverId, int msgType, String body) {
+
+		// 创建一个ack消息
+		Message.Builder builder = Message.newBuilder();
+		builder.setIdentify(Const.identify);
+		builder.setVersion(Const.version);
+		builder.setReqType(Type.SINGLE_MSG_REQ);
+		builder.setMsgTime(new Date().getTime());
+		builder.setId(IDGenerator.getUUID());
+
+		SingleChatReq.Builder singleChatReq = SingleChatReq.newBuilder();
+		singleChatReq.setSenderId(sendlerId);
+		singleChatReq.setReceiverId(receiverId);
+		singleChatReq.setMsgType(msgType);
+		singleChatReq.setBody(body);
+
+		builder.setBody(Any.pack(singleChatReq.build()));
+		return builder.build();
+
+	}
+
+	/**
+	 * 
+	 * Description: 创建一个团消息
+	 * 
+	 * @param sendlerId
+	 * @param groupId
+	 * @param msgType
+	 * @param body
+	 * @param atUserId
+	 * @return
+	 * @see
+	 */
+	public static Message createGroupChatReq(String sendlerId, String groupId,
+			int msgType, String body, List<String> atUserId) {
+
+		// 创建一个ack消息
+		Message.Builder builder = Message.newBuilder();
+		builder.setIdentify(Const.identify);
+		builder.setVersion(Const.version);
+		builder.setReqType(Type.GROUP_MSG_REQ);
+		builder.setMsgTime(new Date().getTime());
+		builder.setId(IDGenerator.getUUID());
+
+		GroupChatReq.Builder groupChatReq = GroupChatReq.newBuilder();
+		groupChatReq.setSenderId(sendlerId);
+		groupChatReq.setGroupId(groupId);
+		groupChatReq.setMsgType(msgType);
+		groupChatReq.setBody(body);
+
+		if (atUserId != null) {
+
+			StringBuffer stringBuffer = new StringBuffer();
+
+			for (String string : atUserId) {
+				stringBuffer.append(string).append(",");
+			}
+			stringBuffer.deleteCharAt(stringBuffer.length() - 1);
+			groupChatReq.setAtUserId(stringBuffer.toString());
+		}
+
+		builder.setBody(Any.pack(groupChatReq.build()));
+		return builder.build();
+
+	}
 
 	/**
 	 * 
@@ -66,7 +147,7 @@ public class MessageGenerate {
 	 * @param senderId
 	 * @param result
 	 * @param msg
-	 * @return 
+	 * @return
 	 * @see
 	 */
 	public static Message crateConnectResp(String senderId, Integer result,

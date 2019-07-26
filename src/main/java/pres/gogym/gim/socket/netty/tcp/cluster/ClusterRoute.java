@@ -18,6 +18,9 @@ import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
 
 public class ClusterRoute {
 
+	static ClusterConfig clusterConfig = GimConfig.shareInstance()
+			.getClusterConfig();
+
 	/**
 	 * 
 	 * Description: 设置用户与服务器的路由映射
@@ -25,7 +28,7 @@ public class ClusterRoute {
 	 * @param userId
 	 * @see
 	 */
-	public static void setUserRoute(ClusterConfig clusterConfig, String userId) {
+	public static void setUserRoute(String userId) {
 
 		// 先判断是否开启集群
 		if (clusterConfig != null && clusterConfig.isCluster()) {
@@ -43,7 +46,7 @@ public class ClusterRoute {
 	 * @return
 	 * @see
 	 */
-	public static String getUserRoute(ClusterConfig clusterConfig, String userId) {
+	public static String getUserRoute(String userId) {
 
 		return clusterConfig.getiRedisProxy().get("channel_client_" + userId);
 	}
@@ -55,7 +58,7 @@ public class ClusterRoute {
 	 * @param userId
 	 * @see
 	 */
-	public static void delUserRoute(ClusterConfig clusterConfig, String userId) {
+	public static void delUserRoute(String userId) {
 
 		// 先判断是否开启集群
 		if (clusterConfig != null && clusterConfig.isCluster()) {
@@ -74,7 +77,7 @@ public class ClusterRoute {
 	 * @return
 	 * @see
 	 */
-	public static void setGroupRoute(ClusterConfig clusterConfig,String groupId, String userId)
+	public static void setGroupRoute(String groupId, String userId)
 			throws Exception {
 
 		// 先判断是否开启集群
@@ -97,7 +100,7 @@ public class ClusterRoute {
 	 * @return
 	 * @see
 	 */
-	public static void setGroupRoute(ClusterConfig clusterConfig,String groupId, List<String> userIds)
+	public static void setGroupRoute(String groupId, List<String> userIds)
 			throws Exception {
 
 		// 先判断是否开启集群
@@ -119,7 +122,7 @@ public class ClusterRoute {
 	 * @return
 	 * @see
 	 */
-	public static Set<String> getGroupRoute(ClusterConfig clusterConfig,String groupId) {
+	public static Set<String> getGroupRoute(String groupId) {
 
 		// 先判断是否开启集群
 		if (clusterConfig != null && clusterConfig.isCluster()) {
@@ -139,9 +142,8 @@ public class ClusterRoute {
 	 * @throws Exception
 	 * @see
 	 */
-	public static void delGroupRoute(ClusterConfig clusterConfig,String groupId, String userId)
+	public static void delGroupRoute(String groupId, String userId)
 			throws Exception {
-
 
 		// 先判断是否开启集群
 		if (clusterConfig != null && clusterConfig.isCluster()) {
@@ -154,7 +156,7 @@ public class ClusterRoute {
 
 	}
 
-	public static void delGroupRoute(ClusterConfig clusterConfig,String groupId, List<String> userIds)
+	public static void delGroupRoute(String groupId, List<String> userIds)
 			throws Exception {
 
 		// 先判断是否开启集群
@@ -176,8 +178,7 @@ public class ClusterRoute {
 	 * @throws Exception
 	 * @see
 	 */
-	public static void clearGroupRoute(ClusterConfig clusterConfig,String groupId) throws Exception {
-
+	public static void clearGroupRoute(String groupId) throws Exception {
 
 		// 先判断是否开启集群
 		if (clusterConfig != null && clusterConfig.isCluster()) {

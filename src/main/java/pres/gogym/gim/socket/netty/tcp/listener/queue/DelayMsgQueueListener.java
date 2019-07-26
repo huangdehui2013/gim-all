@@ -23,12 +23,12 @@ public class DelayMsgQueueListener {
 
 		try {
 			// 从代发队列中拿出消息
-			MessageDelayPacket element =gimConfig.getGimContext().delayMsgQueue
+			MessageDelayPacket element = gimConfig.getGimContext().delayMsgQueue
 					.take();
 			Message msg = element.getMessage();
-			//String ack = msg.getId();
+			// String ack = msg.getId();
 			// if (GimContext.shareInstance().ackList.contains(ack)) {
-			MessagEmitter.sendToUser(gimConfig,element.getUserId(), msg);
+			MessagEmitter.sendToUser(element.getUserId(), msg);
 			// }
 
 		} catch (Exception e) {

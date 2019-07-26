@@ -32,14 +32,6 @@ import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
  */
 public class AckHandler extends AbsChatHandler<AckReq> {
 
-	GimConfig gimConfig;
-
-	public AckHandler(GimConfig gimConfig) {
-
-		this.gimConfig = gimConfig;
-
-	}
-
 	@Override
 	public Class<AckReq> bodyClass() {
 		return AckReq.class;
@@ -54,7 +46,7 @@ public class AckHandler extends AbsChatHandler<AckReq> {
 		// remove ack from list
 		// GimContext.shareInstance().ackList.remove(ack);
 
-		gimConfig.getGimContext().delayMsgQueue
+		GimConfig.shareInstance().getGimContext().delayMsgQueue
 				.removeIf(new Predicate<MessageDelayPacket>() {
 					@Override
 					public boolean test(MessageDelayPacket t) {

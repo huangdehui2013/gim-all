@@ -26,6 +26,8 @@ import pres.gogym.gim.socket.netty.tcp.server.NettyChannelAttribute;
 
 public class GimBind {
 
+	static GimConfig gimConfig = GimConfig.shareInstance();
+
 	/**
 	 * 
 	 * Description: 用户与连接绑定
@@ -34,8 +36,7 @@ public class GimBind {
 	 * @param channelId
 	 * @see
 	 */
-	public static void bindUser(GimConfig gimConfig, String userId,
-			Channel channel) {
+	public static void bindUser(String userId, Channel channel) {
 		gimConfig.getGimContext().userChannelMap.put(userId, channel.id());
 		AttributeKey<NettyChannelAttribute> netty_channel_key = AttributeKey
 				.valueOf(Const.netty_attributeKey);
@@ -46,7 +47,7 @@ public class GimBind {
 		attr.set(nettyChannelAttribute);
 
 		// 集群模式下，需要向redis中注册用户服务器地址
-		ClusterRoute.setUserRoute(gimConfig.getClusterConfig(), userId);
+		ClusterRoute.setUserRoute(userId);
 
 	}
 
@@ -58,8 +59,7 @@ public class GimBind {
 	 * @param userId
 	 * @see
 	 */
-	public static void bindGroup(GimConfig gimConfig, String groupId,
-			String userId) {
+	public static void bindGroup(String groupId, String userId) {
 
 		ConcurrentMap<String, CopyOnWriteArrayList<String>> groupUserMap = gimConfig
 				.getGimContext().groupUserMap;
@@ -67,8 +67,7 @@ public class GimBind {
 		if (gimConfig.getClusterConfig().isCluster()) {
 
 			try {
-				ClusterRoute.setGroupRoute(gimConfig.getClusterConfig(),
-						groupId, userId);
+				ClusterRoute.setGroupRoute(groupId, userId);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -86,14 +85,12 @@ public class GimBind {
 
 	}
 
-	public static void bindGroup(GimConfig gimConfig, String groupId,
-			List<String> users) {
+	public static void bindGroup(String groupId, List<String> users) {
 
 		if (gimConfig.getClusterConfig().isCluster()) {
 
 			try {
-				ClusterRoute.setGroupRoute(gimConfig.getClusterConfig(),
-						groupId, users);
+				ClusterRoute.setGroupRoute(groupId, users);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -122,12 +119,12 @@ public class GimBind {
 	 * @param channel
 	 * @see
 	 */
-	public static void unbindUser(GimConfig gimConfig, String userId) {
+	public static void unbindUser(String userId) {
 		gimConfig.getGimContext().userChannelMap.remove(userId);
-		ClusterRoute.delUserRoute(gimConfig.getClusterConfig(), userId);
+		ClusterRoute.delUserRoute(userId);
 	}
 
-	public static void unbindUser(GimConfig gimConfig, Channel channel) {
+	public static void unbindUser(Channel channel) {
 
 		AttributeKey<NettyChannelAttribute> netty_channel_key = AttributeKey
 				.valueOf(Const.netty_attributeKey);
@@ -140,8 +137,7 @@ public class GimBind {
 			String channelUserId = nettyChannelAttribute.getUserId();
 			if (channelUserId != null) {
 				gimConfig.getGimContext().userChannelMap.remove(channelUserId);
-				ClusterRoute.delUserRoute(gimConfig.getClusterConfig(),
-						channelUserId);
+				ClusterRoute.delUserRoute(channelUserId);
 			}
 		}
 		gimConfig.getGimContext().channels.remove(channel);
@@ -151,14 +147,12 @@ public class GimBind {
 		}
 	}
 
-	public static void unbindGroup(GimConfig gimConfig, String groupId,
-			String userId) {
+	public static void unbindGroup(String groupId, String userId) {
 
 		if (gimConfig.getClusterConfig().isCluster()) {
 
 			try {
-				ClusterRoute.delGroupRoute(gimConfig.getClusterConfig(),
-						groupId, userId);
+				ClusterRoute.delGroupRoute(groupId, userId);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -177,14 +171,12 @@ public class GimBind {
 
 	}
 
-	public static void unbindGroup(GimConfig gimConfig, String groupId,
-			List<String> userIds) {
+	public static void unbindGroup(String groupId, List<String> userIds) {
 
 		if (gimConfig.getClusterConfig().isCluster()) {
 
 			try {
-				ClusterRoute.delGroupRoute(gimConfig.getClusterConfig(),
-						groupId, userIds);
+				ClusterRoute.delGroupRoute(groupId, userIds);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
@@ -210,13 +202,12 @@ public class GimBind {
 	 * @param groupId
 	 * @see
 	 */
-	public static void cleanGroup(GimConfig gimConfig, String groupId) {
+	public static void cleanGroup(String groupId) {
 
 		if (gimConfig.getClusterConfig().isCluster()) {
 
 			try {
-				ClusterRoute.clearGroupRoute(gimConfig.getClusterConfig(),
-						groupId);
+				ClusterRoute.clearGroupRoute(groupId);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}

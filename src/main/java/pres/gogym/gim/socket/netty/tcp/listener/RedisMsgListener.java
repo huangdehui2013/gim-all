@@ -46,7 +46,7 @@ public class RedisMsgListener extends Thread {
 
 	public void handle(String json) {
 		try {
-			ClusterEmitter.sendToClient(gimConfig,json);
+			ClusterEmitter.sendToClient(json);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

@@ -13,7 +13,6 @@ package pres.gogym.gim.socket.netty.tcp.cluster;
 
 
 import pres.gogym.gim.socket.netty.tcp.intf.ClusterMsgHandlerIntf;
-import pres.gogym.gim.socket.netty.tcp.listener.RedisMsgListener;
 import pres.gogym.gim.socket.netty.tcp.redis.IRedisProxy;
 import pres.gogym.gim.socket.netty.tcp.redis.RedisConfig;
 import pres.gogym.gim.socket.netty.tcp.redis.RedisProxyImp;

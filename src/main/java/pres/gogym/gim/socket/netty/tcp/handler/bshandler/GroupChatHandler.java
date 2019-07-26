@@ -32,12 +32,6 @@ import pres.gogym.gim.socket.netty.tcp.server.GimContext;
  */
 public class GroupChatHandler extends AbsChatHandler<GroupChatReq> {
 
-	GimConfig gimConfig;
-
-	public GroupChatHandler(GimConfig gimConfig) {
-		this.gimConfig = gimConfig;
-	}
-
 	@Override
 	public Class<GroupChatReq> bodyClass() {
 		return GroupChatReq.class;
@@ -51,7 +45,7 @@ public class GroupChatHandler extends AbsChatHandler<GroupChatReq> {
 		String groupId = bsBody.getGroupId();
 		System.out.println("处理群信息");
 		try {
-			MessagEmitter.sendToGroup(gimConfig, groupId, message);
+			MessagEmitter.sendToGroup(groupId, message);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

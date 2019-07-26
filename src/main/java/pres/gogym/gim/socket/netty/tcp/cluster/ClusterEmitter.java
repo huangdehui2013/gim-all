@@ -31,6 +31,8 @@ import pres.gogym.gim.utils.IDGenerator;
 
 public class ClusterEmitter {
 
+	static GimConfig gimConfig = GimConfig.shareInstance();
+
 	/**
 	 * 
 	 * Description: send msg to user
@@ -39,8 +41,7 @@ public class ClusterEmitter {
 	 * @param msg
 	 * @see
 	 */
-	public static void sendToClient(GimConfig gimConfig, String msgJson)
-			throws Exception {
+	public static void sendToClient(String msgJson) throws Exception {
 
 		Message.Builder builder = Message.newBuilder();
 		JsonFormat
@@ -82,7 +83,7 @@ public class ClusterEmitter {
 				SingleChatReq singleChatReq = builder.getBody().unpack(
 						SingleChatReq.class);
 				String userId = singleChatReq.getReceiverId();
-				MessagEmitter.sendToUser(gimConfig, userId,
+				MessagEmitter.sendToUser(userId,
 						builder.setId(IDGenerator.getUUID()).build());
 
 			} else if (type == Type.GROUP_MSG_REQ) {
@@ -91,8 +92,8 @@ public class ClusterEmitter {
 				String groupId = groupChatReq.getGroupId();
 
 				// TODO 注意，这里因为已经是集群处理，只需发送本机存在的连接即可
-				MessagEmitter.sendToGroupOnlyServer(gimConfig, groupId, builder
-						.setId(IDGenerator.getUUID()).build());
+				MessagEmitter.sendToGroupOnlyServer(groupId,
+						builder.setId(IDGenerator.getUUID()).build());
 			}
 
 		}
@@ -107,8 +108,7 @@ public class ClusterEmitter {
 	 * @param msg
 	 * @see
 	 */
-	public static void sendToUser(GimConfig gimConfig, String userId,
-			Message msg) throws Exception {
+	public static void sendToUser(String userId, Message msg) throws Exception {
 
 		ClusterConfig clusterConfig = gimConfig.getClusterConfig();
 
@@ -118,8 +118,7 @@ public class ClusterEmitter {
 				clusterConfig.getClusterMsgHandler().clusterMsg(msg);
 			} else if (clusterConfig.getHandleType() == ClusterConfig.REDIS) {
 				// 集群下查找路由信息
-				String serverIdentify = ClusterRoute.getUserRoute(
-						gimConfig.getClusterConfig(), userId);
+				String serverIdentify = ClusterRoute.getUserRoute(userId);
 				if (null == serverIdentify) {
 					// 没有找到路由信息，则离线
 					OfflineEmitter.putOfflineMsg(gimConfig.getOfflineConfig(),

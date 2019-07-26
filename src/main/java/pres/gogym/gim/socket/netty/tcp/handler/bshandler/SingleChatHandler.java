@@ -31,12 +31,6 @@ import pres.gogym.gim.socket.netty.tcp.server.GimContext;
  */
 public class SingleChatHandler extends AbsChatHandler<SingleChatReq> {
 
-	GimConfig gimConfig;
-
-	public SingleChatHandler(GimConfig gimConfig) {
-		this.gimConfig = gimConfig;
-	}
-
 	@Override
 	public Class<SingleChatReq> bodyClass() {
 		return SingleChatReq.class;
@@ -50,7 +44,7 @@ public class SingleChatHandler extends AbsChatHandler<SingleChatReq> {
 		String receiverId = bsBody.getReceiverId();
 
 		try {
-			MessagEmitter.sendToUser(gimConfig, receiverId, message);
+			MessagEmitter.sendToUser(receiverId, message);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
