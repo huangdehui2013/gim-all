@@ -1,52 +1,36 @@
 package pres.gogym.gim.common;
 
+import pres.gogym.gim.utils.DynamicEnumUtil;
+
 public enum MsgType {
 	/**
-	 * <pre>
 	 * 文本
-	 * </pre>
 	 *
-	 * <code>MSG_TYPE_TEXT = 0;</code>
 	 */
 	MSG_TYPE_TEXT(0),
 	/**
-	 * <pre>
 	 * 图片
-	 * </pre>
 	 *
-	 * <code>MSG_TYPE_IMG = 1;</code>
 	 */
 	MSG_TYPE_IMG(1),
 	/**
-	 * <pre>
 	 * 语音
-	 * </pre>
 	 *
-	 * <code>MSG_TYPE_VOICE = 2;</code>
 	 */
 	MSG_TYPE_VOICE(2),
 	/**
-	 * <pre>
 	 * 视频
-	 * </pre>
 	 *
-	 * <code>MSG_TYPE_VIDEO = 3;</code>
 	 */
 	MSG_TYPE_VIDEO(3),
 	/**
-	 * <pre>
 	 * 音乐
-	 * </pre>
 	 *
-	 * <code>MSG_TYPE_MUSIC = 4;</code>
 	 */
 	MSG_TYPE_MUSIC(4),
 	/**
-	 * <pre>
 	 * 图文
-	 * </pre>
 	 *
-	 * <code>MSG_TYPE_NEWS = 5;</code>
 	 */
 	MSG_TYPE_NEWS(5), ;
 
@@ -82,4 +66,18 @@ public enum MsgType {
 	private MsgType(int value) {
 		this.value = value;
 	}
+
+	/**
+	 * 
+	 * Description: 动态添加枚举
+	 * 
+	 * @param enumName
+	 * @param value
+	 * @see
+	 */
+	public static void addEnum(String enumName, int value) {
+		DynamicEnumUtil.addEnum(MsgType.class, enumName,
+				new Class<?>[] { int.class }, new Object[] { value });
+	}
+
 }

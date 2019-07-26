@@ -1,9 +1,13 @@
 package pres.gogym.gim.common;
 
 /**
- * 消息类型定义
  * 
- * @author tanyaowu 2017年3月26日 下午8:18:13
+ * 〈消息类型定义〉
+ * 
+ * @author gogym
+ * @version 2019年7月26日
+ * @see Type
+ * @since
  */
 public interface Type {
 
@@ -42,17 +46,16 @@ public interface Type {
 	 * 群聊消息响应
 	 */
 	int GROUP_MSG_RESP = 8;
-	
+
 	/**
 	 * 添加好友请求
 	 */
-	int ADD_FRIEND_REQ =9;
-	
+	int ADD_FRIEND_REQ = 9;
+
 	/**
 	 * 添加好友响应
 	 */
-	int ADD_FRIEND_RESP=10;
-	
+	int ADD_FRIEND_RESP = 10;
 
 	// ---------------------------------------------------------------
 

@@ -1,16 +1,24 @@
 package pres.gogym.gim.common;
 
+/**
+ * 
+ * 〈constant class〉
+ * 
+ * @author gogym
+ * @version 2019年7月26日
+ * @see Const
+ * @since
+ */
 public class Const {
-	// 协议标识
+	// Protocol identify
 	public final static String identify = "gim";
-	// 协议版本
+	// Protocol version
 	public final static String version = "1.0";
-
-	// 重发消息间隔时间（毫秒）
+	// Repost message in milliseconds
 	public static final Long msg_delay = 20 * 1000L;
 
-	// 创建的群组放到redis的key
-	public final static String REDIS_CHAT_GROUP = "REDIS_CHAT_GROUP_";
+	// The group created put in the key of redis
+	public final static String REDIS_CHAT_GROUP = "GIM_CHAT_GROUP_";
 
 	public static final String CHARSET = "utf-8";
 
