@@ -17,7 +17,7 @@ import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
 
 /**
  * 
- * 〈消息读取监听〉 〈功能详细描述〉
+ * 〈消息读取监听〉
  * 
  * @author gogym
  * @version 2019年6月11日
@@ -33,6 +33,7 @@ public interface ChatMsgListener {
 	 * @param message
 	 * @see
 	 */
-	public void read(GimConfig gimConfig,Message message, ChannelHandlerContext ctx);
+	public void read(GimConfig gimConfig, Message message,
+			ChannelHandlerContext ctx);
 
 }

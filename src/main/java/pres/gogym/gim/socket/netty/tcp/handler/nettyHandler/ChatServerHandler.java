@@ -1,14 +1,13 @@
 package pres.gogym.gim.socket.netty.tcp.handler.nettyHandler;
 
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelHandlerContext;
+import io.netty.channel.SimpleChannelInboundHandler;
 import pres.gogym.gim.packet.MessageClass.Message;
 import pres.gogym.gim.socket.netty.tcp.bind.GimBind;
 import pres.gogym.gim.socket.netty.tcp.handler.BaseHandler;
 import pres.gogym.gim.socket.netty.tcp.listener.ChatMsgListener;
 import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
-import pres.gogym.gim.socket.netty.tcp.server.GimContext;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
 
 /**
  * netty处理类

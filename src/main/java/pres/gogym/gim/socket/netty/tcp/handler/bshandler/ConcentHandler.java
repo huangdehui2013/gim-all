@@ -19,7 +19,6 @@ import pres.gogym.gim.socket.netty.tcp.bind.GimBind;
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterRoute;
 import pres.gogym.gim.socket.netty.tcp.handler.AbsChatHandler;
 import pres.gogym.gim.socket.netty.tcp.message.MessageGenerate;
-import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
 
 /**
  * 
@@ -40,7 +39,6 @@ public class ConcentHandler extends AbsChatHandler<ConnectReq> {
 	@Override
 	public void handler(Message message, ConnectReq bsBody,
 			ChannelHandlerContext ctx) {
-		System.out.println("用户绑定");
 
 		Message reMsg;
 

@@ -15,7 +15,6 @@ import pres.gogym.gim.packet.MessageClass.Message;
 import pres.gogym.gim.socket.netty.tcp.message.MessagEmitter;
 import pres.gogym.gim.socket.netty.tcp.message.MessageDelayPacket;
 import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
-import pres.gogym.gim.socket.netty.tcp.server.GimContext;
 
 public class DelayMsgQueueListener {
 
@@ -26,11 +25,7 @@ public class DelayMsgQueueListener {
 			MessageDelayPacket element = gimConfig.getGimContext().delayMsgQueue
 					.take();
 			Message msg = element.getMessage();
-			// String ack = msg.getId();
-			// if (GimContext.shareInstance().ackList.contains(ack)) {
 			MessagEmitter.sendToUser(element.getUserId(), msg);
-			// }
-
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

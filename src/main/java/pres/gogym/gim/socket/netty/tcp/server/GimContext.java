@@ -24,24 +24,25 @@ import io.netty.util.concurrent.GlobalEventExecutor;
 
 public class GimContext {
 
-//	private static final ThreadLocal<GimContext> threadLocal = new ThreadLocal<GimContext>();// 全局静态变量
-//
-//	private GimContext() {
-//	}
-//
-//	public static GimContext shareInstance() {
-//
-//		if (threadLocal.get() == null) {
-//			synchronized (GimContext.class) {
-//				if (threadLocal.get() == null) {
-//					GimContext gimContext = new GimContext();
-//					threadLocal.set(gimContext);
-//				}
-//			}
-//		}
-//		return threadLocal.get();
-//
-//	}
+	// private static final ThreadLocal<GimContext> threadLocal = new
+	// ThreadLocal<GimContext>();// 全局静态变量
+	//
+	// private GimContext() {
+	// }
+	//
+	// public static GimContext shareInstance() {
+	//
+	// if (threadLocal.get() == null) {
+	// synchronized (GimContext.class) {
+	// if (threadLocal.get() == null) {
+	// GimContext gimContext = new GimContext();
+	// threadLocal.set(gimContext);
+	// }
+	// }
+	// }
+	// return threadLocal.get();
+	//
+	// }
 
 	// 实例一个连接容器用户保存TCP连接
 	public ChannelGroup channels = new DefaultChannelGroup(
@@ -62,10 +63,6 @@ public class GimContext {
 
 	// 创建一个阻塞队列，用于缓冲需要转发的消息
 	// public static BlockingQueue<Message> chatMsgQueue = new
-	// LinkedBlockingQueue<Message>();
-
-	// 创建一个阻塞队列，用于缓冲还未处理的群聊消息
-	// public static BlockingQueue<Message> chatGroupMsgQueue = new
 	// LinkedBlockingQueue<Message>();
 
 }

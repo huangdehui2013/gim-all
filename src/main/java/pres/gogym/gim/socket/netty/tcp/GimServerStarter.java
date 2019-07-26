@@ -31,7 +31,7 @@ import pres.gogym.gim.socket.netty.tcp.server.GlobalTrafficConfig;
 
 /**
  * 
- * 〈gim启动器〉 〈功能详细描述〉
+ * 〈gim启动器〉
  * 
  * @author gogym
  * @version 2019年7月12日
@@ -50,7 +50,7 @@ public class GimServerStarter {
 
 		// 检查配置
 		checkConfig();
-		//创建context
+		// 创建context
 		gimConfig.setGimContext(new GimContext());
 
 		// 启动新线程处理
@@ -109,7 +109,8 @@ public class GimServerStarter {
 			}
 
 			// 启动redis消费者
-			ClusterMsgListener clusterMsgListener = new ClusterMsgListener(gimConfig);
+			ClusterMsgListener clusterMsgListener = new ClusterMsgListener(
+					gimConfig);
 			clusterMsgListener.start();
 
 		} else {
@@ -138,7 +139,8 @@ public class GimServerStarter {
 
 		if (gimConfig.getGlobalTrafficConfig() == null) {
 
-			GlobalTrafficConfig globalTrafficConfig = new GlobalTrafficConfig();
+			GlobalTrafficConfig globalTrafficConfig = new GlobalTrafficConfig(
+					false);
 			gimConfig.globalTrafficConfig(globalTrafficConfig);
 		}
 

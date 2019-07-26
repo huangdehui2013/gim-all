@@ -19,7 +19,6 @@ import pres.gogym.gim.packet.HeartBeatReqClass.HeartBeatReq;
 import pres.gogym.gim.packet.MessageClass.Message;
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterRoute;
 import pres.gogym.gim.socket.netty.tcp.handler.AbsChatHandler;
-import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
 import pres.gogym.gim.socket.netty.tcp.server.NettyChannelAttribute;
 
 public class HeartBeatHandler extends AbsChatHandler<HeartBeatReq> {

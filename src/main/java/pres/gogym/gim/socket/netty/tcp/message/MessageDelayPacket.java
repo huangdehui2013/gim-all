@@ -1,17 +1,13 @@
 package pres.gogym.gim.socket.netty.tcp.message;
 
-import java.util.List;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 
-import com.google.protobuf.Any;
-import com.google.protobuf.Descriptors;
+import pres.gogym.gim.packet.MessageClass.Message;
+
 import com.google.protobuf.InvalidProtocolBufferException;
-import com.google.protobuf.Descriptors.Descriptor;
 import com.google.protobuf.util.JsonFormat;
 import com.google.protobuf.util.JsonFormat.TypeRegistry;
-
-import pres.gogym.gim.packet.MessageClass.Message;
 
 /**
  * 包装消息
@@ -76,8 +72,8 @@ public class MessageDelayPacket implements Delayed {
 
 	public void setDelay(long delay) {
 		this.delay = delay;
-		this.expire = System.currentTimeMillis() + delay; // 到期时间 = 当前时间+延迟时间
 		this.now = System.currentTimeMillis();
+		this.expire = now + delay; // 到期时间 = 当前时间+延迟时间
 	}
 
 	public String getUserId() {

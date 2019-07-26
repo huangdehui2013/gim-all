@@ -26,7 +26,8 @@ public class GlobalTrafficConfig {
 
 	private NettyTrafficShapingHandler nettyTrafficShapingHandler;
 
-	public GlobalTrafficConfig() {
+	public GlobalTrafficConfig(boolean isMonitor) {
+		this.isMonitor = isMonitor;
 	}
 
 	public GlobalTrafficConfig isMonitor(boolean isMonitor) {

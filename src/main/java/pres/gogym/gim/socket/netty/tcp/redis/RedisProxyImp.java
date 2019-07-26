@@ -741,7 +741,7 @@ public class RedisProxyImp implements IRedisProxy {
 		} finally {
 			jedis.close();
 		}
-		return null;
+		return ret;
 	}
 
 	public String substr(String key, int start, int end) {

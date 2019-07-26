@@ -12,17 +12,14 @@
 package pres.gogym.gim.socket.netty.tcp.handler.bshandler;
 
 import io.netty.channel.ChannelHandlerContext;
-import pres.gogym.gim.packet.AckReqClass.AckReq;
 import pres.gogym.gim.packet.MessageClass.Message;
 import pres.gogym.gim.packet.SingleChatReqClass.SingleChatReq;
 import pres.gogym.gim.socket.netty.tcp.handler.AbsChatHandler;
 import pres.gogym.gim.socket.netty.tcp.message.MessagEmitter;
-import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
-import pres.gogym.gim.socket.netty.tcp.server.GimContext;
 
 /**
  * 
- * ack处理器 〈功能详细描述〉
+ * 单聊处理器
  * 
  * @author gogym
  * @version 2019年6月11日
@@ -39,10 +36,8 @@ public class SingleChatHandler extends AbsChatHandler<SingleChatReq> {
 	@Override
 	public void handler(Message message, SingleChatReq bsBody,
 			ChannelHandlerContext ctx) {
-
 		// 接收者的ID
 		String receiverId = bsBody.getReceiverId();
-
 		try {
 			MessagEmitter.sendToUser(receiverId, message);
 		} catch (Exception e) {

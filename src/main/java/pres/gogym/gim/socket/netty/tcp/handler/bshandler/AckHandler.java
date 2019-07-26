@@ -41,10 +41,7 @@ public class AckHandler extends AbsChatHandler<AckReq> {
 	public void handler(Message message, AckReq bsBody,
 			ChannelHandlerContext ctx) {
 
-		System.out.println("处理ACK");
 		String ack = bsBody.getAck();
-		// remove ack from list
-		// GimContext.shareInstance().ackList.remove(ack);
 
 		GimConfig.shareInstance().getGimContext().delayMsgQueue
 				.removeIf(new Predicate<MessageDelayPacket>() {

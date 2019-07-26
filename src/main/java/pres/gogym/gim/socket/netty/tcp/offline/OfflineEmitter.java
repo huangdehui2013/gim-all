@@ -12,7 +12,6 @@
 package pres.gogym.gim.socket.netty.tcp.offline;
 
 import pres.gogym.gim.packet.MessageClass.Message;
-import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
 
 public abstract class OfflineEmitter {
 

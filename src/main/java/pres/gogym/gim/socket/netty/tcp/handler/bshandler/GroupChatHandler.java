@@ -12,14 +12,10 @@
 package pres.gogym.gim.socket.netty.tcp.handler.bshandler;
 
 import io.netty.channel.ChannelHandlerContext;
-import pres.gogym.gim.packet.AckReqClass.AckReq;
 import pres.gogym.gim.packet.GroupChatReqClass.GroupChatReq;
 import pres.gogym.gim.packet.MessageClass.Message;
-import pres.gogym.gim.packet.SingleChatReqClass.SingleChatReq;
 import pres.gogym.gim.socket.netty.tcp.handler.AbsChatHandler;
 import pres.gogym.gim.socket.netty.tcp.message.MessagEmitter;
-import pres.gogym.gim.socket.netty.tcp.server.GimConfig;
-import pres.gogym.gim.socket.netty.tcp.server.GimContext;
 
 /**
  * 
@@ -40,10 +36,8 @@ public class GroupChatHandler extends AbsChatHandler<GroupChatReq> {
 	@Override
 	public void handler(Message message, GroupChatReq bsBody,
 			ChannelHandlerContext ctx) {
-
 		// 接收者的ID
 		String groupId = bsBody.getGroupId();
-		System.out.println("处理群信息");
 		try {
 			MessagEmitter.sendToGroup(groupId, message);
 		} catch (Exception e) {
