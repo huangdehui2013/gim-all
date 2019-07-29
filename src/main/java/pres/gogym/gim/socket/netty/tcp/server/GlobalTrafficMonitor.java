@@ -76,4 +76,13 @@ public class GlobalTrafficMonitor {
 				.channelTrafficCounters();
 	}
 
+	public static int getChannelsSize() throws Exception {
+
+		if (gimConfig.getGimContext() == null) {
+			throw new Exception("getGimContext not set");
+		}
+
+		return gimConfig.getGimContext().channels.size();
+
+	}
 }

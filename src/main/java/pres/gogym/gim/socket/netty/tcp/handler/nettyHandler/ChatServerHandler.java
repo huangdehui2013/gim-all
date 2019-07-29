@@ -35,7 +35,6 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<Message> {
 			gimConfig.getGimListener().channelAdd(
 					incoming.remoteAddress().toString());
 		}
-
 		System.out.println("[Client] - " + incoming.remoteAddress() + " 连接过来");
 	}
 
