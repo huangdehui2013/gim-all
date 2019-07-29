@@ -1,5 +1,5 @@
 # gim
-gim是本人业余断断续续时间捣鼓的一个即时通讯框架，把它命名为gim
+gim是本人业余断断续续时间捣鼓的一个即时通讯框架，把它命名为gim，第一个版本可能比较粗糙，后续会不断优化
 
 ### 一、什么是gim？
 gim是基于netty封装的及时通讯框架
@@ -67,4 +67,162 @@ gim是基于netty封装的及时通讯框架
 <scope>runtime</scope>
 </dependency>
 ```
+```
+<!--引入protobuf依赖 -->
+<dependency>
+<groupId>com.google.protobuf</groupId>
+<artifactId>protobuf-java</artifactId>
+<version>3.8.0</version>
+</dependency>
 
+<dependency>
+<groupId>com.google.protobuf</groupId>
+<artifactId>protobuf-java-util</artifactId>
+<version>3.8.0</version>
+</dependency>
+```
+```
+<!--引入json依赖 -->
+<dependency>
+<groupId>com.alibaba</groupId>
+<artifactId>fastjson</artifactId>
+<version>1.2.36</version>
+</dependency>
+```
+```
+<!--如果需要集群，需引入redis依赖 -->
+<dependency>
+<groupId>org.apache.commons</groupId>
+<artifactId>commons-pool2</artifactId>
+<version>2.6.1</version>
+</dependency>
+
+<dependency>
+<groupId>redis.clients</groupId>
+<artifactId>jedis</artifactId>
+<version>2.9.0</version>
+</dependency>
+```
+2）简单的示例：
+
+只需几行代码，就可以启动一个服务，客户端就可以连接了
+
+```
+//初始化gim配置
+GimConfig config = GimConfig.shareInstance();
+		config.workerThreads(0).port(5678).autoAck(true)
+				.addBsHandler(Type.CONNET_REQ, new ConcentHandler())
+				.addBsHandler(Type.ACK_REQ, new AckHandler())
+				.addBsHandler(Type.SINGLE_MSG_REQ, new SingleChatHandler())
+				.addBsHandler(Type.HEART_BEAT_REQ, new HeartBeatHandler())
+				.addBsHandler(Type.GROUP_MSG_REQ, new GroupChatHandler());
+    //启动gim服务
+    new GimServerStarter(config).start();
+```
+
+3）开启SSL
+
+```
+//证书地址，证书可以通过keystone生成，限于篇幅，这里不额外举例
+String pkPath = ResourceUtils.getURL("classpath:ssl/serverStore.jks")
+				.getPath();
+//初始化SSL配置，needClientAuth可配置为单向或双向认证
+		SSLConfig sslConfig = new SSLConfig().isSSL(true).pkPath(pkPath)
+				.caPath(pkPath).passwd("123456").needClientAuth(false);
+    //往GimConfig添加ssl配置即可
+    GimConfig config = GimConfig.shareInstance();
+		config.workerThreads(0).port(5678).autoAck(true).sslConfig(sslConfig);
+```
+
+4)离线消息配置：
+
+```
+//添加一个离线配置
+	OfflineConfig offlineConfig = new OfflineConfig().isOffline(true)
+				.handleType(OfflineConfig.HANDLER)
+				.offlineMsgHandler(new OfflineMsgHandlerIntf() {
+
+					@Override
+					public void offlineMsg(
+							pres.gogym.gim.packet.MessageClass.Message msg) {
+      //按需处理离线消息即可，提供mq或者实现接口方方法
+						System.out.println("处理离线消息");
+
+					}
+				});
+    //添加离线配置
+    GimConfig config = GimConfig.shareInstance();
+		config.workerThreads(0).port(5678).autoAck(true).offlineConfig(offlineConfig);
+```
+
+5）开启集群
+
+集群通过redis实现，当然也需要担心消息在Redis与消息服务之间传输的可靠性问题，因为这部分也做了消息确认处理。
+
+```
+//添加redis配置
+RedisConfig redisConfig = new RedisConfig();
+		redisConfig.setHost("");
+		redisConfig.setPort(6379);
+		redisConfig.setPassword("");
+  //集群注意，服务器的标记不能重复，这里标记为s1
+		ClusterConfig clusterConfig = new ClusterConfig("s1", redisConfig);
+  //开启集群
+		clusterConfig.isCluster(true);
+  //添加集群配置到config
+  GimConfig config = GimConfig.shareInstance();
+		config.workerThreads(0).port(5678).autoAck(true).clusterConfig(clusterConfig);
+```
+
+6)ip黑名单：
+
+拉黑ip非常简单，你可以启动前就配置好需要拉黑的ip,也可以在运行时拉黑
+
+```
+//先配置你需要拉黑的ip段
+IpRange ipRange = new IpRange("172.31.1.87", "172.31.1.97");
+//直接添加到config里就可以了
+	GimConfig config = GimConfig.shareInstance();
+		config.workerThreads(0).port(5678).autoAck(true).addBlackIp(ipRange);
+  
+  //也可以批量拉黑
+  GimConfig config = GimConfig.shareInstance();
+		config.workerThreads(0).port(5678).autoAck(true).blackIps(blackIps);
+```
+
+7）流量监控：
+
+提供全局吞吐量，累计字节等的统计
+```
+//开启统计
+GlobalTrafficConfig globalTrafficConfig = new GlobalTrafficConfig(true);
+//添加到配置
+GimConfig config = GimConfig.shareInstance();
+		config.workerThreads(0).port(5678).autoAck(true).globalTrafficConfig(globalTrafficConfig);
+  
+  //通过GlobalTrafficMonitor这个类就能获取统计信息
+  GlobalTrafficMonitor.currentReadThroughput();
+```
+
+8)拓展：
+当前已提供基本的通讯功能，如果想要拓展，也是非常简单的
+1、添加需要的消息类型，符合protobuf协议，如果使用protobuf，可查看本人博客：https://blog.csdn.net/KokJuis/article/details/54094348
+2、添加对应的消息处理器：
+  框架使用拔插式设计，对消息处理器的添加非常的容易，只需一行代码
+  ```
+  继承AbsChatHandler<T extends GeneratedMessageV3> 
+  然后往配置里面添加对应的处理即可，如：
+  .addBsHandler("你定义的消息类型，框架通过这个类型找到对应处理器", new ConcentHandler())
+  ```
+ 
+ ## 持续更新中.....
+ 
+ ##PS:
+ 
+ IOS以及Android客户端的SDK会在后面开源发布
+ 
+ #### 如果觉得还不错，就点个start支持一下吧。如果你有更好的建议或者发现什么问题，可以提交issues或者pull requests帮助改进吧！
+ 
+ #### 奉献也是一种快乐，希望更多的朋友加入到开源中来
+ 
+ 
