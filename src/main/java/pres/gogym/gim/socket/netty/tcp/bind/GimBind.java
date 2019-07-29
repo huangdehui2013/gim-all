@@ -12,6 +12,7 @@
 package pres.gogym.gim.socket.netty.tcp.bind;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelId;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
 
@@ -48,6 +49,11 @@ public class GimBind {
 
 		// 集群模式下，需要向redis中注册用户服务器地址
 		ClusterRoute.setUserRoute(userId);
+
+		if (gimConfig.getGimListener() != null) {
+			gimConfig.getGimListener().userBind(userId,
+					channel.remoteAddress().toString());
+		}
 
 	}
 
@@ -122,6 +128,11 @@ public class GimBind {
 	public static void unbindUser(String userId) {
 		gimConfig.getGimContext().userChannelMap.remove(userId);
 		ClusterRoute.delUserRoute(userId);
+
+		if (gimConfig.getGimListener() != null) {
+			gimConfig.getGimListener().userUnBind(userId);
+		}
+
 	}
 
 	public static void unbindUser(Channel channel) {
@@ -139,11 +150,6 @@ public class GimBind {
 				gimConfig.getGimContext().userChannelMap.remove(channelUserId);
 				ClusterRoute.delUserRoute(channelUserId);
 			}
-		}
-		gimConfig.getGimContext().channels.remove(channel);
-
-		if (channel.isActive()) {
-			channel.close();
 		}
 	}
 
@@ -223,4 +229,32 @@ public class GimBind {
 
 	}
 
+	/**
+	 * 
+	 * Description: 关闭连接
+	 * 
+	 * @param userId
+	 * @see
+	 */
+	public static void closeChannel(String userId) {
+
+		ChannelId channelId = gimConfig.getGimContext().userChannelMap
+				.get(userId);
+
+		if (channelId != null) {
+			Channel channel = gimConfig.getGimContext().channels
+					.find(channelId);
+
+			if (channel != null) {
+				channel.close();
+			}
+		}
+	}
+
+	public static void closeChannel(Channel channel) {
+
+		if (channel != null) {
+			channel.close();
+		}
+	}
 }

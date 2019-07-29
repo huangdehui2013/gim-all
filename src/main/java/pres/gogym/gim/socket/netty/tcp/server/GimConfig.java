@@ -18,6 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import pres.gogym.gim.entity.IpRange;
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterConfig;
 import pres.gogym.gim.socket.netty.tcp.handler.AbsChatHandler;
+import pres.gogym.gim.socket.netty.tcp.intf.GimListenerIntf;
 import pres.gogym.gim.socket.netty.tcp.message.PacketConfig;
 import pres.gogym.gim.socket.netty.tcp.offline.OfflineConfig;
 import pres.gogym.gim.socket.netty.tcp.ssl.SSLConfig;
@@ -54,6 +55,8 @@ public class GimConfig {
 	private PacketConfig packetConfig = new PacketConfig();
 
 	private GimContext gimContext;
+
+	private GimListenerIntf gimListener;
 
 	// 端口
 	private Integer port;
@@ -157,6 +160,11 @@ public class GimConfig {
 		return this;
 	}
 
+	public GimConfig gimListener(GimListenerIntf gimListener) {
+		this.gimListener = gimListener;
+		return this;
+	}
+
 	// ------------------------------------------------------
 
 	public int getWorkerThreads() {
@@ -232,6 +240,11 @@ public class GimConfig {
 	public PacketConfig getPacketConfig() {
 
 		return packetConfig;
+	}
+
+	public GimListenerIntf getGimListener() {
+
+		return gimListener;
 	}
 
 }

@@ -34,6 +34,6 @@ public interface ChatMsgListener {
 	 * @see
 	 */
 	public void read(GimConfig gimConfig, Message message,
-			ChannelHandlerContext ctx);
+			ChannelHandlerContext ctx) throws Exception;
 
 }

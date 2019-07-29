@@ -30,6 +30,12 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<Message> {
 	public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
 		Channel incoming = ctx.channel();
 		gimConfig.getGimContext().channels.add(incoming);
+
+		if (gimConfig.getGimListener() != null) {
+			gimConfig.getGimListener().channelAdd(
+					incoming.remoteAddress().toString());
+		}
+
 		System.out.println("[Client] - " + incoming.remoteAddress() + " 连接过来");
 	}
 
@@ -37,8 +43,12 @@ public class ChatServerHandler extends SimpleChannelInboundHandler<Message> {
 	public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
 		Channel incoming = ctx.channel();
 		GimBind.unbindUser(incoming);
-		System.out.println("[Client] - " + incoming.remoteAddress() + " 离开");
 
+		if (gimConfig.getGimListener() != null) {
+			gimConfig.getGimListener().channelClose(
+					incoming.remoteAddress().toString());
+		}
+		System.out.println("[Client] - " + incoming.remoteAddress() + " 离开");
 	}
 
 	@Override

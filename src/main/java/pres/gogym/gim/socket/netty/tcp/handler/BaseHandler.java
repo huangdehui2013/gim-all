@@ -31,7 +31,7 @@ public class BaseHandler implements ChatMsgListener {
 
 	@Override
 	public void read(GimConfig gimConfig, Message message,
-			ChannelHandlerContext ctx) {
+			ChannelHandlerContext ctx) throws Exception {
 
 		// 这里判断是否自动返回ack给客户端
 		if (gimConfig.isAutoAck() && message.getReqType() != Type.ACK_REQ
@@ -45,9 +45,14 @@ public class BaseHandler implements ChatMsgListener {
 		AbsChatHandler<?> absChatHandler = gimConfig.getHandlerMap().get(type);
 
 		if (absChatHandler == null) {
-			System.out.println("找不到处理类");
-			return;
+			throw new Exception("找不到处理类");
 		}
+
+		if (gimConfig.getGimListener() != null) {
+			gimConfig.getGimListener().messageRead(
+					ctx.channel().remoteAddress().toString(), message);
+		}
+
 		absChatHandler.handler(message, ctx);
 	}
 }
