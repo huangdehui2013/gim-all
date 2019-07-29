@@ -10,6 +10,10 @@
 
 package pres.gogym.gim.socket.netty.tcp.server;
 
+import io.netty.handler.traffic.TrafficCounter;
+
+import java.util.Collection;
+
 public class GlobalTrafficMonitor {
 
 	static GimConfig gimConfig = GimConfig.shareInstance();
@@ -31,9 +35,45 @@ public class GlobalTrafficMonitor {
 			throw new Exception("globalTrafficConfig not set");
 		}
 
-		return globalTrafficConfig.getNettyTrafficShapingHandler()
-				.trafficCounter().getRealWriteThroughput();
+		return globalTrafficConfig.getGlobalTrafficHandler().trafficCounter()
+				.cumulativeReadBytes();
 
+	}
+
+	/**
+	 * 
+	 * Description: 获取写（吞吐量）
+	 * 
+	 * @return
+	 * @throws Exception
+	 * @see
+	 */
+	public static long currentWriteThroughput() throws Exception {
+
+		GlobalTrafficConfig globalTrafficConfig = gimConfig
+				.getGlobalTrafficConfig();
+
+		if (globalTrafficConfig == null) {
+			throw new Exception("globalTrafficConfig not set");
+		}
+
+		return globalTrafficConfig.getGlobalTrafficHandler().trafficCounter()
+				.cumulativeWrittenBytes();
+
+	}
+
+	public static Collection<TrafficCounter> channelTrafficCounters()
+			throws Exception {
+
+		GlobalTrafficConfig globalTrafficConfig = gimConfig
+				.getGlobalTrafficConfig();
+
+		if (globalTrafficConfig == null) {
+			throw new Exception("globalTrafficConfig not set");
+		}
+
+		return globalTrafficConfig.getChannelTrafficHandler()
+				.channelTrafficCounters();
 	}
 
 }

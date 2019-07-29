@@ -11,13 +11,12 @@
 
 package pres.gogym.gim.socket.netty.tcp.handler.nettyHandler;
 
-import io.netty.handler.traffic.GlobalChannelTrafficShapingHandler;
+import io.netty.handler.traffic.GlobalTrafficShapingHandler;
 import io.netty.util.concurrent.EventExecutor;
 
-public class NettyTrafficShapingHandler extends
-		GlobalChannelTrafficShapingHandler {
+public class GlobalTrafficHandler extends GlobalTrafficShapingHandler {
 
-	public NettyTrafficShapingHandler(EventExecutor executor, int checkInterval) {
+	public GlobalTrafficHandler(EventExecutor executor, int checkInterval) {
 		super(executor, checkInterval);
 	}
 

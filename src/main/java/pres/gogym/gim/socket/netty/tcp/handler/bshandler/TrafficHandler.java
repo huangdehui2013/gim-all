@@ -31,7 +31,7 @@ public class TrafficHandler implements GlobalTrafficIntf {
 
 	@Override
 	public void allChannelTraffic(Collection<TrafficCounter> collection) {
-
+		
 	}
 
 }

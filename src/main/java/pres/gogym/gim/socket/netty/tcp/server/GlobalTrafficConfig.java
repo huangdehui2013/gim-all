@@ -13,18 +13,21 @@ package pres.gogym.gim.socket.netty.tcp.server;
 
 import io.netty.util.concurrent.DefaultEventExecutorGroup;
 import io.netty.util.concurrent.EventExecutorGroup;
-import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.NettyTrafficShapingHandler;
+import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.ChannelTrafficHandler;
+import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.GlobalTrafficHandler;
 
 public class GlobalTrafficConfig {
 
 	private boolean isMonitor = false;
 
-	private int checkInterval = 10000;
+	private int checkInterval = 1000;
 
 	private EventExecutorGroup EXECUTOR_GROUOP = new DefaultEventExecutorGroup(
 			2);
 
-	private NettyTrafficShapingHandler nettyTrafficShapingHandler;
+	private GlobalTrafficHandler globalTrafficHandler;
+
+	private ChannelTrafficHandler channelTrafficHandler;
 
 	public GlobalTrafficConfig(boolean isMonitor) {
 		this.isMonitor = isMonitor;
@@ -53,13 +56,24 @@ public class GlobalTrafficConfig {
 		return EXECUTOR_GROUOP;
 	}
 
-	public NettyTrafficShapingHandler getNettyTrafficShapingHandler() {
+	public GlobalTrafficHandler getGlobalTrafficHandler() {
 
-		if (this.nettyTrafficShapingHandler == null) {
-			this.nettyTrafficShapingHandler = new NettyTrafficShapingHandler(
-					this.getEXECUTOR_GROUOP().next(), getCheckInterval());
+		if (this.globalTrafficHandler == null) {
+			this.globalTrafficHandler = new GlobalTrafficHandler(this
+					.getEXECUTOR_GROUOP().next(), getCheckInterval());
 		}
 
-		return nettyTrafficShapingHandler;
+		return globalTrafficHandler;
 	}
+
+	public ChannelTrafficHandler getChannelTrafficHandler() {
+
+		if (this.channelTrafficHandler == null) {
+			this.channelTrafficHandler = new ChannelTrafficHandler(this
+					.getEXECUTOR_GROUOP().next(), getCheckInterval());
+		}
+
+		return channelTrafficHandler;
+	}
+
 }

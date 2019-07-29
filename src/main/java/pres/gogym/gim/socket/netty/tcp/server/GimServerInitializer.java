@@ -50,7 +50,11 @@ public class GimServerInitializer extends ChannelInitializer<SocketChannel> {
 		// 全局流量监控
 		if (gimConfig.getGlobalTrafficConfig().isMonitor()) {
 			pipeline.addLast(gimConfig.getGlobalTrafficConfig()
-					.getNettyTrafficShapingHandler());
+					.getGlobalTrafficHandler());
+
+			pipeline.addLast(gimConfig.getGlobalTrafficConfig()
+					.getChannelTrafficHandler());
+
 		}
 
 		// ----配置Protobuf处理器----
@@ -71,7 +75,8 @@ public class GimServerInitializer extends ChannelInitializer<SocketChannel> {
 		// 心跳检测
 		pipeline.addLast(new HeartBeatServerHandler());
 		// ip过滤
-		pipeline.addLast(new RuleBasedIpFilter(new IpFilterRuleHandler(gimConfig)));
+		pipeline.addLast(new RuleBasedIpFilter(new IpFilterRuleHandler(
+				gimConfig)));
 		pipeline.addLast(new ConnectManageHandler());
 
 		pipeline.addLast(new ChatServerHandler(gimConfig));

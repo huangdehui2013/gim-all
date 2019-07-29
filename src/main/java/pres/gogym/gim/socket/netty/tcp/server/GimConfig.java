@@ -18,6 +18,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import pres.gogym.gim.entity.IpRange;
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterConfig;
 import pres.gogym.gim.socket.netty.tcp.handler.AbsChatHandler;
+import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.ChannelTrafficHandler;
 import pres.gogym.gim.socket.netty.tcp.intf.GimListenerIntf;
 import pres.gogym.gim.socket.netty.tcp.message.PacketConfig;
 import pres.gogym.gim.socket.netty.tcp.offline.OfflineConfig;
