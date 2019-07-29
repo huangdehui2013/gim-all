@@ -118,6 +118,11 @@ GimConfig config = GimConfig.shareInstance();
 				.addBsHandler(Type.GROUP_MSG_REQ, new GroupChatHandler());
     //启动gim服务
     new GimServerStarter(config).start();
+    
+    //创建一条消息简单的单聊消息
+    MessageGenerate.createSingleChatReq("123"/**发送者**/, "456"/**接收者**/, Type.SINGLE_MSG_REQ/**消息类型**/, "这是一条消息");
+    // 发送一条消息
+    MessagEmitter.sendToUser(userId, builder.build());
 ```
 
 3）开启SSL
@@ -214,6 +219,28 @@ GimConfig config = GimConfig.shareInstance();
   然后往配置里面添加对应的处理即可，如：
   .addBsHandler("你定义的消息类型，框架通过这个类型找到对应处理器", new ConcentHandler())
   ```
+ 
+ 9）发送消息
+ ```
+     
+    //创建一条消息简单的单聊消息
+ Message msg= MessageGenerate.createSingleChatReq("123"/**发送者**/, "456"/**接收者**/, Type.SINGLE_MSG_REQ/**消息类型**/, "这是一条消息");
+    // 发送一条消息
+ MessagEmitter.sendToUser(userId, msg);
+
+//发送群消息
+
+//需要@的用户ID
+List<String> atUserId=new ArrayList<String>();
+atUserId.add("user1");
+//创建群消息
+Message msg=MessageGenerate.createGroupChatReq("123"/**发送者**/, "g123"/**群id**/, Type.GROUP_MSG_REQ, "这是一条群消息", atUserId);
+//发送消息
+MessagEmitter.sendToGroup("g123", msg);
+ ```
+ #### 更多的功能，后续请查看文档（抽空编写中。。。）
+ 
+ 
  
  ## 持续更新中.....
  
