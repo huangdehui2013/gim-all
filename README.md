@@ -250,6 +250,6 @@ MessagEmitter.sendToGroup("g123", msg);
  
  #### 如果觉得还不错，就点个start支持一下吧。如果你有更好的建议或者发现什么问题，可以提交issues或者pull requests帮助改进吧！
  
- #### 奉献也是一种快乐，希望更多的朋友加入到开源中来
+
  
  
