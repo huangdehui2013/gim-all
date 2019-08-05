@@ -24,8 +24,8 @@ import java.nio.ReadOnlyBufferException;
 
 import org.gogym.getty.util.internal.PlatformDependent;
 
-import static io.netty.util.internal.MathUtil.isOutOfBounds;
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.MathUtil.isOutOfBounds;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 import static org.gogym.getty.util.internal.PlatformDependent.BIG_ENDIAN_NATIVE_ORDER;
 
 /**

@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.util.concurrent;
 
-import io.netty.util.internal.ObjectUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 /**
  * <p>A promise combiner monitors the outcome of a number of discrete futures, then notifies a final, aggregate promise

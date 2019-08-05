@@ -16,8 +16,6 @@
 
 package org.gogym.getty.bootstrap;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
@@ -39,6 +37,7 @@ import org.gogym.getty.channel.ReflectiveChannelFactory;
 import org.gogym.getty.util.AttributeKey;
 import org.gogym.getty.util.concurrent.EventExecutor;
 import org.gogym.getty.util.concurrent.GlobalEventExecutor;
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.SocketUtils;
 import org.gogym.getty.util.internal.StringUtil;
 

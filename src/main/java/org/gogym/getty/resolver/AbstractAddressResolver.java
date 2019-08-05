@@ -27,7 +27,7 @@ import org.gogym.getty.util.concurrent.Promise;
 import org.gogym.getty.util.internal.TypeParameterMatcher;
 import org.gogym.getty.util.internal.UnstableApi;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 /**
  * A skeletal {@link AddressResolver} implementation.

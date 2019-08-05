@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.channel;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.util.Queue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadFactory;
@@ -24,6 +22,7 @@ import java.util.concurrent.ThreadFactory;
 import org.gogym.getty.util.concurrent.RejectedExecutionHandler;
 import org.gogym.getty.util.concurrent.RejectedExecutionHandlers;
 import org.gogym.getty.util.concurrent.SingleThreadEventExecutor;
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 import org.gogym.getty.util.internal.UnstableApi;
 

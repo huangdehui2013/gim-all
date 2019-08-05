@@ -35,8 +35,8 @@ import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.StringUtil;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 
-import static io.netty.util.internal.MathUtil.isOutOfBounds;
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
+import static org.gogym.getty.util.internal.MathUtil.isOutOfBounds;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
 /**
  * A skeletal implementation of a buffer.

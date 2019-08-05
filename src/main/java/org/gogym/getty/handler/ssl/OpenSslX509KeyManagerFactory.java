@@ -16,7 +16,6 @@
 package org.gogym.getty.handler.ssl;
 
 import io.netty.internal.tcnative.SSL;
-import io.netty.util.internal.ObjectUtil;
 
 import javax.net.ssl.KeyManager;
 import javax.net.ssl.KeyManagerFactory;
@@ -27,6 +26,7 @@ import javax.net.ssl.X509KeyManager;
 import org.gogym.getty.buffer.ByteBufAllocator;
 import org.gogym.getty.buffer.UnpooledByteBufAllocator;
 import org.gogym.getty.util.ReferenceCountUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 import java.io.File;
 import java.io.IOException;

@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.util.concurrent;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 import org.gogym.getty.util.internal.PromiseNotificationUtil;
 

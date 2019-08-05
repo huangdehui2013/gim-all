@@ -15,8 +15,7 @@
  */
 package org.gogym.getty.handler.codec;
 
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
-import io.netty.util.internal.ObjectUtil;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
 import java.nio.ByteOrder;
 import java.util.List;
@@ -24,6 +23,7 @@ import java.util.List;
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.channel.ChannelHandlerContext;
 import org.gogym.getty.channel.ChannelHandler.Sharable;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 
 /**

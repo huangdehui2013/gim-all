@@ -16,7 +16,7 @@
 
 package org.gogym.getty.handler.ssl;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 import java.security.KeyStore;
 import java.security.Provider;

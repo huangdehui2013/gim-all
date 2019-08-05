@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.resolver;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 import java.io.BufferedReader;
 import java.io.File;

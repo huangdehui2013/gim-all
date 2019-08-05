@@ -28,10 +28,10 @@ import org.gogym.getty.channel.RecvByteBufAllocator;
 import org.gogym.getty.channel.WriteBufferWaterMark;
 import org.gogym.getty.util.NetUtil;
 
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
 import static org.gogym.getty.channel.ChannelOption.SO_BACKLOG;
 import static org.gogym.getty.channel.ChannelOption.SO_RCVBUF;
 import static org.gogym.getty.channel.ChannelOption.SO_REUSEADDR;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
 /**
  * The default {@link ServerSocketChannelConfig} implementation.

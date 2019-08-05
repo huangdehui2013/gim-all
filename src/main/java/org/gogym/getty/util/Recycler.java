@@ -16,9 +16,9 @@
 
 package org.gogym.getty.util;
 
-import static io.netty.util.internal.MathUtil.safeFindNextPositivePowerOfTwo;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
+import static org.gogym.getty.util.internal.MathUtil.safeFindNextPositivePowerOfTwo;
 
 import java.lang.ref.WeakReference;
 import java.util.Arrays;

@@ -33,7 +33,6 @@ import static org.gogym.getty.channel.ChannelHandlerMask.MASK_READ;
 import static org.gogym.getty.channel.ChannelHandlerMask.MASK_USER_EVENT_TRIGGERED;
 import static org.gogym.getty.channel.ChannelHandlerMask.MASK_WRITE;
 import static org.gogym.getty.channel.ChannelHandlerMask.mask;
-import io.netty.util.internal.ObjectUtil;
 
 import java.net.SocketAddress;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
@@ -46,6 +45,7 @@ import org.gogym.getty.util.ReferenceCountUtil;
 import org.gogym.getty.util.ResourceLeakHint;
 import org.gogym.getty.util.concurrent.EventExecutor;
 import org.gogym.getty.util.concurrent.OrderedEventExecutor;
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.PromiseNotificationUtil;
 import org.gogym.getty.util.internal.StringUtil;
 import org.gogym.getty.util.internal.SystemPropertyUtil;

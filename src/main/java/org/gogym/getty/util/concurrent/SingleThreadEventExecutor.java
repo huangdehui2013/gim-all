@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.util.concurrent;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.lang.Thread.State;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -37,6 +35,7 @@ import java.util.concurrent.TimeoutException;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 import org.gogym.getty.util.internal.ThreadExecutorMap;

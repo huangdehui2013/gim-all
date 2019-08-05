@@ -13,7 +13,9 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
+
+import io.netty.util.internal.ConcurrentSet;
 
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;

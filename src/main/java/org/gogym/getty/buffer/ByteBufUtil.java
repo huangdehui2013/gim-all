@@ -15,12 +15,11 @@
  */
 package org.gogym.getty.buffer;
 
-import static io.netty.util.internal.MathUtil.isOutOfBounds;
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
+import static org.gogym.getty.util.internal.MathUtil.isOutOfBounds;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 import static org.gogym.getty.util.internal.StringUtil.NEWLINE;
 import static org.gogym.getty.util.internal.StringUtil.isSurrogate;
-import io.netty.util.internal.MathUtil;
 
 import java.io.IOException;
 import java.io.OutputStream;
@@ -42,6 +41,7 @@ import org.gogym.getty.util.CharsetUtil;
 import org.gogym.getty.util.Recycler;
 import org.gogym.getty.util.Recycler.Handle;
 import org.gogym.getty.util.concurrent.FastThreadLocal;
+import org.gogym.getty.util.internal.MathUtil;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.StringUtil;
 import org.gogym.getty.util.internal.SystemPropertyUtil;

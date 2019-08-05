@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.util;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetDecoder;

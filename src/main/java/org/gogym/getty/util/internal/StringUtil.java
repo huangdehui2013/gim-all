@@ -21,7 +21,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.netty.util.internal.ObjectUtil.*;
+import static org.gogym.getty.util.internal.ObjectUtil.*;
 
 /**
  * String utility class.

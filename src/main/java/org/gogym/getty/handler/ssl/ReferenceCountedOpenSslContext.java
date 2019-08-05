@@ -15,15 +15,14 @@
  */
 package org.gogym.getty.handler.ssl;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
 import static org.gogym.getty.handler.ssl.OpenSsl.DEFAULT_CIPHERS;
 import static org.gogym.getty.handler.ssl.OpenSsl.availableJavaCipherSuites;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 import io.netty.internal.tcnative.CertificateVerifier;
 import io.netty.internal.tcnative.SSL;
 import io.netty.internal.tcnative.SSLContext;
 import io.netty.internal.tcnative.SSLPrivateKeyMethod;
-import io.netty.util.internal.ObjectUtil;
 
 import java.security.AccessController;
 import java.security.PrivateKey;
@@ -61,6 +60,7 @@ import org.gogym.getty.util.ReferenceCounted;
 import org.gogym.getty.util.ResourceLeakDetector;
 import org.gogym.getty.util.ResourceLeakDetectorFactory;
 import org.gogym.getty.util.ResourceLeakTracker;
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.StringUtil;
 import org.gogym.getty.util.internal.SystemPropertyUtil;

@@ -17,7 +17,6 @@ package org.gogym.getty.handler.ssl;
 
 import static io.netty.util.internal.EmptyArrays.EMPTY_CERTIFICATES;
 import static io.netty.util.internal.EmptyArrays.EMPTY_JAVAX_X509_CERTIFICATES;
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
 import static java.lang.Integer.MAX_VALUE;
 import static java.lang.Math.min;
 import static javax.net.ssl.SSLEngineResult.HandshakeStatus.FINISHED;
@@ -38,6 +37,7 @@ import static org.gogym.getty.handler.ssl.SslUtils.PROTOCOL_TLS_V1_1;
 import static org.gogym.getty.handler.ssl.SslUtils.PROTOCOL_TLS_V1_2;
 import static org.gogym.getty.handler.ssl.SslUtils.PROTOCOL_TLS_V1_3;
 import static org.gogym.getty.handler.ssl.SslUtils.SSL_RECORD_HEADER_LENGTH;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 import io.netty.internal.tcnative.Buffer;
 import io.netty.internal.tcnative.SSL;
 import io.netty.util.internal.EmptyArrays;

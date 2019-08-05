@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.bootstrap;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.Map.Entry;
@@ -35,6 +33,7 @@ import org.gogym.getty.channel.ChannelPipeline;
 import org.gogym.getty.channel.EventLoopGroup;
 import org.gogym.getty.channel.ServerChannel;
 import org.gogym.getty.util.AttributeKey;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 /**
  * {@link Bootstrap} sub-class which allows easy bootstrap of

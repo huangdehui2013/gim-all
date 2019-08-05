@@ -15,11 +15,11 @@
  */
 package org.gogym.getty.util.concurrent;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.util.concurrent.RejectedExecutionException;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.LockSupport;
+
+import org.gogym.getty.util.internal.ObjectUtil;
 
 /**
  * Expose helper methods which create different {@link RejectedExecutionHandler}s.

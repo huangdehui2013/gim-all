@@ -21,6 +21,8 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.gogym.getty.util.internal.ObjectUtil;
+import org.gogym.getty.util.internal.PriorityQueue;
 import org.gogym.getty.util.internal.PriorityQueueNode;
 
 import static org.gogym.getty.util.internal.PriorityQueueNode.INDEX_NOT_IN_QUEUE;

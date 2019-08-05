@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.handler.codec;
 
-import static io.netty.util.internal.ObjectUtil.checkPositive;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositive;
 
 import java.util.List;
 

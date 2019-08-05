@@ -20,7 +20,7 @@ import org.gogym.getty.buffer.ByteBufAllocator;
 import org.gogym.getty.util.UncheckedBooleanSupplier;
 import org.gogym.getty.util.internal.UnstableApi;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 /**
  * Allocates a new receive buffer whose capacity is probably large enough to read all inbound data and small enough

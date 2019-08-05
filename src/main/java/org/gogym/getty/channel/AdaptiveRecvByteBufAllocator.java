@@ -18,9 +18,9 @@ package org.gogym.getty.channel;
 import java.util.ArrayList;
 import java.util.List;
 
-import static io.netty.util.internal.ObjectUtil.checkPositive;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositive;
 
 /**
  * The {@link RecvByteBufAllocator} that automatically increases and

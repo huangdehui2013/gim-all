@@ -14,7 +14,7 @@
  * under the License.
  */
 
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
 
 import static io.netty.util.internal.EmptyArrays.EMPTY_BYTES;
 
@@ -28,9 +28,6 @@ import java.util.Map;
 import java.util.Map.Entry;
 
 import org.gogym.getty.util.NetUtil;
-import org.gogym.getty.util.internal.PlatformDependent;
-import org.gogym.getty.util.internal.SocketUtils;
-import org.gogym.getty.util.internal.StringUtil;
 
 public final class MacAddressUtil {
     //private static final InternalLogger logger = InternalLoggerFactory.getInstance(MacAddressUtil.class);

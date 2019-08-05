@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.util.internal;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadFactory;
 

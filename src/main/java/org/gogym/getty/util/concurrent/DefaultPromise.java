@@ -15,8 +15,8 @@
  */
 package org.gogym.getty.util.concurrent;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
 import static java.util.concurrent.TimeUnit.MILLISECONDS;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 import java.util.concurrent.CancellationException;
 import java.util.concurrent.TimeUnit;

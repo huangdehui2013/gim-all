@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.channel;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.net.SocketAddress;
 import java.util.ArrayList;
 import java.util.IdentityHashMap;
@@ -35,6 +33,7 @@ import org.gogym.getty.util.ResourceLeakDetector;
 import org.gogym.getty.util.concurrent.EventExecutor;
 import org.gogym.getty.util.concurrent.EventExecutorGroup;
 import org.gogym.getty.util.concurrent.FastThreadLocal;
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.StringUtil;
 import org.gogym.getty.util.internal.UnstableApi;
 

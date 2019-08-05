@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.bootstrap;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.net.SocketAddress;
 import java.util.Map;
 
@@ -26,6 +24,7 @@ import org.gogym.getty.channel.ChannelHandler;
 import org.gogym.getty.channel.ChannelOption;
 import org.gogym.getty.channel.EventLoopGroup;
 import org.gogym.getty.util.AttributeKey;
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.StringUtil;
 
 /**

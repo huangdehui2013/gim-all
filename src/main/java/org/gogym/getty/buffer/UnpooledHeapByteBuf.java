@@ -29,7 +29,7 @@ import java.nio.channels.ScatteringByteChannel;
 
 import org.gogym.getty.util.internal.PlatformDependent;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 /**
  * Big endian Java heap buffer implementation. It is recommended to use

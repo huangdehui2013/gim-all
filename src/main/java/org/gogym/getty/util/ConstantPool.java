@@ -16,11 +16,10 @@
 
 package org.gogym.getty.util;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.atomic.AtomicInteger;
 
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 /**

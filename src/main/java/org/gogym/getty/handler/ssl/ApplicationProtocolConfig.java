@@ -20,8 +20,8 @@ import java.util.List;
 
 import javax.net.ssl.SSLEngine;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
 import static org.gogym.getty.handler.ssl.ApplicationProtocolUtil.toList;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 /**
  * Provides an {@link SSLEngine} agnostic way to configure a {@link ApplicationProtocolNegotiator}.

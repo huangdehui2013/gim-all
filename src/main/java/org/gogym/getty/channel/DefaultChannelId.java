@@ -16,8 +16,8 @@
 
 package org.gogym.getty.channel;
 
-import static io.netty.util.internal.MacAddressUtil.defaultMachineId;
-import static io.netty.util.internal.MacAddressUtil.parseMAC;
+import static org.gogym.getty.util.internal.MacAddressUtil.defaultMachineId;
+import static org.gogym.getty.util.internal.MacAddressUtil.parseMAC;
 import io.netty.util.internal.EmptyArrays;
 
 import java.lang.reflect.Method;

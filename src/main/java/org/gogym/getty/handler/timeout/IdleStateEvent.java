@@ -16,8 +16,7 @@
 package org.gogym.getty.handler.timeout;
 
 import org.gogym.getty.channel.Channel;
-
-import io.netty.util.internal.ObjectUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 /**
  * A user event triggered by {@link IdleStateHandler} when a {@link Channel} is idle.

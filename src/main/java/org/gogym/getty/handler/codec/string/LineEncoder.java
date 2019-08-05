@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.handler.codec.string;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.List;
@@ -29,6 +27,7 @@ import org.gogym.getty.channel.ChannelHandler.Sharable;
 import org.gogym.getty.handler.codec.LineBasedFrameDecoder;
 import org.gogym.getty.handler.codec.MessageToMessageEncoder;
 import org.gogym.getty.util.CharsetUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 /**
  * Apply a line separator to the requested {@link String} and encode it into a {@link ByteBuf}.

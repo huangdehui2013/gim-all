@@ -15,7 +15,7 @@
 */
 package org.gogym.getty.util.concurrent;
 
-import io.netty.util.internal.ObjectUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 final class FastThreadLocalRunnable implements Runnable {
     private final Runnable runnable;

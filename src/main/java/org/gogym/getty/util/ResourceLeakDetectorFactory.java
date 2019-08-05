@@ -16,12 +16,11 @@
 
 package org.gogym.getty.util;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.lang.reflect.Constructor;
 import java.security.AccessController;
 import java.security.PrivilegedAction;
 
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 

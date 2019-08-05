@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.handler.ssl;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 import io.netty.internal.tcnative.CertificateCallback;
 import io.netty.internal.tcnative.SSL;
 import io.netty.internal.tcnative.SSLContext;

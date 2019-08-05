@@ -20,6 +20,8 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
+import org.gogym.getty.util.internal.PriorityQueue;
+
 public final class EmptyPriorityQueue<T> implements PriorityQueue<T> {
     private static final PriorityQueue<Object> INSTANCE = new EmptyPriorityQueue<Object>();
 

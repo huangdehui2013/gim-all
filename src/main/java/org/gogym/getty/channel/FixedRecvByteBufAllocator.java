@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.channel;
 
-import static io.netty.util.internal.ObjectUtil.checkPositive;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositive;
 
 /**
  * The {@link RecvByteBufAllocator} that always yields the same buffer

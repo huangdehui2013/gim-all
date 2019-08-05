@@ -17,9 +17,8 @@ package org.gogym.getty.handler.codec.string;
 
 import org.gogym.getty.buffer.ByteBufUtil;
 import org.gogym.getty.util.CharsetUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.StringUtil;
-
-import io.netty.util.internal.ObjectUtil;
 
 /**
  * A class to represent line separators in different environments.

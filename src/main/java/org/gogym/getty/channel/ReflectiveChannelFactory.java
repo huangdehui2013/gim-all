@@ -16,10 +16,9 @@
 
 package org.gogym.getty.channel;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.lang.reflect.Constructor;
 
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.StringUtil;
 
 /**

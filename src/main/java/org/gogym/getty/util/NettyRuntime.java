@@ -16,10 +16,9 @@
 
 package org.gogym.getty.util;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.util.Locale;
 
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 
 /**

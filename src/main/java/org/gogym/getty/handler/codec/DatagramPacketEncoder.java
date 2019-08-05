@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.handler.codec;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;

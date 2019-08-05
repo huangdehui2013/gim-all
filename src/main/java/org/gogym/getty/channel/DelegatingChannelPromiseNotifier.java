@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.channel;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 import java.util.concurrent.ExecutionException;
 import java.util.concurrent.TimeUnit;

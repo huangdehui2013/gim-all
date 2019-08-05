@@ -16,14 +16,15 @@
 package org.gogym.getty.util.concurrent;
 
 import io.netty.util.internal.DefaultPriorityQueue;
-import io.netty.util.internal.ObjectUtil;
-import io.netty.util.internal.PriorityQueue;
 
 import java.util.Comparator;
 import java.util.Queue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
+
+import org.gogym.getty.util.internal.ObjectUtil;
+import org.gogym.getty.util.internal.PriorityQueue;
 
 /**
  * Abstract base class for {@link EventExecutor}s that want to support scheduling.

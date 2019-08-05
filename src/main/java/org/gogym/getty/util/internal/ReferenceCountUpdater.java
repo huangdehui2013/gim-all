@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.util.internal;
 
-import static io.netty.util.internal.ObjectUtil.checkPositive;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositive;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 

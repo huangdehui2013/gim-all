@@ -16,11 +16,10 @@
 package org.gogym.getty.buffer;
 
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.nio.ByteOrder;
 
 import org.gogym.getty.util.ResourceLeakTracker;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 class SimpleLeakAwareCompositeByteBuf extends WrappedCompositeByteBuf {
 

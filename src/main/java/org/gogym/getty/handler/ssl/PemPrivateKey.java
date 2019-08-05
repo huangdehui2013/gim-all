@@ -25,8 +25,7 @@ import org.gogym.getty.buffer.Unpooled;
 import org.gogym.getty.util.AbstractReferenceCounted;
 import org.gogym.getty.util.CharsetUtil;
 import org.gogym.getty.util.IllegalReferenceCountException;
-
-import io.netty.util.internal.ObjectUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 /**
  * This is a special purpose implementation of a {@link PrivateKey} which allows the

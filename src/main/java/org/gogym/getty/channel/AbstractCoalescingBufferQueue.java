@@ -14,9 +14,9 @@
  */
 package org.gogym.getty.channel;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
 import static org.gogym.getty.util.ReferenceCountUtil.safeRelease;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 import static org.gogym.getty.util.internal.PlatformDependent.throwException;
 
 import java.util.ArrayDeque;

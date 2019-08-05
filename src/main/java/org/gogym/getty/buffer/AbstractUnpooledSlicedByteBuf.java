@@ -27,7 +27,7 @@ import java.nio.charset.Charset;
 
 import org.gogym.getty.util.ByteProcessor;
 
-import static io.netty.util.internal.MathUtil.isOutOfBounds;
+import static org.gogym.getty.util.internal.MathUtil.isOutOfBounds;
 
 abstract class AbstractUnpooledSlicedByteBuf extends AbstractDerivedByteBuf {
     private final ByteBuf buffer;

@@ -15,14 +15,13 @@
  */
 package org.gogym.getty.handler.codec;
 
-import io.netty.util.internal.MathUtil;
-
 import java.util.AbstractList;
 import java.util.RandomAccess;
 
 import org.gogym.getty.util.concurrent.FastThreadLocal;
+import org.gogym.getty.util.internal.MathUtil;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 /**
  * Special {@link AbstractList} implementation which is used within our codec base classes.

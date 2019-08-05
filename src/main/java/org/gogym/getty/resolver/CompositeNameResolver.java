@@ -24,7 +24,7 @@ import org.gogym.getty.util.concurrent.FutureListener;
 import org.gogym.getty.util.concurrent.Promise;
 import org.gogym.getty.util.internal.UnstableApi;
 
-import static io.netty.util.internal.ObjectUtil.*;
+import static org.gogym.getty.util.internal.ObjectUtil.*;
 
 /**
  * A composite {@link SimpleNameResolver} that resolves a host name against a sequence of {@link NameResolver}s.

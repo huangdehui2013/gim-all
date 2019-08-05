@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.handler.ssl;
 
-import io.netty.util.internal.ObjectUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 public abstract class SslCompletionEvent {
 

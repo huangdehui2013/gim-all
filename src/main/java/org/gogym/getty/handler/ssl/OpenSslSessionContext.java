@@ -18,10 +18,11 @@ package org.gogym.getty.handler.ssl;
 import io.netty.internal.tcnative.SSL;
 import io.netty.internal.tcnative.SSLContext;
 import io.netty.internal.tcnative.SessionTicketKey;
-import io.netty.util.internal.ObjectUtil;
 
 import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSessionContext;
+
+import org.gogym.getty.util.internal.ObjectUtil;
 
 import java.util.Arrays;
 import java.util.Enumeration;

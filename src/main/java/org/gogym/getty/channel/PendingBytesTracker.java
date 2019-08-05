@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.channel;
 
-import io.netty.util.internal.ObjectUtil;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 abstract class PendingBytesTracker implements MessageSizeEstimator.Handle {
     private final MessageSizeEstimator.Handle estimatorHandle;

@@ -16,7 +16,7 @@
 
 package org.gogym.getty.buffer;
 
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
 import org.gogym.getty.util.ResourceLeakDetector;
 import org.gogym.getty.util.ResourceLeakTracker;

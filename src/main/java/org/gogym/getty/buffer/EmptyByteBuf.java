@@ -16,7 +16,7 @@
 
 package org.gogym.getty.buffer;
 
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 import io.netty.util.internal.EmptyArrays;
 
 import java.io.InputStream;

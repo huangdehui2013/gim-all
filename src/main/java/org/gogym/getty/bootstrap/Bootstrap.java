@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.bootstrap;
 
-import io.netty.util.internal.ObjectUtil;
-
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.net.SocketAddress;
@@ -38,6 +36,7 @@ import org.gogym.getty.resolver.NameResolver;
 import org.gogym.getty.util.AttributeKey;
 import org.gogym.getty.util.concurrent.Future;
 import org.gogym.getty.util.concurrent.FutureListener;
+import org.gogym.getty.util.internal.ObjectUtil;
 
 /**
  * A {@link Bootstrap} that makes it easy to bootstrap a {@link Channel} to use

@@ -13,11 +13,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
+
+import io.netty.util.internal.DefaultPriorityQueue;
 
 import java.util.Queue;
-
-import org.gogym.getty.util.internal.PriorityQueueNode;
 
 public interface PriorityQueue<T> extends Queue<T> {
     /**

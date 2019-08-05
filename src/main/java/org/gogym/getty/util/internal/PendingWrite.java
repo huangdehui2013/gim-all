@@ -13,12 +13,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
 
 import org.gogym.getty.util.Recycler;
 import org.gogym.getty.util.ReferenceCountUtil;
 import org.gogym.getty.util.concurrent.Promise;
-import org.gogym.getty.util.internal.RecyclableArrayList;
 
 /**
  * Some pending write which should be picked up later.

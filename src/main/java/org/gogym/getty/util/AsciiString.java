@@ -30,8 +30,8 @@ import java.util.regex.PatternSyntaxException;
 import org.gogym.getty.util.internal.InternalThreadLocalMap;
 import org.gogym.getty.util.internal.PlatformDependent;
 
-import static io.netty.util.internal.MathUtil.isOutOfBounds;
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.MathUtil.isOutOfBounds;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 /**
  * A string which has been encoded into a character encoding whose character always takes a single byte, similarly to

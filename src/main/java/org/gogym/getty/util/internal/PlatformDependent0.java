@@ -15,9 +15,8 @@
  */
 package org.gogym.getty.util.internal;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 import io.netty.util.internal.ConstantTimeUtils;
-import io.netty.util.internal.ObjectUtil;
 
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;

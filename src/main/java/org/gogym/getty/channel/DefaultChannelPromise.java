@@ -21,7 +21,7 @@ import org.gogym.getty.util.concurrent.EventExecutor;
 import org.gogym.getty.util.concurrent.Future;
 import org.gogym.getty.util.concurrent.GenericFutureListener;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 /**
  * The default {@link ChannelPromise} implementation.  It is recommended to use {@link Channel#newPromise()} to create

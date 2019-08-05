@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.channel;
 
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
 import java.util.ArrayDeque;
 import java.util.Queue;

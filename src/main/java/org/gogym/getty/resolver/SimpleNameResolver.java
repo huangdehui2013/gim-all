@@ -23,7 +23,7 @@ import org.gogym.getty.util.concurrent.Future;
 import org.gogym.getty.util.concurrent.Promise;
 import org.gogym.getty.util.internal.UnstableApi;
 
-import static io.netty.util.internal.ObjectUtil.*;
+import static org.gogym.getty.util.internal.ObjectUtil.*;
 
 /**
  * A skeletal {@link NameResolver} implementation.

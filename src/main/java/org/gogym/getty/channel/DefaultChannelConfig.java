@@ -23,9 +23,6 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 import org.gogym.getty.buffer.ByteBufAllocator;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
-import static io.netty.util.internal.ObjectUtil.checkPositive;
-import static io.netty.util.internal.ObjectUtil.checkPositiveOrZero;
 import static org.gogym.getty.channel.ChannelOption.ALLOCATOR;
 import static org.gogym.getty.channel.ChannelOption.AUTO_CLOSE;
 import static org.gogym.getty.channel.ChannelOption.AUTO_READ;
@@ -38,6 +35,9 @@ import static org.gogym.getty.channel.ChannelOption.WRITE_BUFFER_HIGH_WATER_MARK
 import static org.gogym.getty.channel.ChannelOption.WRITE_BUFFER_LOW_WATER_MARK;
 import static org.gogym.getty.channel.ChannelOption.WRITE_BUFFER_WATER_MARK;
 import static org.gogym.getty.channel.ChannelOption.WRITE_SPIN_COUNT;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositive;
+import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
 /**
  * The default {@link ChannelConfig} implementation.

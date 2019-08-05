@@ -39,7 +39,7 @@ import org.gogym.getty.util.IllegalReferenceCountException;
 import org.gogym.getty.util.ReferenceCountUtil;
 import org.gogym.getty.util.internal.RecyclableArrayList;
 
-import static io.netty.util.internal.ObjectUtil.checkNotNull;
+import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;
 
 /**
  * A virtual buffer which shows multiple buffers as a single merged buffer.  It is recommended to use

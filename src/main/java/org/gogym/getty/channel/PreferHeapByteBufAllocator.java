@@ -18,9 +18,8 @@ package org.gogym.getty.channel;
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufAllocator;
 import org.gogym.getty.buffer.CompositeByteBuf;
+import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.UnstableApi;
-
-import io.netty.util.internal.ObjectUtil;
 
 /**
  * Wraps another {@link ByteBufAllocator} and use heapbuffers everywhere except when a direct buffer is explicit
