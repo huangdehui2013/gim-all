@@ -138,10 +138,7 @@ public final class ReferenceCountUtil {
      *
      * @deprecated this may introduce a lot of memory usage so it is generally preferable to manually release objects.
      */
-    @Deprecated
-    public static <T> T releaseLater(T msg) {
-        return releaseLater(msg, 1);
-    }
+
 
     /**
      * Schedules the specified object to be released when the caller thread terminates. Note that this operation is
@@ -150,14 +147,7 @@ public final class ReferenceCountUtil {
      *
      * @deprecated this may introduce a lot of memory usage so it is generally preferable to manually release objects.
      */
-    @Deprecated
-    public static <T> T releaseLater(T msg, int decrement) {
-        if (msg instanceof ReferenceCounted) {
-            ThreadDeathWatcher.watch(Thread.currentThread(), new ReleasingTask((ReferenceCounted) msg, decrement));
-        }
-        return msg;
-    }
-
+ 
     /**
      * Returns reference count of a {@link ReferenceCounted} object. If object is not type of
      * {@link ReferenceCounted}, {@code -1} is returned.
