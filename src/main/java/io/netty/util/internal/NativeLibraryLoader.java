@@ -15,8 +15,6 @@
  */
 package io.netty.util.internal;
 
-import io.netty.util.CharsetUtil;
-
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
 import java.io.File;
@@ -34,6 +32,11 @@ import java.util.Arrays;
 import java.util.EnumSet;
 import java.util.List;
 import java.util.Set;
+
+import org.gogym.getty.util.CharsetUtil;
+import org.gogym.getty.util.internal.PlatformDependent;
+import org.gogym.getty.util.internal.SystemPropertyUtil;
+import org.gogym.getty.util.internal.ThrowableUtil;
 
 /**
  * Helper class to load JNI resources.

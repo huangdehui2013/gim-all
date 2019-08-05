@@ -11,11 +11,11 @@
 
 package pres.gogym.gim.socket.netty.tcp.handler.nettyHandler;
 
-import io.netty.handler.ipfilter.IpFilterRule;
-import io.netty.handler.ipfilter.IpFilterRuleType;
-
 import java.net.InetSocketAddress;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.gogym.getty.handler.ipfilter.IpFilterRule;
+import org.gogym.getty.handler.ipfilter.IpFilterRuleType;
 
 import pres.gogym.gim.entity.IpRange;
 import pres.gogym.gim.socket.netty.tcp.server.GimConfig;

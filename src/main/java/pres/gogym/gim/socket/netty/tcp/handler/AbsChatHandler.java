@@ -1,6 +1,6 @@
 package pres.gogym.gim.socket.netty.tcp.handler;
 
-import io.netty.channel.ChannelHandlerContext;
+import org.gogym.getty.channel.ChannelHandlerContext;
 
 import com.google.protobuf.GeneratedMessageV3;
 import com.google.protobuf.InvalidProtocolBufferException;

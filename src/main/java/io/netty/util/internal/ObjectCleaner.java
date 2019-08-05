@@ -15,8 +15,6 @@
  */
 package io.netty.util.internal;
 
-import io.netty.util.concurrent.FastThreadLocalThread;
-
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 import java.security.AccessController;
@@ -24,8 +22,10 @@ import java.security.PrivilegedAction;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicBoolean;
 
-import static io.netty.util.internal.SystemPropertyUtil.getInt;
+import org.gogym.getty.util.concurrent.FastThreadLocalThread;
+
 import static java.lang.Math.max;
+import static org.gogym.getty.util.internal.SystemPropertyUtil.getInt;
 
 /**
  * Allows a way to register some {@link Runnable} that will executed once there are no references to an {@link Object}

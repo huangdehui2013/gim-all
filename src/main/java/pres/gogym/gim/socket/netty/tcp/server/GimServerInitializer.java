@@ -1,17 +1,17 @@
 package pres.gogym.gim.socket.netty.tcp.server;
 
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.ChannelPipeline;
-import io.netty.channel.socket.SocketChannel;
-import io.netty.handler.codec.protobuf.ProtobufDecoder;
-import io.netty.handler.codec.protobuf.ProtobufEncoder;
-import io.netty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
-import io.netty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
-import io.netty.handler.ipfilter.RuleBasedIpFilter;
-import io.netty.handler.ssl.SslHandler;
-import io.netty.handler.timeout.IdleStateHandler;
-
 import java.util.concurrent.TimeUnit;
+
+import org.gogym.getty.channel.ChannelInitializer;
+import org.gogym.getty.channel.ChannelPipeline;
+import org.gogym.getty.channel.socket.SocketChannel;
+import org.gogym.getty.handler.codec.protobuf.ProtobufDecoder;
+import org.gogym.getty.handler.codec.protobuf.ProtobufEncoder;
+import org.gogym.getty.handler.codec.protobuf.ProtobufVarint32FrameDecoder;
+import org.gogym.getty.handler.codec.protobuf.ProtobufVarint32LengthFieldPrepender;
+import org.gogym.getty.handler.ipfilter.RuleBasedIpFilter;
+import org.gogym.getty.handler.ssl.SslHandler;
+import org.gogym.getty.handler.timeout.IdleStateHandler;
 
 import pres.gogym.gim.packet.MessageClass.Message;
 import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.ChatServerHandler;

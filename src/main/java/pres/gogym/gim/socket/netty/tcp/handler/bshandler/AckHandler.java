@@ -11,9 +11,9 @@
 
 package pres.gogym.gim.socket.netty.tcp.handler.bshandler;
 
-import io.netty.channel.ChannelHandlerContext;
-
 import java.util.function.Predicate;
+
+import org.gogym.getty.channel.ChannelHandlerContext;
 
 import pres.gogym.gim.packet.AckReqClass.AckReq;
 import pres.gogym.gim.packet.MessageClass.Message;

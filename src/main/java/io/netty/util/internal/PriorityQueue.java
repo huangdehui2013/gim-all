@@ -17,6 +17,8 @@ package io.netty.util.internal;
 
 import java.util.Queue;
 
+import org.gogym.getty.util.internal.PriorityQueueNode;
+
 public interface PriorityQueue<T> extends Queue<T> {
     /**
      * Same as {@link #remove(Object)} but typed using generics.

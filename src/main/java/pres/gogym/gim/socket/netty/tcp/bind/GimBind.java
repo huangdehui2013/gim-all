@@ -11,14 +11,14 @@
 
 package pres.gogym.gim.socket.netty.tcp.bind;
 
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelId;
-import io.netty.util.Attribute;
-import io.netty.util.AttributeKey;
-
 import java.util.List;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
+
+import org.gogym.getty.channel.Channel;
+import org.gogym.getty.channel.ChannelId;
+import org.gogym.getty.util.Attribute;
+import org.gogym.getty.util.AttributeKey;
 
 import pres.gogym.gim.common.Const;
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterRoute;

@@ -11,7 +11,8 @@
 
 package pres.gogym.gim.socket.netty.tcp.handler.bshandler;
 
-import io.netty.channel.ChannelHandlerContext;
+import org.gogym.getty.channel.ChannelHandlerContext;
+
 import pres.gogym.gim.common.Const;
 import pres.gogym.gim.packet.ConnectReqClass.ConnectReq;
 import pres.gogym.gim.packet.MessageClass.Message;

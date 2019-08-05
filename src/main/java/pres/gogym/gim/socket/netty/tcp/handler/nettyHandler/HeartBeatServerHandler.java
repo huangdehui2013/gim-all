@@ -1,9 +1,9 @@
 package pres.gogym.gim.socket.netty.tcp.handler.nettyHandler;
 
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.ChannelInboundHandlerAdapter;
-import io.netty.handler.timeout.IdleState;
-import io.netty.handler.timeout.IdleStateEvent;
+import org.gogym.getty.channel.ChannelHandlerContext;
+import org.gogym.getty.channel.ChannelInboundHandlerAdapter;
+import org.gogym.getty.handler.timeout.IdleState;
+import org.gogym.getty.handler.timeout.IdleStateEvent;
 
 /**
  * 心跳检测

@@ -1,8 +1,9 @@
 package pres.gogym.gim.socket.netty.tcp.handler.nettyHandler;
 
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
+import org.gogym.getty.channel.Channel;
+import org.gogym.getty.channel.ChannelHandlerContext;
+import org.gogym.getty.channel.SimpleChannelInboundHandler;
+
 import pres.gogym.gim.packet.MessageClass.Message;
 import pres.gogym.gim.socket.netty.tcp.bind.GimBind;
 import pres.gogym.gim.socket.netty.tcp.handler.BaseHandler;

@@ -16,11 +16,12 @@ import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.concurrent.DelayQueue;
 
+import org.gogym.getty.channel.ChannelId;
+import org.gogym.getty.channel.group.ChannelGroup;
+import org.gogym.getty.channel.group.DefaultChannelGroup;
+import org.gogym.getty.util.concurrent.GlobalEventExecutor;
+
 import pres.gogym.gim.socket.netty.tcp.message.MessageDelayPacket;
-import io.netty.channel.ChannelId;
-import io.netty.channel.group.ChannelGroup;
-import io.netty.channel.group.DefaultChannelGroup;
-import io.netty.util.concurrent.GlobalEventExecutor;
 
 public class GimContext {
 

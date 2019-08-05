@@ -13,7 +13,7 @@ package pres.gogym.gim.socket.netty.tcp.handler.nettyHandler;
 
 import java.util.concurrent.ScheduledExecutorService;
 
-import io.netty.handler.traffic.GlobalChannelTrafficShapingHandler;
+import org.gogym.getty.handler.traffic.GlobalChannelTrafficShapingHandler;
 
 public class ChannelTrafficHandler extends GlobalChannelTrafficShapingHandler {
 

@@ -1,6 +1,7 @@
 package pres.gogym.gim.socket.netty.tcp.intf;
 
-import io.netty.channel.ChannelHandlerContext;
+import org.gogym.getty.channel.ChannelHandlerContext;
+
 import pres.gogym.gim.packet.MessageClass.Message;
 
 /**

@@ -11,13 +11,13 @@
 
 package pres.gogym.gim.socket.netty.tcp.message;
 
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelId;
-
 import java.util.Set;
 import java.util.concurrent.ConcurrentMap;
 import java.util.concurrent.CopyOnWriteArrayList;
 import java.util.function.Predicate;
+
+import org.gogym.getty.channel.Channel;
+import org.gogym.getty.channel.ChannelId;
 
 import com.google.protobuf.util.JsonFormat;
 

@@ -11,12 +11,6 @@
 
 package pres.gogym.gim.socket.netty.tcp.ssl;
 
-import io.netty.buffer.ByteBufAllocator;
-import io.netty.handler.ssl.SslContext;
-import io.netty.handler.ssl.SslContextBuilder;
-import io.netty.handler.ssl.SslHandler;
-import io.netty.handler.ssl.SslProvider;
-
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
@@ -26,6 +20,12 @@ import javax.net.ssl.KeyManagerFactory;
 import javax.net.ssl.SSLContext;
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.TrustManagerFactory;
+
+import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.handler.ssl.SslContext;
+import org.gogym.getty.handler.ssl.SslContextBuilder;
+import org.gogym.getty.handler.ssl.SslHandler;
+import org.gogym.getty.handler.ssl.SslProvider;
 
 /**
  * 

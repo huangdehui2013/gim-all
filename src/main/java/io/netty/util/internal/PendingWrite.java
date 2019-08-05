@@ -15,9 +15,10 @@
  */
 package io.netty.util.internal;
 
-import io.netty.util.Recycler;
-import io.netty.util.ReferenceCountUtil;
-import io.netty.util.concurrent.Promise;
+import org.gogym.getty.util.Recycler;
+import org.gogym.getty.util.ReferenceCountUtil;
+import org.gogym.getty.util.concurrent.Promise;
+import org.gogym.getty.util.internal.RecyclableArrayList;
 
 /**
  * Some pending write which should be picked up later.

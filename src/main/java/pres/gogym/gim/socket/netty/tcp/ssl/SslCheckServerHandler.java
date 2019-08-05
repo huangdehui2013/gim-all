@@ -10,14 +10,14 @@
 
 package pres.gogym.gim.socket.netty.tcp.ssl;
 
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.channel.SimpleChannelInboundHandler;
-import io.netty.handler.ssl.SslHandler;
-import io.netty.util.concurrent.Future;
-import io.netty.util.concurrent.GenericFutureListener;
-
 import java.nio.ByteBuffer;
+
+import org.gogym.getty.channel.Channel;
+import org.gogym.getty.channel.ChannelHandlerContext;
+import org.gogym.getty.channel.SimpleChannelInboundHandler;
+import org.gogym.getty.handler.ssl.SslHandler;
+import org.gogym.getty.util.concurrent.Future;
+import org.gogym.getty.util.concurrent.GenericFutureListener;
 
 public class SslCheckServerHandler extends
 		SimpleChannelInboundHandler<ByteBuffer> {

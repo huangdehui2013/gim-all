@@ -11,8 +11,8 @@
 
 package pres.gogym.gim.socket.netty.tcp.handler.nettyHandler;
 
-import io.netty.handler.traffic.GlobalTrafficShapingHandler;
-import io.netty.util.concurrent.EventExecutor;
+import org.gogym.getty.handler.traffic.GlobalTrafficShapingHandler;
+import org.gogym.getty.util.concurrent.EventExecutor;
 
 public class GlobalTrafficHandler extends GlobalTrafficShapingHandler {
 

@@ -11,15 +11,16 @@
 
 package pres.gogym.gim.socket.netty.tcp;
 
-import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelOption;
-import io.netty.channel.EventLoopGroup;
-import io.netty.channel.WriteBufferWaterMark;
-import io.netty.channel.nio.NioEventLoopGroup;
-import io.netty.channel.socket.nio.NioServerSocketChannel;
-import io.netty.handler.logging.LogLevel;
-import io.netty.handler.logging.LoggingHandler;
+import org.gogym.getty.bootstrap.ServerBootstrap;
+import org.gogym.getty.channel.ChannelFuture;
+import org.gogym.getty.channel.ChannelOption;
+import org.gogym.getty.channel.EventLoopGroup;
+import org.gogym.getty.channel.WriteBufferWaterMark;
+import org.gogym.getty.channel.nio.NioEventLoopGroup;
+import org.gogym.getty.channel.socket.nio.NioServerSocketChannel;
+import org.gogym.getty.handler.logging.LogLevel;
+import org.gogym.getty.handler.logging.LoggingHandler;
+
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterConfig;
 import pres.gogym.gim.socket.netty.tcp.cluster.ClusterMsgListener;
 import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.ChannelTrafficHandler;

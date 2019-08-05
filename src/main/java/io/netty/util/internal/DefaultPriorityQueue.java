@@ -21,7 +21,9 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-import static io.netty.util.internal.PriorityQueueNode.INDEX_NOT_IN_QUEUE;
+import org.gogym.getty.util.internal.PriorityQueueNode;
+
+import static org.gogym.getty.util.internal.PriorityQueueNode.INDEX_NOT_IN_QUEUE;
 
 /**
  * A priority queue which uses natural ordering of elements. Elements are also required to be of type

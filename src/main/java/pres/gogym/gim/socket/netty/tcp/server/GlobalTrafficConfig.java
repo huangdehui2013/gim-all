@@ -11,8 +11,9 @@
 
 package pres.gogym.gim.socket.netty.tcp.server;
 
-import io.netty.util.concurrent.DefaultEventExecutorGroup;
-import io.netty.util.concurrent.EventExecutorGroup;
+import org.gogym.getty.util.concurrent.DefaultEventExecutorGroup;
+import org.gogym.getty.util.concurrent.EventExecutorGroup;
+
 import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.ChannelTrafficHandler;
 import pres.gogym.gim.socket.netty.tcp.handler.nettyHandler.GlobalTrafficHandler;
 

@@ -20,6 +20,8 @@ import java.util.AbstractSet;
 import java.util.Iterator;
 import java.util.concurrent.ConcurrentMap;
 
+import org.gogym.getty.util.internal.PlatformDependent;
+
 /**
  * @deprecated For removal in Netty 4.2. Please use {@link ConcurrentHashMap#newKeySet()} instead
  */

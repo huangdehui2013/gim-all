@@ -16,11 +16,11 @@
 
 package io.netty.util.internal;
 
-import io.netty.util.AsciiString;
-
 import java.nio.ByteBuffer;
 import java.security.cert.Certificate;
 import java.security.cert.X509Certificate;
+
+import org.gogym.getty.util.AsciiString;
 
 public final class EmptyArrays {
 

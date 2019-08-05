@@ -11,8 +11,8 @@
 
 package pres.gogym.gim.socket.netty.tcp.handler.nettyHandler;
 
-import io.netty.channel.ChannelDuplexHandler;
-import io.netty.channel.ChannelHandlerContext;
+import org.gogym.getty.channel.ChannelDuplexHandler;
+import org.gogym.getty.channel.ChannelHandlerContext;
 
 /**
  * 

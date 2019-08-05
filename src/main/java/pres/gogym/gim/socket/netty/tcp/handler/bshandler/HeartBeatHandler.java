@@ -11,9 +11,10 @@
 
 package pres.gogym.gim.socket.netty.tcp.handler.bshandler;
 
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.util.Attribute;
-import io.netty.util.AttributeKey;
+import org.gogym.getty.channel.ChannelHandlerContext;
+import org.gogym.getty.util.Attribute;
+import org.gogym.getty.util.AttributeKey;
+
 import pres.gogym.gim.common.Const;
 import pres.gogym.gim.packet.HeartBeatReqClass.HeartBeatReq;
 import pres.gogym.gim.packet.MessageClass.Message;

@@ -10,9 +10,9 @@
 
 package pres.gogym.gim.socket.netty.tcp.server;
 
-import io.netty.handler.traffic.TrafficCounter;
-
 import java.util.Collection;
+
+import org.gogym.getty.handler.traffic.TrafficCounter;
 
 public class GlobalTrafficMonitor {
 
