@@ -191,7 +191,7 @@ public class GimServerStarter {
 					ServerBootstrap b = new ServerBootstrap();
 					b.group(bossGroup, workerGroup)
 							.channel(NioServerSocketChannel.class)
-							.handler(new LoggingHandler(LogLevel.INFO))
+							//.handler(new LoggingHandler(LogLevel.INFO))
 							// 使用TCP
 							.childHandler(new GimServerInitializer(gimConfig))
 							// 初始化配置的处理器
