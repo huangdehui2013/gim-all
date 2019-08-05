@@ -35,12 +35,11 @@ public abstract class OpenSslContext extends ReferenceCountedOpenSslContext {
                 clientAuth, protocols, startTls, enableOcsp, false);
     }
 
-    OpenSslContext(Iterable<String> ciphers, CipherSuiteFilter cipherFilter,
-                   OpenSslApplicationProtocolNegotiator apn, long sessionCacheSize,
+    OpenSslContext(Iterable<String> ciphers, CipherSuiteFilter cipherFilter, long sessionCacheSize,
                    long sessionTimeout, int mode, Certificate[] keyCertChain,
                    ClientAuth clientAuth, String[] protocols, boolean startTls,
                    boolean enableOcsp) throws SSLException {
-        super(ciphers, cipherFilter, apn, sessionCacheSize, sessionTimeout, mode, keyCertChain, clientAuth, protocols,
+        super(ciphers, cipherFilter, sessionCacheSize, sessionTimeout, mode, keyCertChain, clientAuth, protocols,
                 startTls, enableOcsp, false);
     }
 

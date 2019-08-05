@@ -203,7 +203,7 @@ public class ReferenceCountedOpenSslEngine extends SSLEngine implements Referenc
     private final boolean clientMode;
     final ByteBufAllocator alloc;
     private final OpenSslEngineMap engineMap;
-    private final OpenSslApplicationProtocolNegotiator apn;
+    //private final OpenSslApplicationProtocolNegotiator apn;
     private final OpenSslSession session;
     private final ByteBuffer[] singleSrcBuffer = new ByteBuffer[1];
     private final ByteBuffer[] singleDstBuffer = new ByteBuffer[1];
@@ -229,7 +229,7 @@ public class ReferenceCountedOpenSslEngine extends SSLEngine implements Referenc
         super(peerHost, peerPort);
         OpenSsl.ensureAvailability();
         this.alloc = checkNotNull(alloc, "alloc");
-        apn = (OpenSslApplicationProtocolNegotiator) context.applicationProtocolNegotiator();
+       // apn = (OpenSslApplicationProtocolNegotiator) context.applicationProtocolNegotiator();
         clientMode = context.isClient();
         if (PlatformDependent.javaVersion() >= 7) {
             session = new ExtendedOpenSslSession(new DefaultOpenSslSession(context.sessionContext())) {
@@ -2159,7 +2159,7 @@ public class ReferenceCountedOpenSslEngine extends SSLEngine implements Referenc
                     protocol = SSL.getVersion(ssl);
 
                     initPeerCerts();
-                    selectApplicationProtocol();
+                    //selectApplicationProtocol();
                     calculateMaxWrapOverhead();
 
                     handshakeState = HandshakeState.FINISHED;
@@ -2221,43 +2221,43 @@ public class ReferenceCountedOpenSslEngine extends SSLEngine implements Referenc
         /**
          * Select the application protocol used.
          */
-        private void selectApplicationProtocol() throws SSLException {
-            ApplicationProtocolConfig.SelectedListenerFailureBehavior behavior = apn.selectedListenerFailureBehavior();
-            List<String> protocols = apn.protocols();
-            String applicationProtocol;
-            switch (apn.protocol()) {
-                case NONE:
-                    break;
-                // We always need to check for applicationProtocol == null as the remote peer may not support
-                // the TLS extension or may have returned an empty selection.
-                case ALPN:
-                    applicationProtocol = SSL.getAlpnSelected(ssl);
-                    if (applicationProtocol != null) {
-                        ReferenceCountedOpenSslEngine.this.applicationProtocol = selectApplicationProtocol(
-                                protocols, behavior, applicationProtocol);
-                    }
-                    break;
-                case NPN:
-                    applicationProtocol = SSL.getNextProtoNegotiated(ssl);
-                    if (applicationProtocol != null) {
-                        ReferenceCountedOpenSslEngine.this.applicationProtocol = selectApplicationProtocol(
-                                protocols, behavior, applicationProtocol);
-                    }
-                    break;
-                case NPN_AND_ALPN:
-                    applicationProtocol = SSL.getAlpnSelected(ssl);
-                    if (applicationProtocol == null) {
-                        applicationProtocol = SSL.getNextProtoNegotiated(ssl);
-                    }
-                    if (applicationProtocol != null) {
-                        ReferenceCountedOpenSslEngine.this.applicationProtocol = selectApplicationProtocol(
-                                protocols, behavior, applicationProtocol);
-                    }
-                    break;
-                default:
-                    throw new Error();
-            }
-        }
+//        private void selectApplicationProtocol() throws SSLException {
+//            ApplicationProtocolConfig.SelectedListenerFailureBehavior behavior = apn.selectedListenerFailureBehavior();
+//            List<String> protocols = apn.protocols();
+//            String applicationProtocol;
+//            switch (apn.protocol()) {
+//                case NONE:
+//                    break;
+//                // We always need to check for applicationProtocol == null as the remote peer may not support
+//                // the TLS extension or may have returned an empty selection.
+//                case ALPN:
+//                    applicationProtocol = SSL.getAlpnSelected(ssl);
+//                    if (applicationProtocol != null) {
+//                        ReferenceCountedOpenSslEngine.this.applicationProtocol = selectApplicationProtocol(
+//                                protocols, behavior, applicationProtocol);
+//                    }
+//                    break;
+//                case NPN:
+//                    applicationProtocol = SSL.getNextProtoNegotiated(ssl);
+//                    if (applicationProtocol != null) {
+//                        ReferenceCountedOpenSslEngine.this.applicationProtocol = selectApplicationProtocol(
+//                                protocols, behavior, applicationProtocol);
+//                    }
+//                    break;
+//                case NPN_AND_ALPN:
+//                    applicationProtocol = SSL.getAlpnSelected(ssl);
+//                    if (applicationProtocol == null) {
+//                        applicationProtocol = SSL.getNextProtoNegotiated(ssl);
+//                    }
+//                    if (applicationProtocol != null) {
+//                        ReferenceCountedOpenSslEngine.this.applicationProtocol = selectApplicationProtocol(
+//                                protocols, behavior, applicationProtocol);
+//                    }
+//                    break;
+//                default:
+//                    throw new Error();
+//            }
+//        }
 
         private String selectApplicationProtocol(List<String> protocols,
                                                  ApplicationProtocolConfig.SelectedListenerFailureBehavior behavior,

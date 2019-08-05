@@ -1046,15 +1046,15 @@ public abstract class SslContext {
 	 * @deprecated Use {@link #applicationProtocolNegotiator()} instead.
 	 */
 	@Deprecated
-	public final List<String> nextProtocols() {
-		return applicationProtocolNegotiator().protocols();
-	}
+//	public final List<String> nextProtocols() {
+//		return applicationProtocolNegotiator().protocols();
+//	}
 
 	/**
 	 * Returns the object responsible for negotiating application layer
 	 * protocols for the TLS NPN/ALPN extensions.
 	 */
-	public abstract ApplicationProtocolNegotiator applicationProtocolNegotiator();
+	//public abstract ApplicationProtocolNegotiator applicationProtocolNegotiator();
 
 	/**
 	 * Creates a new {@link SSLEngine}.

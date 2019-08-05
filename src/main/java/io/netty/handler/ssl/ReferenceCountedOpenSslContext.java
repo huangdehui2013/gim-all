@@ -105,7 +105,7 @@ public abstract class ReferenceCountedOpenSslContext extends SslContext implemen
     private final List<String> unmodifiableCiphers;
     private final long sessionCacheSize;
     private final long sessionTimeout;
-    private final OpenSslApplicationProtocolNegotiator apn;
+    //private final OpenSslApplicationProtocolNegotiator apn;
     private final int mode;
 
     // Reference Counting
@@ -139,29 +139,29 @@ public abstract class ReferenceCountedOpenSslContext extends SslContext implemen
 
     private volatile int bioNonApplicationBufferSize = DEFAULT_BIO_NON_APPLICATION_BUFFER_SIZE;
 
-    @SuppressWarnings("deprecation")
-    static final OpenSslApplicationProtocolNegotiator NONE_PROTOCOL_NEGOTIATOR =
-            new OpenSslApplicationProtocolNegotiator() {
-                @Override
-                public ApplicationProtocolConfig.Protocol protocol() {
-                    return ApplicationProtocolConfig.Protocol.NONE;
-                }
-
-                @Override
-                public List<String> protocols() {
-                    return Collections.emptyList();
-                }
-
-                @Override
-                public ApplicationProtocolConfig.SelectorFailureBehavior selectorFailureBehavior() {
-                    return ApplicationProtocolConfig.SelectorFailureBehavior.CHOOSE_MY_LAST_PROTOCOL;
-                }
-
-                @Override
-                public ApplicationProtocolConfig.SelectedListenerFailureBehavior selectedListenerFailureBehavior() {
-                    return ApplicationProtocolConfig.SelectedListenerFailureBehavior.ACCEPT;
-                }
-            };
+//    @SuppressWarnings("deprecation")
+//    static final OpenSslApplicationProtocolNegotiator NONE_PROTOCOL_NEGOTIATOR =
+//            new OpenSslApplicationProtocolNegotiator() {
+//                @Override
+//                public ApplicationProtocolConfig.Protocol protocol() {
+//                    return ApplicationProtocolConfig.Protocol.NONE;
+//                }
+//
+//                @Override
+//                public List<String> protocols() {
+//                    return Collections.emptyList();
+//                }
+//
+//                @Override
+//                public ApplicationProtocolConfig.SelectorFailureBehavior selectorFailureBehavior() {
+//                    return ApplicationProtocolConfig.SelectorFailureBehavior.CHOOSE_MY_LAST_PROTOCOL;
+//                }
+//
+//                @Override
+//                public ApplicationProtocolConfig.SelectedListenerFailureBehavior selectedListenerFailureBehavior() {
+//                    return ApplicationProtocolConfig.SelectedListenerFailureBehavior.ACCEPT;
+//                }
+//            };
 
     static {
         Integer dhLen = null;
@@ -191,12 +191,12 @@ public abstract class ReferenceCountedOpenSslContext extends SslContext implemen
                                    ApplicationProtocolConfig apnCfg, long sessionCacheSize, long sessionTimeout,
                                    int mode, Certificate[] keyCertChain, ClientAuth clientAuth, String[] protocols,
                                    boolean startTls, boolean enableOcsp, boolean leakDetection) throws SSLException {
-        this(ciphers, cipherFilter, toNegotiator(apnCfg), sessionCacheSize, sessionTimeout, mode, keyCertChain,
+        this(ciphers, cipherFilter, sessionCacheSize, sessionTimeout, mode, keyCertChain,
                 clientAuth, protocols, startTls, enableOcsp, leakDetection);
     }
 
     ReferenceCountedOpenSslContext(Iterable<String> ciphers, CipherSuiteFilter cipherFilter,
-                                   OpenSslApplicationProtocolNegotiator apn, long sessionCacheSize,
+                                  long sessionCacheSize,
                                    long sessionTimeout, int mode, Certificate[] keyCertChain,
                                    ClientAuth clientAuth, String[] protocols, boolean startTls, boolean enableOcsp,
                                    boolean leakDetection) throws SSLException {
@@ -222,7 +222,7 @@ public abstract class ReferenceCountedOpenSslContext extends SslContext implemen
         unmodifiableCiphers = Arrays.asList(checkNotNull(cipherFilter, "cipherFilter").filterCipherSuites(
                 ciphers, DEFAULT_CIPHERS, availableJavaCipherSuites()));
 
-        this.apn = checkNotNull(apn, "apn");
+        //this.apn = checkNotNull(apn, "apn");
 
         // Create a new SSL_CTX and configure it.
         boolean success = false;
@@ -303,27 +303,27 @@ public abstract class ReferenceCountedOpenSslContext extends SslContext implemen
                 SSLContext.setTmpDHLength(ctx, DH_KEY_LENGTH);
             }
 
-            List<String> nextProtoList = apn.protocols();
+           // List<String> nextProtoList = apn.protocols();
                 /* Set next protocols for next protocol negotiation extension, if specified */
-            if (!nextProtoList.isEmpty()) {
-                String[] appProtocols = nextProtoList.toArray(new String[0]);
-                int selectorBehavior = opensslSelectorFailureBehavior(apn.selectorFailureBehavior());
-
-                switch (apn.protocol()) {
-                    case NPN:
-                        SSLContext.setNpnProtos(ctx, appProtocols, selectorBehavior);
-                        break;
-                    case ALPN:
-                        SSLContext.setAlpnProtos(ctx, appProtocols, selectorBehavior);
-                        break;
-                    case NPN_AND_ALPN:
-                        SSLContext.setNpnProtos(ctx, appProtocols, selectorBehavior);
-                        SSLContext.setAlpnProtos(ctx, appProtocols, selectorBehavior);
-                        break;
-                    default:
-                        throw new Error();
-                }
-            }
+//            if (!nextProtoList.isEmpty()) {
+//                String[] appProtocols = nextProtoList.toArray(new String[0]);
+//                int selectorBehavior = opensslSelectorFailureBehavior(apn.selectorFailureBehavior());
+//
+//                switch (apn.protocol()) {
+//                    case NPN:
+//                        SSLContext.setNpnProtos(ctx, appProtocols, selectorBehavior);
+//                        break;
+//                    case ALPN:
+//                        SSLContext.setAlpnProtos(ctx, appProtocols, selectorBehavior);
+//                        break;
+//                    case NPN_AND_ALPN:
+//                        SSLContext.setNpnProtos(ctx, appProtocols, selectorBehavior);
+//                        SSLContext.setAlpnProtos(ctx, appProtocols, selectorBehavior);
+//                        break;
+//                    default:
+//                        throw new Error();
+//                }
+//            }
 
             /* Set session cache size, if specified */
             if (sessionCacheSize <= 0) {
@@ -380,10 +380,10 @@ public abstract class ReferenceCountedOpenSslContext extends SslContext implemen
         return sessionTimeout;
     }
 
-    @Override
-    public ApplicationProtocolNegotiator applicationProtocolNegotiator() {
-        return apn;
-    }
+//    @Override
+//    public ApplicationProtocolNegotiator applicationProtocolNegotiator() {
+//        return apn;
+//    }
 
     @Override
     public final boolean isClient() {
@@ -599,42 +599,42 @@ public abstract class ReferenceCountedOpenSslContext extends SslContext implemen
      * @param config The configuration which defines the translation
      * @return The results of the translation
      */
-    @SuppressWarnings("deprecation")
-    static OpenSslApplicationProtocolNegotiator toNegotiator(ApplicationProtocolConfig config) {
-        if (config == null) {
-            return NONE_PROTOCOL_NEGOTIATOR;
-        }
-
-        switch (config.protocol()) {
-            case NONE:
-                return NONE_PROTOCOL_NEGOTIATOR;
-            case ALPN:
-            case NPN:
-            case NPN_AND_ALPN:
-                switch (config.selectedListenerFailureBehavior()) {
-                    case CHOOSE_MY_LAST_PROTOCOL:
-                    case ACCEPT:
-                        switch (config.selectorFailureBehavior()) {
-                            case CHOOSE_MY_LAST_PROTOCOL:
-                            case NO_ADVERTISE:
-                                return new OpenSslDefaultApplicationProtocolNegotiator(
-                                        config);
-                            default:
-                                throw new UnsupportedOperationException(
-                                        new StringBuilder("OpenSSL provider does not support ")
-                                                .append(config.selectorFailureBehavior())
-                                                .append(" behavior").toString());
-                        }
-                    default:
-                        throw new UnsupportedOperationException(
-                                new StringBuilder("OpenSSL provider does not support ")
-                                        .append(config.selectedListenerFailureBehavior())
-                                        .append(" behavior").toString());
-                }
-            default:
-                throw new Error();
-        }
-    }
+//    @SuppressWarnings("deprecation")
+//    static OpenSslApplicationProtocolNegotiator toNegotiator(ApplicationProtocolConfig config) {
+//        if (config == null) {
+//            return NONE_PROTOCOL_NEGOTIATOR;
+//        }
+//
+//        switch (config.protocol()) {
+//            case NONE:
+//                return NONE_PROTOCOL_NEGOTIATOR;
+//            case ALPN:
+//            case NPN:
+//            case NPN_AND_ALPN:
+//                switch (config.selectedListenerFailureBehavior()) {
+//                    case CHOOSE_MY_LAST_PROTOCOL:
+//                    case ACCEPT:
+//                        switch (config.selectorFailureBehavior()) {
+//                            case CHOOSE_MY_LAST_PROTOCOL:
+//                            case NO_ADVERTISE:
+//                                return new OpenSslDefaultApplicationProtocolNegotiator(
+//                                        config);
+//                            default:
+//                                throw new UnsupportedOperationException(
+//                                        new StringBuilder("OpenSSL provider does not support ")
+//                                                .append(config.selectorFailureBehavior())
+//                                                .append(" behavior").toString());
+//                        }
+//                    default:
+//                        throw new UnsupportedOperationException(
+//                                new StringBuilder("OpenSSL provider does not support ")
+//                                        .append(config.selectedListenerFailureBehavior())
+//                                        .append(" behavior").toString());
+//                }
+//            default:
+//                throw new Error();
+//        }
+//    }
 
     static boolean useExtendedTrustManager(X509TrustManager trustManager) {
         return PlatformDependent.javaVersion() >= 7 && trustManager instanceof X509ExtendedTrustManager;
