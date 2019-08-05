@@ -45,7 +45,7 @@ import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
  * Abstract base class for {@link OrderedEventExecutor}'s that execute all its submitted tasks in a single thread.
  *
  */
-public abstract class SingleThreadEventExecutor extends AbstractScheduledEventExecutor implements OrderedEventExecutor {
+public abstract class SingleThreadEventExecutor extends AbstractScheduledEventExecutor  {
 
     static final int DEFAULT_MAX_PENDING_EXECUTOR_TASKS = Math.max(16,
             SystemPropertyUtil.getInt("io.netty.eventexecutor.maxPendingTasks", Integer.MAX_VALUE));
