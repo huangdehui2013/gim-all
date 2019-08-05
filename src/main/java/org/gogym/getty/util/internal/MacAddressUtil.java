@@ -16,7 +16,7 @@
 
 package org.gogym.getty.util.internal;
 
-import static io.netty.util.internal.EmptyArrays.EMPTY_BYTES;
+import static org.gogym.getty.util.internal.EmptyArrays.EMPTY_BYTES;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;

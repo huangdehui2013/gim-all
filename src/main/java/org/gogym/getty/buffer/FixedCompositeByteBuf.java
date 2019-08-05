@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.buffer;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -28,6 +26,7 @@ import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
 import java.util.Collections;
 
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.RecyclableArrayList;
 
 /**

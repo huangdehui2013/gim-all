@@ -19,7 +19,6 @@ package org.gogym.getty.util;
 import static org.gogym.getty.util.internal.StringUtil.EMPTY_STRING;
 import static org.gogym.getty.util.internal.StringUtil.NEWLINE;
 import static org.gogym.getty.util.internal.StringUtil.simpleClassName;
-import io.netty.util.internal.EmptyArrays;
 
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
@@ -34,6 +33,7 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.concurrent.atomic.AtomicReference;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 

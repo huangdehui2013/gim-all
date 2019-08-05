@@ -16,8 +16,6 @@
 package org.gogym.getty.channel;
 
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.Queue;
@@ -37,6 +35,7 @@ import org.gogym.getty.util.concurrent.FutureListener;
 import org.gogym.getty.util.concurrent.GlobalEventExecutor;
 import org.gogym.getty.util.concurrent.Promise;
 import org.gogym.getty.util.concurrent.ThreadPerTaskExecutor;
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.ReadOnlyIterator;
 import org.gogym.getty.util.internal.ThrowableUtil;

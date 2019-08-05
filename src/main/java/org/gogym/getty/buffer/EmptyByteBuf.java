@@ -17,7 +17,6 @@
 package org.gogym.getty.buffer;
 
 import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
-import io.netty.util.internal.EmptyArrays;
 
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -30,6 +29,7 @@ import java.nio.channels.ScatteringByteChannel;
 import java.nio.charset.Charset;
 
 import org.gogym.getty.util.ByteProcessor;
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.StringUtil;
 

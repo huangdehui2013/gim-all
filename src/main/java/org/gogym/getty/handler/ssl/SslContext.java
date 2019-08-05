@@ -16,8 +16,6 @@
 
 package org.gogym.getty.handler.ssl;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.security.Provider;
 
 import javax.net.ssl.KeyManager;
@@ -43,6 +41,7 @@ import org.gogym.getty.channel.ChannelPipeline;
 import org.gogym.getty.handler.ssl.ApplicationProtocolConfig.Protocol;
 import org.gogym.getty.handler.ssl.ApplicationProtocolConfig.SelectedListenerFailureBehavior;
 import org.gogym.getty.handler.ssl.ApplicationProtocolConfig.SelectorFailureBehavior;
+import org.gogym.getty.util.internal.EmptyArrays;
 
 import java.io.File;
 import java.io.IOException;

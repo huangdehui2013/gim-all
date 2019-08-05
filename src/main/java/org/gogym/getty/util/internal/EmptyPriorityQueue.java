@@ -13,14 +13,12 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
 
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
-import org.gogym.getty.util.internal.PriorityQueue;
 
 public final class EmptyPriorityQueue<T> implements PriorityQueue<T> {
     private static final PriorityQueue<Object> INSTANCE = new EmptyPriorityQueue<Object>();

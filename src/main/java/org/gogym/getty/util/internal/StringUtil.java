@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.util.internal;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;

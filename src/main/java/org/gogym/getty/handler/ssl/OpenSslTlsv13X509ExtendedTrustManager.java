@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.handler.ssl;
 
-import io.netty.util.internal.EmptyArrays;
-
 import javax.net.ssl.SSLEngine;
 import javax.net.ssl.SSLEngineResult;
 import javax.net.ssl.SSLEngineResult.HandshakeStatus;
@@ -26,6 +24,7 @@ import javax.net.ssl.SSLSession;
 import javax.net.ssl.SSLSessionContext;
 import javax.net.ssl.X509ExtendedTrustManager;
 
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 import java.net.Socket;

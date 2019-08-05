@@ -15,7 +15,6 @@
  */
 package org.gogym.getty.util.internal;
 
-import io.netty.util.internal.DefaultPriorityQueue;
 
 /**
  * Provides methods for {@link DefaultPriorityQueue} to maintain internal state. These methods should generally not be

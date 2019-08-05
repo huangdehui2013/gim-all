@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.util.internal;
 
-import io.netty.util.internal.DefaultPriorityQueue;
-
 import java.util.Queue;
 
 public interface PriorityQueue<T> extends Queue<T> {

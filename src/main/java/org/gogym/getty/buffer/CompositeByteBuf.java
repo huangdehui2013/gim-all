@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.buffer;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -37,6 +35,7 @@ import java.util.NoSuchElementException;
 import org.gogym.getty.util.ByteProcessor;
 import org.gogym.getty.util.IllegalReferenceCountException;
 import org.gogym.getty.util.ReferenceCountUtil;
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.RecyclableArrayList;
 
 import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;

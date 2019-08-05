@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.handler.ssl;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.lang.reflect.Field;
 import java.security.AccessController;
 import java.security.KeyManagementException;
@@ -30,6 +28,7 @@ import javax.net.ssl.TrustManager;
 import javax.net.ssl.X509ExtendedTrustManager;
 import javax.net.ssl.X509TrustManager;
 
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 /**

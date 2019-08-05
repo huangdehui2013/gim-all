@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.handler.ssl;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.util.ArrayList;
@@ -34,6 +32,7 @@ import org.gogym.getty.channel.ChannelHandlerContext;
 import org.gogym.getty.handler.codec.base64.Base64;
 import org.gogym.getty.handler.codec.base64.Base64Dialect;
 import org.gogym.getty.util.NetUtil;
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 import static java.util.Arrays.asList;

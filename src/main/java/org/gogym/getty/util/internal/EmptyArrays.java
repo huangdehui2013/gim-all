@@ -14,7 +14,7 @@
  * under the License.
  */
 
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
 
 import java.nio.ByteBuffer;
 import java.security.cert.Certificate;

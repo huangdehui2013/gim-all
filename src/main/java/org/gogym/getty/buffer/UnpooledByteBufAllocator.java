@@ -15,10 +15,9 @@
  */
 package org.gogym.getty.buffer;
 
-import io.netty.util.internal.LongCounter;
-
 import java.nio.ByteBuffer;
 
+import org.gogym.getty.util.internal.LongCounter;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.StringUtil;
 

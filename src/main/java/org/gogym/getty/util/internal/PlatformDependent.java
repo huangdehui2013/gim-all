@@ -27,9 +27,6 @@ import org.jctools.queues.atomic.SpscLinkedAtomicQueue;
 import org.jctools.util.Pow2;
 import org.jctools.util.UnsafeAccess;
 
-import io.netty.util.internal.ConstantTimeUtils;
-import io.netty.util.internal.LongCounter;
-
 import java.io.File;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

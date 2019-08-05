@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
 
 public final class ConstantTimeUtils {
     private ConstantTimeUtils() { }

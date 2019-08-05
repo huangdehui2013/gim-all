@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.handler.ipfilter;
 
-import io.netty.util.internal.ConcurrentSet;
-
 import java.net.InetAddress;
 import java.net.InetSocketAddress;
 import java.util.Set;
@@ -26,6 +24,7 @@ import org.gogym.getty.channel.ChannelFuture;
 import org.gogym.getty.channel.ChannelFutureListener;
 import org.gogym.getty.channel.ChannelHandler;
 import org.gogym.getty.channel.ChannelHandlerContext;
+import org.gogym.getty.util.internal.ConcurrentSet;
 
 /**
  * This class allows one to ensure that at all times for every IP address there is at most one

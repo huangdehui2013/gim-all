@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.util.internal;
 
-import io.netty.util.internal.ConcurrentSet;
-
 import java.lang.ref.ReferenceQueue;
 import java.lang.ref.WeakReference;
 import java.security.AccessController;

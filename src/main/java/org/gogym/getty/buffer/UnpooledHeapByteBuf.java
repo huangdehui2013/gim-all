@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.buffer;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -27,6 +25,7 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
 
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 import static org.gogym.getty.util.internal.ObjectUtil.checkNotNull;

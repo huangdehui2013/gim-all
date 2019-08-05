@@ -14,7 +14,7 @@
  * under the License.
  */
 
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
 
 /**
  * @deprecated For removal in netty 4.2

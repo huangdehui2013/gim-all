@@ -18,13 +18,13 @@ package org.gogym.getty.channel;
 
 import static org.gogym.getty.util.internal.MacAddressUtil.defaultMachineId;
 import static org.gogym.getty.util.internal.MacAddressUtil.parseMAC;
-import io.netty.util.internal.EmptyArrays;
 
 import java.lang.reflect.Method;
 import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.gogym.getty.buffer.ByteBufUtil;
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 

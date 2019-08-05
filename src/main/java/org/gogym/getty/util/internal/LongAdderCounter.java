@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.util.internal;
 
-import io.netty.util.internal.LongCounter;
-
 import java.util.concurrent.atomic.LongAdder;
 
 final class LongAdderCounter extends LongAdder implements LongCounter {

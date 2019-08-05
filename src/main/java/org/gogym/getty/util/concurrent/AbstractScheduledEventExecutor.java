@@ -15,14 +15,13 @@
  */
 package org.gogym.getty.util.concurrent;
 
-import io.netty.util.internal.DefaultPriorityQueue;
-
 import java.util.Comparator;
 import java.util.Queue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
 
+import org.gogym.getty.util.internal.DefaultPriorityQueue;
 import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.PriorityQueue;
 

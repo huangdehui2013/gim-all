@@ -15,10 +15,10 @@
  */
 package org.gogym.getty.handler.ssl;
 
-import io.netty.util.internal.EmptyArrays;
-
 import javax.crypto.Mac;
 import javax.crypto.spec.SecretKeySpec;
+
+import org.gogym.getty.util.internal.EmptyArrays;
 
 import java.security.GeneralSecurityException;
 import java.util.Arrays;

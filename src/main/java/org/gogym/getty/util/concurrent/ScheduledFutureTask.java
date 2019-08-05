@@ -16,14 +16,13 @@
 
 package org.gogym.getty.util.concurrent;
 
-import io.netty.util.internal.DefaultPriorityQueue;
-
 import java.util.Queue;
 import java.util.concurrent.Callable;
 import java.util.concurrent.Delayed;
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicLong;
 
+import org.gogym.getty.util.internal.DefaultPriorityQueue;
 import org.gogym.getty.util.internal.PriorityQueueNode;
 
 @SuppressWarnings("ComparableImplementedButEqualsNotOverridden")

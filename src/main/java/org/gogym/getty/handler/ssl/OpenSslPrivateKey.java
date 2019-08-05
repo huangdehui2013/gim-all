@@ -16,12 +16,12 @@
 package org.gogym.getty.handler.ssl;
 
 import io.netty.internal.tcnative.SSL;
-import io.netty.util.internal.EmptyArrays;
 
 import javax.security.auth.Destroyable;
 
 import org.gogym.getty.util.AbstractReferenceCounted;
 import org.gogym.getty.util.IllegalReferenceCountException;
+import org.gogym.getty.util.internal.EmptyArrays;
 
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;

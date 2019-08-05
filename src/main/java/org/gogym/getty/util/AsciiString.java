@@ -15,8 +15,6 @@
  */
 package org.gogym.getty.util;
 
-import io.netty.util.internal.EmptyArrays;
-
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
 import java.nio.charset.Charset;
@@ -27,6 +25,7 @@ import java.util.List;
 import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 
+import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.InternalThreadLocalMap;
 import org.gogym.getty.util.internal.PlatformDependent;
 
