@@ -26,7 +26,7 @@ public enum SslProvider {
     /**
      * JDK's default implementation.
      */
-    JDK,
+    //JDK,
     /**
      * OpenSSL-based implementation.
      */

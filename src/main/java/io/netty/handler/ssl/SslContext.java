@@ -123,11 +123,7 @@ public abstract class SslContext {
 	}
 
 	private static SslProvider defaultProvider() {
-		if (OpenSsl.isAvailable()) {
-			return SslProvider.OPENSSL;
-		} else {
-			return SslProvider.JDK;
-		}
+		return SslProvider.OPENSSL;
 	}
 
 	/**
