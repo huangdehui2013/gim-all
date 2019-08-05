@@ -44,14 +44,6 @@ gim是基于netty封装的及时通讯框架
 
 
 ```
-<!--netty依赖 -->
-<dependency>
-<groupId>io.netty</groupId>
-<artifactId>netty-all</artifactId>
-<version>4.1.36.Final</version>
-</dependency>
-```
-```
 <!-- 如果需要使用openSSL,需添加下面两个依赖，使用JDK提供的ssl则不需要 -->
 <dependency>
 <groupId>io.netty</groupId>
