@@ -91,10 +91,6 @@ public abstract class AbstractEventExecutor extends AbstractExecutorService impl
         return new DefaultPromise<V>(this);
     }
 
-    @Override
-    public <V> ProgressivePromise<V> newProgressivePromise() {
-        return new DefaultProgressivePromise<V>(this);
-    }
 
     @Override
     public <V> Future<V> newSucceededFuture(V result) {
