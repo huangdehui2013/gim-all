@@ -33,7 +33,6 @@ import io.netty.internal.tcnative.Buffer;
 import io.netty.internal.tcnative.Library;
 import io.netty.internal.tcnative.SSL;
 import io.netty.internal.tcnative.SSLContext;
-import io.netty.util.internal.NativeLibraryLoader;
 
 import java.io.ByteArrayInputStream;
 import java.security.cert.CertificateException;
@@ -50,6 +49,7 @@ import org.gogym.getty.buffer.UnpooledByteBufAllocator;
 import org.gogym.getty.util.CharsetUtil;
 import org.gogym.getty.util.ReferenceCountUtil;
 import org.gogym.getty.util.ReferenceCounted;
+import org.gogym.getty.util.internal.NativeLibraryLoader;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package io.netty.util.internal;
+package org.gogym.getty.util.internal;
 
 import java.io.ByteArrayOutputStream;
 import java.io.Closeable;
@@ -34,9 +34,6 @@ import java.util.List;
 import java.util.Set;
 
 import org.gogym.getty.util.CharsetUtil;
-import org.gogym.getty.util.internal.PlatformDependent;
-import org.gogym.getty.util.internal.SystemPropertyUtil;
-import org.gogym.getty.util.internal.ThrowableUtil;
 
 /**
  * Helper class to load JNI resources.
@@ -56,7 +53,7 @@ public final class NativeLibraryLoader {
             "0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ".getBytes(CharsetUtil.US_ASCII);
 
     static {
-        String workdir = SystemPropertyUtil.get("io.netty.native.workdir");
+        String workdir = SystemPropertyUtil.get("org.gogym.getty.native.workdir");
         if (workdir != null) {
             File f = new File(workdir);
             f.mkdirs();
@@ -75,11 +72,11 @@ public final class NativeLibraryLoader {
         }
 
         DELETE_NATIVE_LIB_AFTER_LOADING = SystemPropertyUtil.getBoolean(
-                "io.netty.native.deleteLibAfterLoading", true);
+                "org.gogym.getty.native.deleteLibAfterLoading", true);
        // logger.debug("-Dio.netty.native.deleteLibAfterLoading: {}", DELETE_NATIVE_LIB_AFTER_LOADING);
 
         TRY_TO_PATCH_SHADED_ID = SystemPropertyUtil.getBoolean(
-                "io.netty.native.tryPatchShadedId", true);
+                "org.gogym.getty.native.tryPatchShadedId", true);
        // logger.debug("-Dio.netty.native.tryPatchShadedId: {}", TRY_TO_PATCH_SHADED_ID);
     }
 
@@ -115,7 +112,7 @@ public final class NativeLibraryLoader {
     private static String calculatePackagePrefix() {
         String maybeShaded = NativeLibraryLoader.class.getName();
         // Use ! instead of . to avoid shading utilities from modifying the string
-        String expected = "io!netty!util!internal!NativeLibraryLoader".replace('!', '.');
+        String expected = "org!gogym!getty!util!internal!NativeLibraryLoader".replace('!', '.');
         if (!maybeShaded.endsWith(expected)) {
             throw new UnsatisfiedLinkError(String.format(
                     "Could not find prefix added to %s to get %s. When shading, only adding a "
