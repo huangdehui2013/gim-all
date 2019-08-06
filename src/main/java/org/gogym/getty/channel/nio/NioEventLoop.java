@@ -41,7 +41,6 @@ import org.gogym.getty.channel.EventLoopTaskQueueFactory;
 import org.gogym.getty.channel.SelectStrategy;
 import org.gogym.getty.channel.SingleThreadEventLoop;
 import org.gogym.getty.util.IntSupplier;
-import org.gogym.getty.util.concurrent.ProgressivePromise;
 import org.gogym.getty.util.concurrent.RejectedExecutionHandler;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.ReflectionUtil;
