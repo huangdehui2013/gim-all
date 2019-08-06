@@ -301,10 +301,6 @@ public abstract class AbstractChannel extends DefaultAttributeMap implements Cha
         return pipeline.newPromise();
     }
 
-    @Override
-    public ChannelProgressivePromise newProgressivePromise() {
-        return pipeline.newProgressivePromise();
-    }
 
     @Override
     public ChannelFuture newSucceededFuture() {

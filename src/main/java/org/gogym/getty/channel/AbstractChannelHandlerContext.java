@@ -889,10 +889,6 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return new DefaultChannelPromise(channel(), executor());
 	}
 
-	@Override
-	public ChannelProgressivePromise newProgressivePromise() {
-		return new DefaultChannelProgressivePromise(channel(), executor());
-	}
 
 	@Override
 	public ChannelFuture newSucceededFuture() {
