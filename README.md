@@ -44,22 +44,6 @@ gim是基于netty封装的及时通讯框架
 
 
 ```
-<!-- 如果需要使用openSSL,需添加下面两个依赖，使用JDK提供的ssl则不需要 -->
-<dependency>
-<groupId>io.netty</groupId>
-<artifactId>netty-tcnative</artifactId>
-<version>2.0.25.Final</version>
-<scope>runtime</scope>
-</dependency>
-    
-<dependency>
-<groupId>io.netty</groupId>
-<artifactId>netty-tcnative-boringssl-static</artifactId>
-<version>2.0.25.Final</version>
-<scope>runtime</scope>
-</dependency>
-```
-```
 <!--引入protobuf依赖 -->
 <dependency>
 <groupId>com.google.protobuf</groupId>
