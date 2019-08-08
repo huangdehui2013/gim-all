@@ -41,21 +41,10 @@ import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.SocketUtils;
 import org.gogym.getty.util.internal.StringUtil;
 
-/**
- * {@link AbstractBootstrap} is a helper class that makes it easy to bootstrap a
- * {@link Channel}. It support method-chaining to provide an easy way to
- * configure the {@link AbstractBootstrap}.
- *
- * <p>
- * When not used in a {@link ServerBootstrap} context, the {@link #bind()}
- * methods are useful for connectionless transports such as datagram (UDP).
- * </p>
- */
 public abstract class AbstractBootstrap<B extends AbstractBootstrap<B, C>, C extends Channel>
 		implements Cloneable {
 
 	volatile EventLoopGroup group;
-	@SuppressWarnings("deprecation")
 	private volatile ChannelFactory<? extends C> channelFactory;
 	private volatile SocketAddress localAddress;
 	private final Map<ChannelOption<?>, Object> options = new LinkedHashMap<ChannelOption<?>, Object>();
@@ -213,7 +202,6 @@ public abstract class AbstractBootstrap<B extends AbstractBootstrap<B, C>, C ext
 	 * resource.
 	 */
 	@Override
-	@SuppressWarnings("CloneDoesntDeclareCloneNotSupportedException")
 	public abstract B clone();
 
 	/**
