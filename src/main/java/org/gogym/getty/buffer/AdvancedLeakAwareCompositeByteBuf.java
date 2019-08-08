@@ -33,9 +33,9 @@ import org.gogym.getty.util.ResourceLeakTracker;
 
 import static org.gogym.getty.buffer.AdvancedLeakAwareByteBuf.recordLeakNonRefCountingOperation;
 
-final class AdvancedLeakAwareCompositeByteBuf extends SimpleLeakAwareCompositeByteBuf {
+public final class AdvancedLeakAwareCompositeByteBuf extends SimpleLeakAwareCompositeByteBuf {
 
-    AdvancedLeakAwareCompositeByteBuf(CompositeByteBuf wrapped, ResourceLeakTracker<ByteBuf> leak) {
+	public AdvancedLeakAwareCompositeByteBuf(CompositeByteBuf wrapped, ResourceLeakTracker<ByteBuf> leak) {
         super(wrapped, leak);
     }
 

@@ -25,6 +25,8 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
 
+import org.gogym.getty.buffer.abs.AbstractDerivedByteBuf;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.util.ByteProcessor;
 
 /**
@@ -147,7 +149,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setByte(int index, int value) {
+	public void _setByte(int index, int value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -157,7 +159,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setShort(int index, int value) {
+    public void _setShort(int index, int value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -167,7 +169,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setShortLE(int index, int value) {
+    public void _setShortLE(int index, int value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -177,7 +179,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setMedium(int index, int value) {
+    public void _setMedium(int index, int value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -187,7 +189,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setMediumLE(int index, int value) {
+    public void _setMediumLE(int index, int value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -197,7 +199,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setInt(int index, int value) {
+    public void _setInt(int index, int value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -207,7 +209,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setIntLE(int index, int value) {
+    public void _setIntLE(int index, int value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -217,7 +219,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setLong(int index, long value) {
+    public void _setLong(int index, long value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -227,7 +229,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected void _setLongLE(int index, long value) {
+    public void _setLongLE(int index, long value) {
         throw new ReadOnlyBufferException();
     }
 
@@ -304,7 +306,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected byte _getByte(int index) {
+    public byte _getByte(int index) {
         return unwrap().getByte(index);
     }
 
@@ -314,7 +316,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected short _getShort(int index) {
+    public short _getShort(int index) {
         return unwrap().getShort(index);
     }
 
@@ -324,7 +326,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected short _getShortLE(int index) {
+    public short _getShortLE(int index) {
         return unwrap().getShortLE(index);
     }
 
@@ -334,7 +336,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected int _getUnsignedMedium(int index) {
+    public int _getUnsignedMedium(int index) {
         return unwrap().getUnsignedMedium(index);
     }
 
@@ -344,7 +346,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected int _getUnsignedMediumLE(int index) {
+    public int _getUnsignedMediumLE(int index) {
         return unwrap().getUnsignedMediumLE(index);
     }
 
@@ -354,7 +356,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected int _getInt(int index) {
+    public int _getInt(int index) {
         return unwrap().getInt(index);
     }
 
@@ -364,7 +366,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected int _getIntLE(int index) {
+    public int _getIntLE(int index) {
         return unwrap().getIntLE(index);
     }
 
@@ -374,7 +376,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected long _getLong(int index) {
+    public long _getLong(int index) {
         return unwrap().getLong(index);
     }
 
@@ -384,7 +386,7 @@ public class ReadOnlyByteBuf extends AbstractDerivedByteBuf {
     }
 
     @Override
-    protected long _getLongLE(int index) {
+    public long _getLongLE(int index) {
         return unwrap().getLongLE(index);
     }
 

@@ -20,12 +20,12 @@ import java.net.SocketException;
 import java.util.Map;
 
 import org.gogym.getty.buffer.ByteBufAllocator;
-import org.gogym.getty.channel.ChannelException;
 import org.gogym.getty.channel.ChannelOption;
 import org.gogym.getty.channel.MessageSizeEstimator;
 import org.gogym.getty.channel.RecvByteBufAllocator;
 import org.gogym.getty.channel.WriteBufferWaterMark;
 import org.gogym.getty.channel.defaults.DefaultChannelConfig;
+import org.gogym.getty.channel.exception.ChannelException;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 import static org.gogym.getty.channel.ChannelOption.*;

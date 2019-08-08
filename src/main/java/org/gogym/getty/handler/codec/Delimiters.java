@@ -16,7 +16,7 @@
 package org.gogym.getty.handler.codec;
 
 import org.gogym.getty.buffer.ByteBuf;
-import org.gogym.getty.buffer.Unpooled;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 
 /**
  * A set of commonly used delimiters for {@link DelimiterBasedFrameDecoder}.

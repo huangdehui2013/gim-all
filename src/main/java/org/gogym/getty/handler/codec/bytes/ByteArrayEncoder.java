@@ -18,7 +18,7 @@ package org.gogym.getty.handler.codec.bytes;
 import java.util.List;
 
 import org.gogym.getty.buffer.ByteBuf;
-import org.gogym.getty.buffer.Unpooled;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.channel.ChannelHandlerContext;
 import org.gogym.getty.channel.ChannelPipeline;
 import org.gogym.getty.channel.ChannelHandler.Sharable;

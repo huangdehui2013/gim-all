@@ -22,8 +22,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import org.gogym.getty.channel.ChannelException;
 import org.gogym.getty.channel.ChannelOption;
+import org.gogym.getty.channel.exception.ChannelException;
 
 /**
  * Provides {@link ChannelOption} over a given {@link java.net.SocketOption} which is then passed through the underlying

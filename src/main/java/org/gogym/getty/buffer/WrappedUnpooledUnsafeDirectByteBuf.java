@@ -17,11 +17,12 @@ package org.gogym.getty.buffer;
 
 import java.nio.ByteBuffer;
 
+import org.gogym.getty.buffer.unpooled.UnpooledUnsafeDirectByteBuf;
 import org.gogym.getty.util.internal.PlatformDependent;
 
-final class WrappedUnpooledUnsafeDirectByteBuf extends UnpooledUnsafeDirectByteBuf {
+public final class WrappedUnpooledUnsafeDirectByteBuf extends UnpooledUnsafeDirectByteBuf {
 
-    WrappedUnpooledUnsafeDirectByteBuf(ByteBufAllocator alloc, long memoryAddress, int size, boolean doFree) {
+	public WrappedUnpooledUnsafeDirectByteBuf(ByteBufAllocator alloc, long memoryAddress, int size, boolean doFree) {
         super(alloc, PlatformDependent.directBuffer(memoryAddress, size), size, doFree);
     }
 

@@ -45,7 +45,7 @@ import java.util.Set;
 
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufAllocator;
-import org.gogym.getty.buffer.UnpooledByteBufAllocator;
+import org.gogym.getty.buffer.unpooled.UnpooledByteBufAllocator;
 import org.gogym.getty.util.CharsetUtil;
 import org.gogym.getty.util.ReferenceCountUtil;
 import org.gogym.getty.util.ReferenceCounted;

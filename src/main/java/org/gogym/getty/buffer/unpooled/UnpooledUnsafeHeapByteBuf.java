@@ -13,8 +13,13 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.unpooled;
 
+import org.gogym.getty.buffer.ByteBuf;
+import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.buffer.SwappedByteBuf;
+import org.gogym.getty.buffer.UnsafeByteBufUtil;
+import org.gogym.getty.buffer.UnsafeHeapSwappedByteBuf;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 /**
@@ -46,7 +51,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected byte _getByte(int index) {
+    public byte _getByte(int index) {
         return UnsafeByteBufUtil.getByte(array, index);
     }
 
@@ -57,7 +62,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected short _getShort(int index) {
+    public short _getShort(int index) {
         return UnsafeByteBufUtil.getShort(array, index);
     }
 
@@ -68,7 +73,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected short _getShortLE(int index) {
+    public short _getShortLE(int index) {
         return UnsafeByteBufUtil.getShortLE(array, index);
     }
 
@@ -79,7 +84,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected int _getUnsignedMedium(int index) {
+    public int _getUnsignedMedium(int index) {
         return UnsafeByteBufUtil.getUnsignedMedium(array, index);
     }
 
@@ -90,7 +95,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected int _getUnsignedMediumLE(int index) {
+    public int _getUnsignedMediumLE(int index) {
         return UnsafeByteBufUtil.getUnsignedMediumLE(array, index);
     }
 
@@ -101,7 +106,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected int _getInt(int index) {
+    public int _getInt(int index) {
         return UnsafeByteBufUtil.getInt(array, index);
     }
 
@@ -112,7 +117,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected int _getIntLE(int index) {
+    public int _getIntLE(int index) {
         return UnsafeByteBufUtil.getIntLE(array, index);
     }
 
@@ -123,7 +128,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected long _getLong(int index) {
+    public long _getLong(int index) {
         return UnsafeByteBufUtil.getLong(array, index);
     }
 
@@ -134,7 +139,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected long _getLongLE(int index) {
+    public long _getLongLE(int index) {
         return UnsafeByteBufUtil.getLongLE(array, index);
     }
 
@@ -146,7 +151,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setByte(int index, int value) {
+    public void _setByte(int index, int value) {
         UnsafeByteBufUtil.setByte(array, index, value);
     }
 
@@ -158,7 +163,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setShort(int index, int value) {
+    public void _setShort(int index, int value) {
         UnsafeByteBufUtil.setShort(array, index, value);
     }
 
@@ -170,7 +175,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setShortLE(int index, int value) {
+    public void _setShortLE(int index, int value) {
         UnsafeByteBufUtil.setShortLE(array, index, value);
     }
 
@@ -182,7 +187,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setMedium(int index, int value) {
+    public void _setMedium(int index, int value) {
         UnsafeByteBufUtil.setMedium(array, index, value);
     }
 
@@ -194,7 +199,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setMediumLE(int index, int value) {
+    public void _setMediumLE(int index, int value) {
         UnsafeByteBufUtil.setMediumLE(array, index, value);
     }
 
@@ -206,7 +211,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setInt(int index, int value) {
+    public void _setInt(int index, int value) {
         UnsafeByteBufUtil.setInt(array, index, value);
     }
 
@@ -218,7 +223,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setIntLE(int index, int value) {
+    public void _setIntLE(int index, int value) {
         UnsafeByteBufUtil.setIntLE(array, index, value);
     }
 
@@ -230,7 +235,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setLong(int index, long value) {
+    public void _setLong(int index, long value) {
         UnsafeByteBufUtil.setLong(array, index, value);
     }
 
@@ -242,7 +247,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
     }
 
     @Override
-    protected void _setLongLE(int index, long value) {
+    public void _setLongLE(int index, long value) {
         UnsafeByteBufUtil.setLongLE(array, index, value);
     }
 
@@ -272,7 +277,7 @@ public class UnpooledUnsafeHeapByteBuf extends UnpooledHeapByteBuf {
 
     @Override
     @Deprecated
-    protected SwappedByteBuf newSwappedByteBuf() {
+    public SwappedByteBuf newSwappedByteBuf() {
         if (PlatformDependent.isUnaligned()) {
             // Only use if unaligned access is supported otherwise there is no gain.
             return new UnsafeHeapSwappedByteBuf(this);

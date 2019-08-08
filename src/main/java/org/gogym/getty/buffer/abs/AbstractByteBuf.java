@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.abs;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +25,12 @@ import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
 import java.nio.charset.Charset;
 
+import org.gogym.getty.buffer.ByteBuf;
+import org.gogym.getty.buffer.ByteBufUtil;
+import org.gogym.getty.buffer.SwappedByteBuf;
+import org.gogym.getty.buffer.unpooled.Unpooled;
+import org.gogym.getty.buffer.unpooled.UnpooledDuplicatedByteBuf;
+import org.gogym.getty.buffer.unpooled.UnpooledSlicedByteBuf;
 import org.gogym.getty.util.AsciiString;
 import org.gogym.getty.util.ByteProcessor;
 import org.gogym.getty.util.CharsetUtil;
@@ -46,7 +52,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 	// InternalLoggerFactory.getInstance(AbstractByteBuf.class);
 	private static final String LEGACY_PROP_CHECK_ACCESSIBLE = "io.netty.buffer.bytebuf.checkAccessible";
 	private static final String PROP_CHECK_ACCESSIBLE = "io.netty.buffer.checkAccessible";
-	static final boolean checkAccessible; // accessed from CompositeByteBuf
+	public static final boolean checkAccessible; // accessed from CompositeByteBuf
 	private static final String PROP_CHECK_BOUNDS = "io.netty.buffer.checkBounds";
 	private static final boolean checkBounds;
 
@@ -68,8 +74,8 @@ public abstract class AbstractByteBuf extends ByteBuf {
 	static final ResourceLeakDetector<ByteBuf> leakDetector = ResourceLeakDetectorFactory
 			.instance().newResourceLeakDetector(ByteBuf.class);
 
-	int readerIndex;
-	int writerIndex;
+	public int readerIndex;
+	public int writerIndex;
 	private int markedReaderIndex;
 	private int markedWriterIndex;
 	private int maxCapacity;
@@ -279,7 +285,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	final void ensureWritable0(int minWritableBytes) {
+	public final void ensureWritable0(int minWritableBytes) {
 		ensureAccessible();
 		if (minWritableBytes <= writableBytes()) {
 			return;
@@ -360,7 +366,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 	/**
 	 * Creates a new {@link SwappedByteBuf} for this {@link ByteBuf} instance.
 	 */
-	protected SwappedByteBuf newSwappedByteBuf() {
+	public SwappedByteBuf newSwappedByteBuf() {
 		return new SwappedByteBuf(this);
 	}
 
@@ -370,7 +376,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getByte(index);
 	}
 
-	protected abstract byte _getByte(int index);
+	public abstract byte _getByte(int index);
 
 	@Override
 	public boolean getBoolean(int index) {
@@ -388,7 +394,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getShort(index);
 	}
 
-	protected abstract short _getShort(int index);
+	public abstract short _getShort(int index);
 
 	@Override
 	public short getShortLE(int index) {
@@ -396,7 +402,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getShortLE(index);
 	}
 
-	protected abstract short _getShortLE(int index);
+	public abstract short _getShortLE(int index);
 
 	@Override
 	public int getUnsignedShort(int index) {
@@ -414,7 +420,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getUnsignedMedium(index);
 	}
 
-	protected abstract int _getUnsignedMedium(int index);
+	public abstract int _getUnsignedMedium(int index);
 
 	@Override
 	public int getUnsignedMediumLE(int index) {
@@ -422,7 +428,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getUnsignedMediumLE(index);
 	}
 
-	protected abstract int _getUnsignedMediumLE(int index);
+	public abstract int _getUnsignedMediumLE(int index);
 
 	@Override
 	public int getMedium(int index) {
@@ -448,7 +454,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getInt(index);
 	}
 
-	protected abstract int _getInt(int index);
+	public abstract int _getInt(int index);
 
 	@Override
 	public int getIntLE(int index) {
@@ -456,7 +462,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getIntLE(index);
 	}
 
-	protected abstract int _getIntLE(int index);
+	public abstract int _getIntLE(int index);
 
 	@Override
 	public long getUnsignedInt(int index) {
@@ -474,7 +480,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getLong(index);
 	}
 
-	protected abstract long _getLong(int index);
+	public abstract long _getLong(int index);
 
 	@Override
 	public long getLongLE(int index) {
@@ -482,7 +488,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return _getLongLE(index);
 	}
 
-	protected abstract long _getLongLE(int index);
+	public abstract long _getLongLE(int index);
 
 	@Override
 	public char getChar(int index) {
@@ -544,7 +550,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setByte(int index, int value);
+	public abstract void _setByte(int index, int value);
 
 	@Override
 	public ByteBuf setBoolean(int index, boolean value) {
@@ -559,7 +565,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setShort(int index, int value);
+	public abstract void _setShort(int index, int value);
 
 	@Override
 	public ByteBuf setShortLE(int index, int value) {
@@ -568,7 +574,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setShortLE(int index, int value);
+	public abstract void _setShortLE(int index, int value);
 
 	@Override
 	public ByteBuf setChar(int index, int value) {
@@ -583,7 +589,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setMedium(int index, int value);
+	public abstract void _setMedium(int index, int value);
 
 	@Override
 	public ByteBuf setMediumLE(int index, int value) {
@@ -592,7 +598,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setMediumLE(int index, int value);
+	public abstract void _setMediumLE(int index, int value);
 
 	@Override
 	public ByteBuf setInt(int index, int value) {
@@ -601,7 +607,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setInt(int index, int value);
+	public abstract void _setInt(int index, int value);
 
 	@Override
 	public ByteBuf setIntLE(int index, int value) {
@@ -610,7 +616,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setIntLE(int index, int value);
+	public abstract void _setIntLE(int index, int value);
 
 	@Override
 	public ByteBuf setFloat(int index, float value) {
@@ -625,7 +631,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setLong(int index, long value);
+	public abstract void _setLong(int index, long value);
 
 	@Override
 	public ByteBuf setLongLE(int index, long value) {
@@ -634,7 +640,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		return this;
 	}
 
-	protected abstract void _setLongLE(int index, long value);
+	public abstract void _setLongLE(int index, long value);
 
 	@Override
 	public ByteBuf setDouble(int index, double value) {
@@ -1320,7 +1326,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		}
 	}
 
-	int forEachByteAsc0(int start, int end, ByteProcessor processor)
+	public int forEachByteAsc0(int start, int end, ByteProcessor processor)
 			throws Exception {
 		for (; start < end; ++start) {
 			if (!processor.process(_getByte(start))) {
@@ -1353,7 +1359,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		}
 	}
 
-	int forEachByteDesc0(int rStart, final int rEnd, ByteProcessor processor)
+	public int forEachByteDesc0(int rStart, final int rEnd, ByteProcessor processor)
 			throws Exception {
 		for (; rStart >= rEnd; --rStart) {
 			if (!processor.process(_getByte(rStart))) {
@@ -1406,7 +1412,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		checkIndex(index, 1);
 	}
 
-	protected final void checkIndex(int index, int fieldLength) {
+	public final void checkIndex(int index, int fieldLength) {
 		ensureAccessible();
 		checkIndex0(index, fieldLength);
 	}
@@ -1492,7 +1498,7 @@ public abstract class AbstractByteBuf extends ByteBuf {
 		}
 	}
 
-	final void setIndex0(int readerIndex, int writerIndex) {
+	public final void setIndex0(int readerIndex, int writerIndex) {
 		this.readerIndex = readerIndex;
 		this.writerIndex = writerIndex;
 	}

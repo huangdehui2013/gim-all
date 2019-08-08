@@ -13,10 +13,12 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.abs;
 
 import java.nio.ByteOrder;
 
+import org.gogym.getty.buffer.ByteBuf;
+import org.gogym.getty.buffer.SwappedByteBuf;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 import static org.gogym.getty.util.internal.PlatformDependent.BIG_ENDIAN_NATIVE_ORDER;
@@ -24,11 +26,11 @@ import static org.gogym.getty.util.internal.PlatformDependent.BIG_ENDIAN_NATIVE_
 /**
  * Special {@link SwappedByteBuf} for {@link ByteBuf}s that is using unsafe.
  */
-abstract class AbstractUnsafeSwappedByteBuf extends SwappedByteBuf {
+public abstract class AbstractUnsafeSwappedByteBuf extends SwappedByteBuf {
     private final boolean nativeByteOrder;
     private final AbstractByteBuf wrapped;
 
-    AbstractUnsafeSwappedByteBuf(AbstractByteBuf buf) {
+    public AbstractUnsafeSwappedByteBuf(AbstractByteBuf buf) {
         super(buf);
         assert PlatformDependent.isUnaligned();
         wrapped = buf;

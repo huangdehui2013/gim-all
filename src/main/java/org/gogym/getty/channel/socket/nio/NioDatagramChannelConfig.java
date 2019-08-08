@@ -23,8 +23,8 @@ import java.nio.channels.DatagramChannel;
 import java.util.Enumeration;
 import java.util.Map;
 
-import org.gogym.getty.channel.ChannelException;
 import org.gogym.getty.channel.ChannelOption;
+import org.gogym.getty.channel.exception.ChannelException;
 import org.gogym.getty.channel.socket.DatagramChannelConfig;
 import org.gogym.getty.channel.socket.DefaultDatagramChannelConfig;
 import org.gogym.getty.util.internal.PlatformDependent;

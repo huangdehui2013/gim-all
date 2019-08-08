@@ -22,7 +22,7 @@ import java.util.List;
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufAllocator;
 import org.gogym.getty.buffer.CompositeByteBuf;
-import org.gogym.getty.buffer.Unpooled;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.channel.ChannelConfig;
 import org.gogym.getty.channel.ChannelHandlerContext;
 import org.gogym.getty.channel.ChannelInboundHandlerAdapter;

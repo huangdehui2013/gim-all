@@ -13,7 +13,9 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.exception;
+
+import org.gogym.getty.channel.ChannelPipeline;
 
 /**
  * A {@link ChannelException} which is thrown when a {@link ChannelPipeline}

@@ -15,7 +15,7 @@
  */
 package org.gogym.getty.handler.timeout;
 
-import org.gogym.getty.channel.ChannelException;
+import org.gogym.getty.channel.exception.ChannelException;
 
 /**
  * A {@link TimeoutException} when no data was either read or written within a

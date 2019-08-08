@@ -26,10 +26,10 @@ import java.nio.channels.spi.SelectorProvider;
 import java.util.List;
 import java.util.Map;
 
-import org.gogym.getty.channel.ChannelException;
 import org.gogym.getty.channel.ChannelMetadata;
 import org.gogym.getty.channel.ChannelOption;
 import org.gogym.getty.channel.ChannelOutboundBuffer;
+import org.gogym.getty.channel.exception.ChannelException;
 import org.gogym.getty.channel.nio.AbstractNioMessageChannel;
 import org.gogym.getty.channel.socket.DefaultServerSocketChannelConfig;
 import org.gogym.getty.channel.socket.ServerSocketChannelConfig;

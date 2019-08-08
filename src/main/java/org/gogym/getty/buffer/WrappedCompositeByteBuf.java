@@ -429,7 +429,7 @@ class WrappedCompositeByteBuf extends CompositeByteBuf {
     }
 
     @Override
-    final boolean isAccessible() {
+    public final boolean isAccessible() {
         return wrapped.isAccessible();
     }
 
@@ -658,47 +658,47 @@ class WrappedCompositeByteBuf extends CompositeByteBuf {
     }
 
     @Override
-    protected final byte _getByte(int index) {
+    public final byte _getByte(int index) {
         return wrapped._getByte(index);
     }
 
     @Override
-    protected final short _getShort(int index) {
+    public final short _getShort(int index) {
         return wrapped._getShort(index);
     }
 
     @Override
-    protected final short _getShortLE(int index) {
+    public final short _getShortLE(int index) {
         return wrapped._getShortLE(index);
     }
 
     @Override
-    protected final int _getUnsignedMedium(int index) {
+    public final int _getUnsignedMedium(int index) {
         return wrapped._getUnsignedMedium(index);
     }
 
     @Override
-    protected final int _getUnsignedMediumLE(int index) {
+    public final int _getUnsignedMediumLE(int index) {
         return wrapped._getUnsignedMediumLE(index);
     }
 
     @Override
-    protected final int _getInt(int index) {
+    public final int _getInt(int index) {
         return wrapped._getInt(index);
     }
 
     @Override
-    protected final int _getIntLE(int index) {
+    public final int _getIntLE(int index) {
         return wrapped._getIntLE(index);
     }
 
     @Override
-    protected final long _getLong(int index) {
+    public final long _getLong(int index) {
         return wrapped._getLong(index);
     }
 
     @Override
-    protected final long _getLongLE(int index) {
+    public final long _getLongLE(int index) {
         return wrapped._getLongLE(index);
     }
 
@@ -738,7 +738,7 @@ class WrappedCompositeByteBuf extends CompositeByteBuf {
     }
 
     @Override
-    protected final void _setByte(int index, int value) {
+    public final void _setByte(int index, int value) {
         wrapped._setByte(index, value);
     }
 
@@ -749,12 +749,12 @@ class WrappedCompositeByteBuf extends CompositeByteBuf {
     }
 
     @Override
-    protected final void _setShort(int index, int value) {
+    public final void _setShort(int index, int value) {
         wrapped._setShort(index, value);
     }
 
     @Override
-    protected final void _setShortLE(int index, int value) {
+    public final void _setShortLE(int index, int value) {
         wrapped._setShortLE(index, value);
     }
 
@@ -765,12 +765,12 @@ class WrappedCompositeByteBuf extends CompositeByteBuf {
     }
 
     @Override
-    protected final void _setMedium(int index, int value) {
+    public final void _setMedium(int index, int value) {
         wrapped._setMedium(index, value);
     }
 
     @Override
-    protected final void _setMediumLE(int index, int value) {
+    public final void _setMediumLE(int index, int value) {
         wrapped._setMediumLE(index, value);
     }
 
@@ -781,12 +781,12 @@ class WrappedCompositeByteBuf extends CompositeByteBuf {
     }
 
     @Override
-    protected final void _setInt(int index, int value) {
+    public final void _setInt(int index, int value) {
         wrapped._setInt(index, value);
     }
 
     @Override
-    protected final void _setIntLE(int index, int value) {
+    public final void _setIntLE(int index, int value) {
         wrapped._setIntLE(index, value);
     }
 
@@ -797,12 +797,12 @@ class WrappedCompositeByteBuf extends CompositeByteBuf {
     }
 
     @Override
-    protected final void _setLong(int index, long value) {
+    public final void _setLong(int index, long value) {
         wrapped._setLong(index, value);
     }
 
     @Override
-    protected final void _setLongLE(int index, long value) {
+    public final void _setLongLE(int index, long value) {
         wrapped._setLongLE(index, value);
     }
 
@@ -1091,7 +1091,7 @@ class WrappedCompositeByteBuf extends CompositeByteBuf {
     }
 
     @Override
-    protected SwappedByteBuf newSwappedByteBuf() {
+    public SwappedByteBuf newSwappedByteBuf() {
         return wrapped.newSwappedByteBuf();
     }
 

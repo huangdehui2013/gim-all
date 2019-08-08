@@ -18,6 +18,7 @@ package org.gogym.getty.channel;
 
 import java.lang.reflect.Constructor;
 
+import org.gogym.getty.channel.exception.ChannelException;
 import org.gogym.getty.util.internal.ObjectUtil;
 import org.gogym.getty.util.internal.StringUtil;
 

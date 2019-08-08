@@ -15,6 +15,8 @@
  */
 package org.gogym.getty.buffer;
 
+import org.gogym.getty.buffer.abs.AbstractUnpooledSlicedByteBuf;
+
 /**
  * A derived buffer which exposes its parent's sub-region only.  It is
  * recommended to use {@link ByteBuf#slice()} and
@@ -33,12 +35,12 @@ public class SlicedByteBuf extends AbstractUnpooledSlicedByteBuf {
     }
 
     @Override
-    final void initLength(int length) {
+    public final void initLength(int length) {
         this.length = length;
     }
 
     @Override
-    final int length() {
+    public final int length() {
         return length;
     }
 

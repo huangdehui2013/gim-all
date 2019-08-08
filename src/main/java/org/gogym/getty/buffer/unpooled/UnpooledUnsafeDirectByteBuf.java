@@ -13,13 +13,18 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.unpooled;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 import java.nio.ByteBuffer;
 
+import org.gogym.getty.buffer.ByteBuf;
+import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.buffer.SwappedByteBuf;
+import org.gogym.getty.buffer.UnsafeByteBufUtil;
+import org.gogym.getty.buffer.UnsafeDirectSwappedByteBuf;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 /**
@@ -29,7 +34,7 @@ import org.gogym.getty.util.internal.PlatformDependent;
  */
 public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
 
-    long memoryAddress;
+	public long memoryAddress;
 
     /**
      * Creates a new direct buffer.
@@ -59,7 +64,7 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
         super(alloc, initialBuffer, maxCapacity, /* doFree = */ false, /* slice = */ true);
     }
 
-    UnpooledUnsafeDirectByteBuf(ByteBufAllocator alloc, ByteBuffer initialBuffer, int maxCapacity, boolean doFree) {
+    public UnpooledUnsafeDirectByteBuf(ByteBufAllocator alloc, ByteBuffer initialBuffer, int maxCapacity, boolean doFree) {
         super(alloc, initialBuffer, maxCapacity, doFree, false);
     }
 
@@ -87,7 +92,7 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected byte _getByte(int index) {
+    public byte _getByte(int index) {
         return UnsafeByteBufUtil.getByte(addr(index));
     }
 
@@ -98,12 +103,12 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected short _getShort(int index) {
+    public short _getShort(int index) {
         return UnsafeByteBufUtil.getShort(addr(index));
     }
 
     @Override
-    protected short _getShortLE(int index) {
+    public short _getShortLE(int index) {
         return UnsafeByteBufUtil.getShortLE(addr(index));
     }
 
@@ -114,12 +119,12 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected int _getUnsignedMedium(int index) {
+    public int _getUnsignedMedium(int index) {
         return UnsafeByteBufUtil.getUnsignedMedium(addr(index));
     }
 
     @Override
-    protected int _getUnsignedMediumLE(int index) {
+    public int _getUnsignedMediumLE(int index) {
         return UnsafeByteBufUtil.getUnsignedMediumLE(addr(index));
     }
 
@@ -130,12 +135,12 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected int _getInt(int index) {
+    public int _getInt(int index) {
         return UnsafeByteBufUtil.getInt(addr(index));
     }
 
     @Override
-    protected int _getIntLE(int index) {
+    public int _getIntLE(int index) {
         return UnsafeByteBufUtil.getIntLE(addr(index));
     }
 
@@ -146,12 +151,12 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected long _getLong(int index) {
+    public long _getLong(int index) {
         return UnsafeByteBufUtil.getLong(addr(index));
     }
 
     @Override
-    protected long _getLongLE(int index) {
+    public long _getLongLE(int index) {
         return UnsafeByteBufUtil.getLongLE(addr(index));
     }
 
@@ -179,7 +184,7 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected void _setByte(int index, int value) {
+    public void _setByte(int index, int value) {
         UnsafeByteBufUtil.setByte(addr(index), value);
     }
 
@@ -191,12 +196,12 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected void _setShort(int index, int value) {
+    public void _setShort(int index, int value) {
         UnsafeByteBufUtil.setShort(addr(index), value);
     }
 
     @Override
-    protected void _setShortLE(int index, int value) {
+    public void _setShortLE(int index, int value) {
         UnsafeByteBufUtil.setShortLE(addr(index), value);
     }
 
@@ -208,12 +213,12 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected void _setMedium(int index, int value) {
+    public void _setMedium(int index, int value) {
         UnsafeByteBufUtil.setMedium(addr(index), value);
     }
 
     @Override
-    protected void _setMediumLE(int index, int value) {
+    public void _setMediumLE(int index, int value) {
         UnsafeByteBufUtil.setMediumLE(addr(index), value);
     }
 
@@ -225,12 +230,12 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected void _setInt(int index, int value) {
+    public void _setInt(int index, int value) {
         UnsafeByteBufUtil.setInt(addr(index), value);
     }
 
     @Override
-    protected void _setIntLE(int index, int value) {
+    public void _setIntLE(int index, int value) {
         UnsafeByteBufUtil.setIntLE(addr(index), value);
     }
 
@@ -242,12 +247,12 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected void _setLong(int index, long value) {
+    public void _setLong(int index, long value) {
         UnsafeByteBufUtil.setLong(addr(index), value);
     }
 
     @Override
-    protected void _setLongLE(int index, long value) {
+    public void _setLongLE(int index, long value) {
         UnsafeByteBufUtil.setLongLE(addr(index), value);
     }
 
@@ -289,7 +294,7 @@ public class UnpooledUnsafeDirectByteBuf extends UnpooledDirectByteBuf {
     }
 
     @Override
-    protected SwappedByteBuf newSwappedByteBuf() {
+    public SwappedByteBuf newSwappedByteBuf() {
         if (PlatformDependent.isUnaligned()) {
             // Only use if unaligned access is supported otherwise there is no gain.
             return new UnsafeDirectSwappedByteBuf(this);

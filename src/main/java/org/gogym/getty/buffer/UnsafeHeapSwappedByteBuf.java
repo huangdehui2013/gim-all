@@ -16,14 +16,16 @@
 
 package org.gogym.getty.buffer;
 
+import org.gogym.getty.buffer.abs.AbstractByteBuf;
+import org.gogym.getty.buffer.abs.AbstractUnsafeSwappedByteBuf;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 /**
  * Special {@link SwappedByteBuf} for {@link ByteBuf}s that use unsafe to access the byte array.
  */
-final class UnsafeHeapSwappedByteBuf extends AbstractUnsafeSwappedByteBuf {
+public final class UnsafeHeapSwappedByteBuf extends AbstractUnsafeSwappedByteBuf {
 
-    UnsafeHeapSwappedByteBuf(AbstractByteBuf buf) {
+	public  UnsafeHeapSwappedByteBuf(AbstractByteBuf buf) {
         super(buf);
     }
 

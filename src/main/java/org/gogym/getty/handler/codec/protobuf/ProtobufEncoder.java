@@ -29,7 +29,7 @@ import org.gogym.getty.handler.codec.LengthFieldBasedFrameDecoder;
 import org.gogym.getty.handler.codec.LengthFieldPrepender;
 import org.gogym.getty.handler.codec.MessageToMessageEncoder;
 
-import static org.gogym.getty.buffer.Unpooled.*;
+import static org.gogym.getty.buffer.unpooled.Unpooled.*;
 
 /**
  * Encodes the requested <a href="https://github.com/google/protobuf">Google

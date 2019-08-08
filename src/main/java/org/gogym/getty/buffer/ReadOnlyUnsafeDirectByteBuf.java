@@ -24,10 +24,10 @@ import org.gogym.getty.util.internal.PlatformDependent;
 /**
  * Read-only ByteBuf which wraps a read-only direct ByteBuffer and use unsafe for best performance.
  */
-final class ReadOnlyUnsafeDirectByteBuf extends ReadOnlyByteBufferBuf {
+public final class ReadOnlyUnsafeDirectByteBuf extends ReadOnlyByteBufferBuf {
     private final long memoryAddress;
 
-    ReadOnlyUnsafeDirectByteBuf(ByteBufAllocator allocator, ByteBuffer byteBuffer) {
+    public  ReadOnlyUnsafeDirectByteBuf(ByteBufAllocator allocator, ByteBuffer byteBuffer) {
         super(allocator, byteBuffer);
         // Use buffer as the super class will slice the passed in ByteBuffer which means the memoryAddress
         // may be different if the position != 0.
@@ -35,27 +35,27 @@ final class ReadOnlyUnsafeDirectByteBuf extends ReadOnlyByteBufferBuf {
     }
 
     @Override
-    protected byte _getByte(int index) {
+    public byte _getByte(int index) {
         return UnsafeByteBufUtil.getByte(addr(index));
     }
 
     @Override
-    protected short _getShort(int index) {
+    public short _getShort(int index) {
         return UnsafeByteBufUtil.getShort(addr(index));
     }
 
     @Override
-    protected int _getUnsignedMedium(int index) {
+    public int _getUnsignedMedium(int index) {
         return UnsafeByteBufUtil.getUnsignedMedium(addr(index));
     }
 
     @Override
-    protected int _getInt(int index) {
+    public int _getInt(int index) {
         return UnsafeByteBufUtil.getInt(addr(index));
     }
 
     @Override
-    protected long _getLong(int index) {
+    public long _getLong(int index) {
         return UnsafeByteBufUtil.getLong(addr(index));
     }
 

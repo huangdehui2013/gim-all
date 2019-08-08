@@ -16,7 +16,7 @@
 package org.gogym.getty.handler.codec;
 
 import org.gogym.getty.buffer.ByteBuf;
-import org.gogym.getty.buffer.Unpooled;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.channel.ChannelHandlerContext;
 import org.gogym.getty.channel.ChannelOutboundHandler;
 import org.gogym.getty.channel.ChannelOutboundHandlerAdapter;

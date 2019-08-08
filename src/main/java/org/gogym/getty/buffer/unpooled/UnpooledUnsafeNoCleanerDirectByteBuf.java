@@ -13,15 +13,17 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.unpooled;
 
 import java.nio.ByteBuffer;
 
+import org.gogym.getty.buffer.ByteBuf;
+import org.gogym.getty.buffer.ByteBufAllocator;
 import org.gogym.getty.util.internal.PlatformDependent;
 
-class UnpooledUnsafeNoCleanerDirectByteBuf extends UnpooledUnsafeDirectByteBuf {
+public class UnpooledUnsafeNoCleanerDirectByteBuf extends UnpooledUnsafeDirectByteBuf {
 
-    UnpooledUnsafeNoCleanerDirectByteBuf(ByteBufAllocator alloc, int initialCapacity, int maxCapacity) {
+	public UnpooledUnsafeNoCleanerDirectByteBuf(ByteBufAllocator alloc, int initialCapacity, int maxCapacity) {
         super(alloc, initialCapacity, maxCapacity);
     }
 

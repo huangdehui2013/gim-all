@@ -14,10 +14,11 @@
  * under the License.
  */
 
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.abs;
 
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
+import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.util.internal.ReferenceCountUpdater;
 
 /**
@@ -50,7 +51,7 @@ public abstract class AbstractReferenceCountedByteBuf extends AbstractByteBuf {
     }
 
     @Override
-    boolean isAccessible() {
+    public boolean isAccessible() {
         // Try to do non-volatile read for performance as the ensureAccessible() is racy anyway and only provide
         // a best-effort guard.
         return updater.isLiveNonVolatile(this);

@@ -21,11 +21,11 @@ import java.nio.ByteOrder;
  * A {@link ByteBuf} implementation that wraps another buffer to prevent a user from increasing or decreasing the
  * wrapped buffer's reference count.
  */
-final class UnreleasableByteBuf extends WrappedByteBuf {
+public final class UnreleasableByteBuf extends WrappedByteBuf {
 
     private SwappedByteBuf swappedBuf;
 
-    UnreleasableByteBuf(ByteBuf buf) {
+    public UnreleasableByteBuf(ByteBuf buf) {
         super(buf instanceof UnreleasableByteBuf ? buf.unwrap() : buf);
     }
 

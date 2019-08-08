@@ -22,7 +22,7 @@ import org.gogym.getty.util.ResourceLeakDetector;
 import org.gogym.getty.util.ResourceLeakTracker;
 import org.gogym.getty.util.internal.ObjectUtil;
 
-class SimpleLeakAwareByteBuf extends WrappedByteBuf {
+public class SimpleLeakAwareByteBuf extends WrappedByteBuf {
 
     /**
      * This object's is associated with the {@link ResourceLeakTracker}. When {@link ResourceLeakTracker#close(Object)}
@@ -38,7 +38,7 @@ class SimpleLeakAwareByteBuf extends WrappedByteBuf {
         this.leak = ObjectUtil.checkNotNull(leak, "leak");
     }
 
-    SimpleLeakAwareByteBuf(ByteBuf wrapped, ResourceLeakTracker<ByteBuf> leak) {
+    public SimpleLeakAwareByteBuf(ByteBuf wrapped, ResourceLeakTracker<ByteBuf> leak) {
         this(wrapped, wrapped, leak);
     }
 

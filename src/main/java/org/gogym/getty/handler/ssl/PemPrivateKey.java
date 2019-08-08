@@ -21,7 +21,7 @@ import javax.security.auth.Destroyable;
 
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufAllocator;
-import org.gogym.getty.buffer.Unpooled;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.util.AbstractReferenceCounted;
 import org.gogym.getty.util.CharsetUtil;
 import org.gogym.getty.util.IllegalReferenceCountException;

@@ -21,11 +21,11 @@ import java.nio.ByteOrder;
 import org.gogym.getty.util.ResourceLeakTracker;
 import org.gogym.getty.util.internal.ObjectUtil;
 
-class SimpleLeakAwareCompositeByteBuf extends WrappedCompositeByteBuf {
+public class SimpleLeakAwareCompositeByteBuf extends WrappedCompositeByteBuf {
 
     final ResourceLeakTracker<ByteBuf> leak;
 
-    SimpleLeakAwareCompositeByteBuf(CompositeByteBuf wrapped, ResourceLeakTracker<ByteBuf> leak) {
+    public SimpleLeakAwareCompositeByteBuf(CompositeByteBuf wrapped, ResourceLeakTracker<ByteBuf> leak) {
         super(wrapped);
         this.leak = ObjectUtil.checkNotNull(leak, "leak");
     }

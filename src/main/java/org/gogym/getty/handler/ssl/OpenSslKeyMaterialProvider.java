@@ -21,7 +21,7 @@ import javax.net.ssl.SSLException;
 import javax.net.ssl.X509KeyManager;
 
 import org.gogym.getty.buffer.ByteBufAllocator;
-import org.gogym.getty.buffer.UnpooledByteBufAllocator;
+import org.gogym.getty.buffer.unpooled.UnpooledByteBufAllocator;
 
 import java.security.PrivateKey;
 import java.security.cert.X509Certificate;

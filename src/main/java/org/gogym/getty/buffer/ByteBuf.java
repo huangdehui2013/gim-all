@@ -26,6 +26,8 @@ import java.nio.channels.ScatteringByteChannel;
 import java.nio.charset.Charset;
 import java.nio.charset.UnsupportedCharsetException;
 
+import org.gogym.getty.buffer.abs.AbstractByteBuf;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.util.ByteProcessor;
 import org.gogym.getty.util.ReferenceCounted;
 
@@ -2458,7 +2460,7 @@ public abstract class ByteBuf implements ReferenceCounted, Comparable<ByteBuf> {
      * Used internally by {@link AbstractByteBuf#ensureAccessible()} to try to guard
      * against using the buffer after it was released (best-effort).
      */
-    boolean isAccessible() {
+    public boolean isAccessible() {
         return refCnt() != 0;
     }
 }

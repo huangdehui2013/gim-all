@@ -13,7 +13,10 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.exception;
+
+import org.gogym.getty.channel.EventLoop;
+import org.gogym.getty.channel.EventLoopGroup;
 
 /**
  * Special {@link ChannelException} which will be thrown by {@link EventLoop} and {@link EventLoopGroup}

@@ -28,15 +28,15 @@ import java.util.concurrent.TimeUnit;
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufAllocator;
 import org.gogym.getty.buffer.ByteBufUtil;
-import org.gogym.getty.buffer.Unpooled;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.channel.AbstractChannel;
 import org.gogym.getty.channel.Channel;
-import org.gogym.getty.channel.ChannelException;
 import org.gogym.getty.channel.ChannelFuture;
 import org.gogym.getty.channel.ChannelFutureListener;
 import org.gogym.getty.channel.ChannelPromise;
-import org.gogym.getty.channel.ConnectTimeoutException;
 import org.gogym.getty.channel.EventLoop;
+import org.gogym.getty.channel.exception.ChannelException;
+import org.gogym.getty.channel.exception.ConnectTimeoutException;
 import org.gogym.getty.util.ReferenceCountUtil;
 import org.gogym.getty.util.ReferenceCounted;
 

@@ -30,7 +30,6 @@ import java.util.concurrent.Executor;
 
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.channel.Channel;
-import org.gogym.getty.channel.ChannelException;
 import org.gogym.getty.channel.ChannelFuture;
 import org.gogym.getty.channel.ChannelFutureListener;
 import org.gogym.getty.channel.ChannelOption;
@@ -39,6 +38,7 @@ import org.gogym.getty.channel.ChannelPromise;
 import org.gogym.getty.channel.EventLoop;
 import org.gogym.getty.channel.FileRegion;
 import org.gogym.getty.channel.RecvByteBufAllocator;
+import org.gogym.getty.channel.exception.ChannelException;
 import org.gogym.getty.channel.nio.AbstractNioByteChannel;
 import org.gogym.getty.channel.socket.DefaultSocketChannelConfig;
 import org.gogym.getty.channel.socket.ServerSocketChannel;

@@ -18,6 +18,7 @@ package org.gogym.getty.channel;
 import java.net.ConnectException;
 import java.net.SocketAddress;
 
+import org.gogym.getty.channel.exception.ConnectTimeoutException;
 import org.gogym.getty.util.concurrent.EventExecutor;
 import org.gogym.getty.util.concurrent.FutureListener;
 

@@ -14,10 +14,18 @@
  * under the License.
  */
 
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.abs;
 
 import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
+import org.gogym.getty.buffer.AdvancedLeakAwareByteBuf;
+import org.gogym.getty.buffer.AdvancedLeakAwareCompositeByteBuf;
+import org.gogym.getty.buffer.ByteBuf;
+import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.buffer.CompositeByteBuf;
+import org.gogym.getty.buffer.EmptyByteBuf;
+import org.gogym.getty.buffer.SimpleLeakAwareByteBuf;
+import org.gogym.getty.buffer.SimpleLeakAwareCompositeByteBuf;
 import org.gogym.getty.util.ResourceLeakDetector;
 import org.gogym.getty.util.ResourceLeakTracker;
 import org.gogym.getty.util.internal.PlatformDependent;
@@ -28,8 +36,8 @@ import org.gogym.getty.util.internal.StringUtil;
  */
 public abstract class AbstractByteBufAllocator implements ByteBufAllocator {
     static final int DEFAULT_INITIAL_CAPACITY = 256;
-    static final int DEFAULT_MAX_CAPACITY = Integer.MAX_VALUE;
-    static final int DEFAULT_MAX_COMPONENTS = 16;
+    public static final int DEFAULT_MAX_CAPACITY = Integer.MAX_VALUE;
+    public static final int DEFAULT_MAX_COMPONENTS = 16;
     static final int CALCULATE_THRESHOLD = 1048576 * 4; // 4 MiB page
 
     static {

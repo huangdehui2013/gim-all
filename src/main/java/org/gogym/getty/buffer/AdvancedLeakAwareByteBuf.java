@@ -31,7 +31,7 @@ import org.gogym.getty.util.ResourceLeakDetector;
 import org.gogym.getty.util.ResourceLeakTracker;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 
-final class AdvancedLeakAwareByteBuf extends SimpleLeakAwareByteBuf {
+public final class AdvancedLeakAwareByteBuf extends SimpleLeakAwareByteBuf {
 
 	private static final String PROP_ACQUIRE_AND_RELEASE_ONLY = "io.netty.leakDetection.acquireAndReleaseOnly";
 	private static final boolean ACQUIRE_AND_RELEASE_ONLY;
@@ -52,7 +52,7 @@ final class AdvancedLeakAwareByteBuf extends SimpleLeakAwareByteBuf {
 				"touch", "recordLeakNonRefCountingOperation");
 	}
 
-	AdvancedLeakAwareByteBuf(ByteBuf buf, ResourceLeakTracker<ByteBuf> leak) {
+	public AdvancedLeakAwareByteBuf(ByteBuf buf, ResourceLeakTracker<ByteBuf> leak) {
 		super(buf, leak);
 	}
 

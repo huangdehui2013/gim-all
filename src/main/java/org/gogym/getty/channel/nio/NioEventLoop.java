@@ -34,12 +34,12 @@ import java.util.concurrent.TimeUnit;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.gogym.getty.channel.Channel;
-import org.gogym.getty.channel.ChannelException;
 import org.gogym.getty.channel.EventLoop;
-import org.gogym.getty.channel.EventLoopException;
 import org.gogym.getty.channel.EventLoopTaskQueueFactory;
 import org.gogym.getty.channel.SelectStrategy;
 import org.gogym.getty.channel.SingleThreadEventLoop;
+import org.gogym.getty.channel.exception.ChannelException;
+import org.gogym.getty.channel.exception.EventLoopException;
 import org.gogym.getty.util.IntSupplier;
 import org.gogym.getty.util.concurrent.RejectedExecutionHandler;
 import org.gogym.getty.util.internal.PlatformDependent;

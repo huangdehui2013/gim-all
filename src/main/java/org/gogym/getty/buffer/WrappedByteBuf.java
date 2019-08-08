@@ -1040,7 +1040,7 @@ class WrappedByteBuf extends ByteBuf {
     }
 
     @Override
-    final boolean isAccessible() {
+    public final boolean isAccessible() {
         return buf.isAccessible();
     }
 }

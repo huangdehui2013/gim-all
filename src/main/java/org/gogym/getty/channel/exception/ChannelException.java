@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.exception;
 
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.SuppressJava6Requirement;

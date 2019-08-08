@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.unpooled;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -25,6 +25,10 @@ import java.nio.channels.FileChannel;
 import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
 
+import org.gogym.getty.buffer.ByteBuf;
+import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.buffer.HeapByteBufUtil;
+import org.gogym.getty.buffer.abs.AbstractReferenceCountedByteBuf;
 import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 
@@ -333,7 +337,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected byte _getByte(int index) {
+    public byte _getByte(int index) {
         return HeapByteBufUtil.getByte(array, index);
     }
 
@@ -344,7 +348,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected short _getShort(int index) {
+    public short _getShort(int index) {
         return HeapByteBufUtil.getShort(array, index);
     }
 
@@ -355,7 +359,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected short _getShortLE(int index) {
+    public short _getShortLE(int index) {
         return HeapByteBufUtil.getShortLE(array, index);
     }
 
@@ -366,7 +370,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected int _getUnsignedMedium(int index) {
+    public int _getUnsignedMedium(int index) {
         return HeapByteBufUtil.getUnsignedMedium(array, index);
     }
 
@@ -377,7 +381,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected int _getUnsignedMediumLE(int index) {
+    public int _getUnsignedMediumLE(int index) {
         return HeapByteBufUtil.getUnsignedMediumLE(array, index);
     }
 
@@ -388,7 +392,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected int _getInt(int index) {
+    public int _getInt(int index) {
         return HeapByteBufUtil.getInt(array, index);
     }
 
@@ -399,7 +403,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected int _getIntLE(int index) {
+    public int _getIntLE(int index) {
         return HeapByteBufUtil.getIntLE(array, index);
     }
 
@@ -410,7 +414,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected long _getLong(int index) {
+    public long _getLong(int index) {
         return HeapByteBufUtil.getLong(array, index);
     }
 
@@ -421,7 +425,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected long _getLongLE(int index) {
+    public long _getLongLE(int index) {
         return HeapByteBufUtil.getLongLE(array, index);
     }
 
@@ -433,7 +437,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setByte(int index, int value) {
+    public void _setByte(int index, int value) {
         HeapByteBufUtil.setByte(array, index, value);
     }
 
@@ -445,7 +449,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setShort(int index, int value) {
+    public void _setShort(int index, int value) {
         HeapByteBufUtil.setShort(array, index, value);
     }
 
@@ -457,7 +461,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setShortLE(int index, int value) {
+    public void _setShortLE(int index, int value) {
         HeapByteBufUtil.setShortLE(array, index, value);
     }
 
@@ -469,7 +473,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setMedium(int index, int value) {
+    public void _setMedium(int index, int value) {
         HeapByteBufUtil.setMedium(array, index, value);
     }
 
@@ -481,7 +485,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setMediumLE(int index, int value) {
+    public void _setMediumLE(int index, int value) {
         HeapByteBufUtil.setMediumLE(array, index, value);
     }
 
@@ -493,7 +497,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setInt(int index, int value) {
+    public void _setInt(int index, int value) {
         HeapByteBufUtil.setInt(array, index, value);
     }
 
@@ -505,7 +509,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setIntLE(int index, int value) {
+    public void _setIntLE(int index, int value) {
         HeapByteBufUtil.setIntLE(array, index, value);
     }
 
@@ -517,7 +521,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setLong(int index, long value) {
+    public void _setLong(int index, long value) {
         HeapByteBufUtil.setLong(array, index, value);
     }
 
@@ -529,7 +533,7 @@ public class UnpooledHeapByteBuf extends AbstractReferenceCountedByteBuf {
     }
 
     @Override
-    protected void _setLongLE(int index, long value) {
+    public void _setLongLE(int index, long value) {
         HeapByteBufUtil.setLongLE(array, index, value);
     }
 

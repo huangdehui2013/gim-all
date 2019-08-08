@@ -24,7 +24,7 @@ import javax.net.ssl.ManagerFactoryParameters;
 import javax.net.ssl.X509KeyManager;
 
 import org.gogym.getty.buffer.ByteBufAllocator;
-import org.gogym.getty.buffer.UnpooledByteBufAllocator;
+import org.gogym.getty.buffer.unpooled.UnpooledByteBufAllocator;
 import org.gogym.getty.util.ReferenceCountUtil;
 import org.gogym.getty.util.internal.ObjectUtil;
 

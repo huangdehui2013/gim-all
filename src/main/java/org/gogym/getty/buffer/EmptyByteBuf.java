@@ -28,6 +28,7 @@ import java.nio.channels.GatheringByteChannel;
 import java.nio.channels.ScatteringByteChannel;
 import java.nio.charset.Charset;
 
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.util.ByteProcessor;
 import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;

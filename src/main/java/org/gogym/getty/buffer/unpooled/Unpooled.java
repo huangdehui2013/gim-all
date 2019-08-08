@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.buffer;
+package org.gogym.getty.buffer.unpooled;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -21,7 +21,19 @@ import java.nio.CharBuffer;
 import java.nio.charset.Charset;
 import java.util.Arrays;
 
+import org.gogym.getty.buffer.ByteBuf;
+import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.buffer.ByteBufUtil;
+import org.gogym.getty.buffer.CompositeByteBuf;
+import org.gogym.getty.buffer.EmptyByteBuf;
+import org.gogym.getty.buffer.FixedCompositeByteBuf;
+import org.gogym.getty.buffer.ReadOnlyByteBuf;
+import org.gogym.getty.buffer.ReadOnlyByteBufferBuf;
+import org.gogym.getty.buffer.ReadOnlyUnsafeDirectByteBuf;
+import org.gogym.getty.buffer.UnreleasableByteBuf;
+import org.gogym.getty.buffer.WrappedUnpooledUnsafeDirectByteBuf;
 import org.gogym.getty.buffer.CompositeByteBuf.ByteWrapper;
+import org.gogym.getty.buffer.abs.AbstractByteBufAllocator;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 

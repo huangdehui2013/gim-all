@@ -35,6 +35,10 @@ import java.nio.charset.CodingErrorAction;
 import java.util.Arrays;
 import java.util.Locale;
 
+import org.gogym.getty.buffer.abs.AbstractByteBuf;
+import org.gogym.getty.buffer.unpooled.UnpooledByteBufAllocator;
+import org.gogym.getty.buffer.unpooled.UnpooledDirectByteBuf;
+import org.gogym.getty.buffer.unpooled.UnpooledUnsafeDirectByteBuf;
 import org.gogym.getty.util.AsciiString;
 import org.gogym.getty.util.ByteProcessor;
 import org.gogym.getty.util.CharsetUtil;
@@ -97,7 +101,7 @@ public final class ByteBufUtil {
     /**
      * Allocates a new array if minLength > {@link ByteBufUtil#MAX_TL_ARRAY_LEN}
      */
-    static byte[] threadLocalTempArray(int minLength) {
+    public static byte[] threadLocalTempArray(int minLength) {
         return minLength <= MAX_TL_ARRAY_LEN ? BYTE_ARRAYS.get()
             : PlatformDependent.allocateUninitializedArray(minLength);
     }
@@ -559,7 +563,7 @@ public final class ByteBufUtil {
         }
     }
 
-    static int writeUtf8(AbstractByteBuf buffer, int writerIndex, CharSequence seq, int len) {
+   public static int writeUtf8(AbstractByteBuf buffer, int writerIndex, CharSequence seq, int len) {
         return writeUtf8(buffer, writerIndex, seq, 0, len);
     }
 
@@ -755,7 +759,7 @@ public final class ByteBufUtil {
     }
 
     // Fast-Path implementation
-    static int writeAscii(AbstractByteBuf buffer, int writerIndex, CharSequence seq, int len) {
+    public static int writeAscii(AbstractByteBuf buffer, int writerIndex, CharSequence seq, int len) {
 
         // We can use the _set methods as these not need to do any index checks and reference checks.
         // This is possible as we called ensureWritable(...) before.
@@ -786,7 +790,7 @@ public final class ByteBufUtil {
         return encodeString0(alloc, false, src, charset, extraCapacity);
     }
 
-    static ByteBuf encodeString0(ByteBufAllocator alloc, boolean enforceHeap, CharBuffer src, Charset charset,
+    public static ByteBuf encodeString0(ByteBufAllocator alloc, boolean enforceHeap, CharBuffer src, Charset charset,
                                  int extraCapacity) {
         final CharsetEncoder encoder = CharsetUtil.encoder(charset);
         int length = (int) ((double) src.remaining() * encoder.maxBytesPerChar()) + extraCapacity;
@@ -821,7 +825,7 @@ public final class ByteBufUtil {
     }
 
     @SuppressWarnings("deprecation")
-    static String decodeString(ByteBuf src, int readerIndex, int len, Charset charset) {
+    public static String decodeString(ByteBuf src, int readerIndex, int len, Charset charset) {
         if (len == 0) {
             return StringUtil.EMPTY_STRING;
         }
@@ -1441,7 +1445,7 @@ public final class ByteBufUtil {
      * Read bytes from the given {@link ByteBuffer} into the given {@link OutputStream} using the {@code position} and
      * {@code length}. The position and limit of the given {@link ByteBuffer} may be adjusted.
      */
-    static void readBytes(ByteBufAllocator allocator, ByteBuffer buffer, int position, int length, OutputStream out)
+    public static void readBytes(ByteBufAllocator allocator, ByteBuffer buffer, int position, int length, OutputStream out)
             throws IOException {
         if (buffer.hasArray()) {
             out.write(buffer.array(), position + buffer.arrayOffset(), length);

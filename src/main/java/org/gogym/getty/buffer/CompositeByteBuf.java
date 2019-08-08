@@ -32,6 +32,11 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.NoSuchElementException;
 
+import org.gogym.getty.buffer.abs.AbstractByteBuf;
+import org.gogym.getty.buffer.abs.AbstractByteBufAllocator;
+import org.gogym.getty.buffer.abs.AbstractReferenceCountedByteBuf;
+import org.gogym.getty.buffer.abs.AbstractUnpooledSlicedByteBuf;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.util.ByteProcessor;
 import org.gogym.getty.util.IllegalReferenceCountException;
 import org.gogym.getty.util.ReferenceCountUtil;
@@ -82,7 +87,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
         this(alloc, direct, maxNumComponents, buffers, 0);
     }
 
-    CompositeByteBuf(ByteBufAllocator alloc, boolean direct, int maxNumComponents,
+    public  CompositeByteBuf(ByteBufAllocator alloc, boolean direct, int maxNumComponents,
             ByteBuf[] buffers, int offset) {
         this(alloc, direct, maxNumComponents, buffers.length - offset);
 
@@ -101,12 +106,12 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     // support passing arrays of other types instead of having to copy to a ByteBuf[] first
-    interface ByteWrapper<T> {
+    public interface ByteWrapper<T> {
         ByteBuf wrap(T bytes);
         boolean isEmpty(T bytes);
     }
 
-    static final ByteWrapper<byte[]> BYTE_ARRAY_WRAPPER = new ByteWrapper<byte[]>() {
+    public static final ByteWrapper<byte[]> BYTE_ARRAY_WRAPPER = new ByteWrapper<byte[]>() {
         @Override
         public ByteBuf wrap(byte[] bytes) {
             return Unpooled.wrappedBuffer(bytes);
@@ -117,7 +122,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
         }
     };
 
-    static final ByteWrapper<ByteBuffer> BYTE_BUFFER_WRAPPER = new ByteWrapper<ByteBuffer>() {
+    public static final ByteWrapper<ByteBuffer> BYTE_BUFFER_WRAPPER = new ByteWrapper<ByteBuffer>() {
         @Override
         public ByteBuf wrap(ByteBuffer bytes) {
             return Unpooled.wrappedBuffer(bytes);
@@ -128,7 +133,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
         }
     };
 
-    <T> CompositeByteBuf(ByteBufAllocator alloc, boolean direct, int maxNumComponents,
+    public  <T> CompositeByteBuf(ByteBufAllocator alloc, boolean direct, int maxNumComponents,
             ByteWrapper<T> wrapper, T[] buffers, int offset) {
         this(alloc, direct, maxNumComponents, buffers.length - offset);
 
@@ -626,7 +631,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected int forEachByteAsc0(int start, int end, ByteProcessor processor) throws Exception {
+    public int forEachByteAsc0(int start, int end, ByteProcessor processor) throws Exception {
         if (end <= start) {
             return -1;
         }
@@ -652,7 +657,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected int forEachByteDesc0(int rStart, int rEnd, ByteProcessor processor) throws Exception {
+    public int forEachByteDesc0(int rStart, int rEnd, ByteProcessor processor) throws Exception {
         if (rEnd > rStart) { // rStart *and* rEnd are inclusive
             return -1;
         }
@@ -910,13 +915,13 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected byte _getByte(int index) {
+    public byte _getByte(int index) {
         Component c = findComponent0(index);
         return c.buf.getByte(c.idx(index));
     }
 
     @Override
-    protected short _getShort(int index) {
+    public short _getShort(int index) {
         Component c = findComponent0(index);
         if (index + 2 <= c.endOffset) {
             return c.buf.getShort(c.idx(index));
@@ -928,7 +933,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected short _getShortLE(int index) {
+    public short _getShortLE(int index) {
         Component c = findComponent0(index);
         if (index + 2 <= c.endOffset) {
             return c.buf.getShortLE(c.idx(index));
@@ -940,7 +945,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected int _getUnsignedMedium(int index) {
+    public int _getUnsignedMedium(int index) {
         Component c = findComponent0(index);
         if (index + 3 <= c.endOffset) {
             return c.buf.getUnsignedMedium(c.idx(index));
@@ -952,7 +957,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected int _getUnsignedMediumLE(int index) {
+    public int _getUnsignedMediumLE(int index) {
         Component c = findComponent0(index);
         if (index + 3 <= c.endOffset) {
             return c.buf.getUnsignedMediumLE(c.idx(index));
@@ -964,7 +969,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected int _getInt(int index) {
+    public int _getInt(int index) {
         Component c = findComponent0(index);
         if (index + 4 <= c.endOffset) {
             return c.buf.getInt(c.idx(index));
@@ -976,7 +981,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected int _getIntLE(int index) {
+    public int _getIntLE(int index) {
         Component c = findComponent0(index);
         if (index + 4 <= c.endOffset) {
             return c.buf.getIntLE(c.idx(index));
@@ -988,7 +993,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected long _getLong(int index) {
+    public long _getLong(int index) {
         Component c = findComponent0(index);
         if (index + 8 <= c.endOffset) {
             return c.buf.getLong(c.idx(index));
@@ -1000,7 +1005,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected long _getLongLE(int index) {
+    public long _getLongLE(int index) {
         Component c = findComponent0(index);
         if (index + 8 <= c.endOffset) {
             return c.buf.getLongLE(c.idx(index));
@@ -1139,7 +1144,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setByte(int index, int value) {
+    public void _setByte(int index, int value) {
         Component c = findComponent0(index);
         c.buf.setByte(c.idx(index), value);
     }
@@ -1152,7 +1157,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setShort(int index, int value) {
+    public void _setShort(int index, int value) {
         Component c = findComponent0(index);
         if (index + 2 <= c.endOffset) {
             c.buf.setShort(c.idx(index), value);
@@ -1166,7 +1171,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setShortLE(int index, int value) {
+    public void _setShortLE(int index, int value) {
         Component c = findComponent0(index);
         if (index + 2 <= c.endOffset) {
             c.buf.setShortLE(c.idx(index), value);
@@ -1187,7 +1192,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setMedium(int index, int value) {
+    public void _setMedium(int index, int value) {
         Component c = findComponent0(index);
         if (index + 3 <= c.endOffset) {
             c.buf.setMedium(c.idx(index), value);
@@ -1201,7 +1206,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setMediumLE(int index, int value) {
+    public void _setMediumLE(int index, int value) {
         Component c = findComponent0(index);
         if (index + 3 <= c.endOffset) {
             c.buf.setMediumLE(c.idx(index), value);
@@ -1222,7 +1227,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setInt(int index, int value) {
+    public void _setInt(int index, int value) {
         Component c = findComponent0(index);
         if (index + 4 <= c.endOffset) {
             c.buf.setInt(c.idx(index), value);
@@ -1236,7 +1241,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setIntLE(int index, int value) {
+    public void _setIntLE(int index, int value) {
         Component c = findComponent0(index);
         if (index + 4 <= c.endOffset) {
             c.buf.setIntLE(c.idx(index), value);
@@ -1257,7 +1262,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setLong(int index, long value) {
+    public void _setLong(int index, long value) {
         Component c = findComponent0(index);
         if (index + 8 <= c.endOffset) {
             c.buf.setLong(c.idx(index), value);
@@ -1271,7 +1276,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    protected void _setLongLE(int index, long value) {
+    public void _setLongLE(int index, long value) {
         Component c = findComponent0(index);
         if (index + 8 <= c.endOffset) {
             c.buf.setLongLE(c.idx(index), value);
@@ -2215,7 +2220,7 @@ public class CompositeByteBuf extends AbstractReferenceCountedByteBuf implements
     }
 
     @Override
-    boolean isAccessible() {
+    public boolean isAccessible() {
         return !freed;
     }
 

@@ -25,7 +25,7 @@ import java.util.concurrent.atomic.AtomicLongFieldUpdater;
 
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufHolder;
-import org.gogym.getty.buffer.Unpooled;
+import org.gogym.getty.buffer.unpooled.Unpooled;
 import org.gogym.getty.channel.socket.nio.NioSocketChannel;
 import org.gogym.getty.util.Recycler;
 import org.gogym.getty.util.ReferenceCountUtil;
