@@ -13,8 +13,11 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
+import org.gogym.getty.channel.Channel;
+import org.gogym.getty.channel.ChannelFlushPromiseNotifier;
+import org.gogym.getty.channel.ChannelPromise;
 import org.gogym.getty.channel.ChannelFlushPromiseNotifier.FlushCheckpoint;
 import org.gogym.getty.util.concurrent.DefaultPromise;
 import org.gogym.getty.util.concurrent.EventExecutor;

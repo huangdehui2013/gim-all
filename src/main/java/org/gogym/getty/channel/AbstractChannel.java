@@ -27,6 +27,10 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.RejectedExecutionException;
 
 import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.channel.defaults.DefaultChannelId;
+import org.gogym.getty.channel.defaults.DefaultChannelPipeline;
+import org.gogym.getty.channel.defaults.DefaultChannelPromise;
+import org.gogym.getty.channel.defaults.DefaultFileRegion;
 import org.gogym.getty.channel.socket.ChannelOutputShutdownEvent;
 import org.gogym.getty.channel.socket.ChannelOutputShutdownException;
 import org.gogym.getty.util.DefaultAttributeMap;

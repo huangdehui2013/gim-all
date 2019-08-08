@@ -17,6 +17,7 @@ package org.gogym.getty.channel;
 
 import java.util.concurrent.TimeUnit;
 
+import org.gogym.getty.channel.defaults.DefaultChannelPromise;
 import org.gogym.getty.util.concurrent.AbstractFuture;
 import org.gogym.getty.util.concurrent.Future;
 import org.gogym.getty.util.concurrent.GenericFutureListener;

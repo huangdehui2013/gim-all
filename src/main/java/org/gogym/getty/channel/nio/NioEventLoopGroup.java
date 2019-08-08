@@ -21,11 +21,11 @@ import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadFactory;
 
 import org.gogym.getty.channel.Channel;
-import org.gogym.getty.channel.DefaultSelectStrategyFactory;
 import org.gogym.getty.channel.EventLoop;
 import org.gogym.getty.channel.EventLoopTaskQueueFactory;
 import org.gogym.getty.channel.MultithreadEventLoopGroup;
 import org.gogym.getty.channel.SelectStrategyFactory;
+import org.gogym.getty.channel.defaults.DefaultSelectStrategyFactory;
 import org.gogym.getty.util.concurrent.EventExecutor;
 import org.gogym.getty.util.concurrent.EventExecutorChooserFactory;
 import org.gogym.getty.util.concurrent.RejectedExecutionHandler;

@@ -54,7 +54,7 @@ public final class WriteBufferWaterMark {
     /**
      * This constructor is needed to keep backward-compatibility.
      */
-    WriteBufferWaterMark(int low, int high, boolean validate) {
+    public WriteBufferWaterMark(int low, int high, boolean validate) {
         if (validate) {
             checkPositiveOrZero(low, "low");
             if (high < low) {

@@ -27,7 +27,7 @@ import org.gogym.getty.util.internal.InternalThreadLocalMap;
 public abstract class ChannelHandlerAdapter implements ChannelHandler {
 
     // Not using volatile because it's used only for a sanity check.
-    boolean added;
+	public  boolean added;
 
     /**
      * Throws {@link IllegalStateException} if {@link ChannelHandlerAdapter#isSharable()} returns {@code true}

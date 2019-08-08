@@ -13,20 +13,21 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
-import org.gogym.getty.util.IntSupplier;
+import org.gogym.getty.channel.SelectStrategy;
+import org.gogym.getty.channel.SelectStrategyFactory;
 
 /**
- * Default select strategy.
+ * Factory which uses the default select strategy.
  */
-final class DefaultSelectStrategy implements SelectStrategy {
-    static final SelectStrategy INSTANCE = new DefaultSelectStrategy();
+public final class DefaultSelectStrategyFactory implements SelectStrategyFactory {
+    public static final SelectStrategyFactory INSTANCE = new DefaultSelectStrategyFactory();
 
-    private DefaultSelectStrategy() { }
+    private DefaultSelectStrategyFactory() { }
 
     @Override
-    public int calculateStrategy(IntSupplier selectSupplier, boolean hasTasks) throws Exception {
-        return hasTasks ? selectSupplier.get() : SelectStrategy.SELECT;
+    public SelectStrategy newSelectStrategy() {
+        return DefaultSelectStrategy.INSTANCE;
     }
 }

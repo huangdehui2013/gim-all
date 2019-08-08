@@ -14,10 +14,11 @@
  * under the License.
  */
 
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
 import java.net.SocketAddress;
 
+import org.gogym.getty.channel.AddressedEnvelope;
 import org.gogym.getty.util.ReferenceCountUtil;
 import org.gogym.getty.util.ReferenceCounted;
 import org.gogym.getty.util.internal.StringUtil;

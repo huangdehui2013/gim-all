@@ -18,6 +18,8 @@ package org.gogym.getty.channel;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.gogym.getty.channel.defaults.DefaultMaxMessagesRecvByteBufAllocator;
+
 import static java.lang.Math.max;
 import static java.lang.Math.min;
 import static org.gogym.getty.util.internal.ObjectUtil.checkPositive;

@@ -13,11 +13,13 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadFactory;
 
+import org.gogym.getty.channel.EventLoopGroup;
+import org.gogym.getty.channel.SingleThreadEventLoop;
 import org.gogym.getty.util.concurrent.DefaultThreadFactory;
 
 public class DefaultEventLoop extends SingleThreadEventLoop {

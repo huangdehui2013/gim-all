@@ -13,8 +13,10 @@
 * License for the specific language governing permissions and limitations
 * under the License.
 */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
+import org.gogym.getty.channel.AbstractChannelHandlerContext;
+import org.gogym.getty.channel.ChannelHandler;
 import org.gogym.getty.util.concurrent.EventExecutor;
 
 final class DefaultChannelHandlerContext extends AbstractChannelHandlerContext {

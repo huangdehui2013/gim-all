@@ -13,12 +13,15 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
 import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufHolder;
+import org.gogym.getty.channel.FileRegion;
+import org.gogym.getty.channel.MessageSizeEstimator;
+import org.gogym.getty.channel.MessageSizeEstimator.Handle;
 
 /**
  * Default {@link MessageSizeEstimator} implementation which supports the estimation of the size of

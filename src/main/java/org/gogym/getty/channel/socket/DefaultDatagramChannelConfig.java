@@ -37,11 +37,11 @@ import java.util.Map;
 import org.gogym.getty.buffer.ByteBufAllocator;
 import org.gogym.getty.channel.ChannelException;
 import org.gogym.getty.channel.ChannelOption;
-import org.gogym.getty.channel.DefaultChannelConfig;
 import org.gogym.getty.channel.FixedRecvByteBufAllocator;
 import org.gogym.getty.channel.MessageSizeEstimator;
 import org.gogym.getty.channel.RecvByteBufAllocator;
 import org.gogym.getty.channel.WriteBufferWaterMark;
+import org.gogym.getty.channel.defaults.DefaultChannelConfig;
 import org.gogym.getty.util.internal.PlatformDependent;
 
 /**

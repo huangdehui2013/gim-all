@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
 import java.util.IdentityHashMap;
 import java.util.Map;
@@ -22,6 +22,15 @@ import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 import java.util.concurrent.atomic.AtomicReferenceFieldUpdater;
 
 import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.channel.AdaptiveRecvByteBufAllocator;
+import org.gogym.getty.channel.Channel;
+import org.gogym.getty.channel.ChannelConfig;
+import org.gogym.getty.channel.ChannelMetadata;
+import org.gogym.getty.channel.ChannelOption;
+import org.gogym.getty.channel.MaxMessagesRecvByteBufAllocator;
+import org.gogym.getty.channel.MessageSizeEstimator;
+import org.gogym.getty.channel.RecvByteBufAllocator;
+import org.gogym.getty.channel.WriteBufferWaterMark;
 
 import static org.gogym.getty.channel.ChannelOption.ALLOCATOR;
 import static org.gogym.getty.channel.ChannelOption.AUTO_CLOSE;

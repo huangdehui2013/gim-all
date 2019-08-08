@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
 import static org.gogym.getty.util.internal.ObjectUtil.checkPositive;
 
@@ -22,6 +22,11 @@ import java.util.Map.Entry;
 
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.channel.ChannelConfig;
+import org.gogym.getty.channel.MaxBytesRecvByteBufAllocator;
+import org.gogym.getty.channel.RecvByteBufAllocator;
+import org.gogym.getty.channel.RecvByteBufAllocator.ExtendedHandle;
+import org.gogym.getty.channel.RecvByteBufAllocator.Handle;
 import org.gogym.getty.util.UncheckedBooleanSupplier;
 
 /**

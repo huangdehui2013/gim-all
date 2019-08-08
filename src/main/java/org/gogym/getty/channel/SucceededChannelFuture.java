@@ -18,28 +18,29 @@ package org.gogym.getty.channel;
 import org.gogym.getty.util.concurrent.EventExecutor;
 
 /**
- * The {@link CompleteChannelFuture} which is succeeded already.  It is
- * recommended to use {@link Channel#newSucceededFuture()} instead of
- * calling the constructor of this future.
+ * The {@link CompleteChannelFuture} which is succeeded already. It is
+ * recommended to use {@link Channel#newSucceededFuture()} instead of calling
+ * the constructor of this future.
  */
-final class SucceededChannelFuture extends CompleteChannelFuture {
+public final class SucceededChannelFuture extends CompleteChannelFuture {
 
-    /**
-     * Creates a new instance.
-     *
-     * @param channel the {@link Channel} associated with this future
-     */
-    SucceededChannelFuture(Channel channel, EventExecutor executor) {
-        super(channel, executor);
-    }
+	/**
+	 * Creates a new instance.
+	 *
+	 * @param channel
+	 *            the {@link Channel} associated with this future
+	 */
+	public SucceededChannelFuture(Channel channel, EventExecutor executor) {
+		super(channel, executor);
+	}
 
-    @Override
-    public Throwable cause() {
-        return null;
-    }
+	@Override
+	public Throwable cause() {
+		return null;
+	}
 
-    @Override
-    public boolean isSuccess() {
-        return true;
-    }
+	@Override
+	public boolean isSuccess() {
+		return true;
+	}
 }

@@ -22,8 +22,8 @@ import org.gogym.getty.channel.ChannelConfig;
 import org.gogym.getty.channel.ChannelMetadata;
 import org.gogym.getty.channel.ChannelOutboundBuffer;
 import org.gogym.getty.channel.ChannelPromise;
-import org.gogym.getty.channel.DefaultChannelConfig;
 import org.gogym.getty.channel.EventLoop;
+import org.gogym.getty.channel.defaults.DefaultChannelConfig;
 
 final class FailedChannel extends AbstractChannel {
     private static final ChannelMetadata METADATA = new ChannelMetadata(false);

@@ -19,6 +19,7 @@ import java.util.Queue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.ThreadFactory;
 
+import org.gogym.getty.channel.defaults.DefaultChannelPromise;
 import org.gogym.getty.util.concurrent.RejectedExecutionHandler;
 import org.gogym.getty.util.concurrent.RejectedExecutionHandlers;
 import org.gogym.getty.util.concurrent.SingleThreadEventExecutor;

@@ -38,6 +38,8 @@ import java.net.SocketAddress;
 import java.util.concurrent.atomic.AtomicIntegerFieldUpdater;
 
 import org.gogym.getty.buffer.ByteBufAllocator;
+import org.gogym.getty.channel.defaults.DefaultChannelPipeline;
+import org.gogym.getty.channel.defaults.DefaultChannelPromise;
 import org.gogym.getty.util.Attribute;
 import org.gogym.getty.util.AttributeKey;
 import org.gogym.getty.util.Recycler;
@@ -50,13 +52,13 @@ import org.gogym.getty.util.internal.PromiseNotificationUtil;
 import org.gogym.getty.util.internal.StringUtil;
 import org.gogym.getty.util.internal.SystemPropertyUtil;
 
-abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
-		ResourceLeakHint {
+public abstract class AbstractChannelHandlerContext implements
+		ChannelHandlerContext, ResourceLeakHint {
 
 	// private static final InternalLogger logger =
 	// InternalLoggerFactory.getInstance(AbstractChannelHandlerContext.class);
-	volatile AbstractChannelHandlerContext next;
-	volatile AbstractChannelHandlerContext prev;
+	public volatile AbstractChannelHandlerContext next;
+	public volatile AbstractChannelHandlerContext prev;
 
 	private static final AtomicIntegerFieldUpdater<AbstractChannelHandlerContext> HANDLER_STATE_UPDATER = AtomicIntegerFieldUpdater
 			.newUpdater(AbstractChannelHandlerContext.class, "handlerState");
@@ -88,7 +90,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 	// Will be set to null if no child executor should be used, otherwise it
 	// will be set to the
 	// child executor.
-	final EventExecutor executor;
+	public final EventExecutor executor;
 	private ChannelFuture succeededFuture;
 
 	// Lazily instantiated tasks used to trigger events to a handler with
@@ -99,7 +101,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 
 	private volatile int handlerState = INIT;
 
-	AbstractChannelHandlerContext(DefaultChannelPipeline pipeline,
+	public AbstractChannelHandlerContext(DefaultChannelPipeline pipeline,
 			EventExecutor executor, String name,
 			Class<? extends ChannelHandler> handlerClass) {
 		this.name = ObjectUtil.checkNotNull(name, "name");
@@ -146,7 +148,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeChannelRegistered(final AbstractChannelHandlerContext next) {
+	public static void invokeChannelRegistered(final AbstractChannelHandlerContext next) {
 		EventExecutor executor = next.executor();
 		if (executor.inEventLoop()) {
 			next.invokeChannelRegistered();
@@ -178,7 +180,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeChannelUnregistered(
+	public static void invokeChannelUnregistered(
 			final AbstractChannelHandlerContext next) {
 		EventExecutor executor = next.executor();
 		if (executor.inEventLoop()) {
@@ -211,7 +213,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeChannelActive(final AbstractChannelHandlerContext next) {
+	public static void invokeChannelActive(final AbstractChannelHandlerContext next) {
 		EventExecutor executor = next.executor();
 		if (executor.inEventLoop()) {
 			next.invokeChannelActive();
@@ -243,7 +245,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeChannelInactive(final AbstractChannelHandlerContext next) {
+	public static void invokeChannelInactive(final AbstractChannelHandlerContext next) {
 		EventExecutor executor = next.executor();
 		if (executor.inEventLoop()) {
 			next.invokeChannelInactive();
@@ -275,7 +277,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeExceptionCaught(final AbstractChannelHandlerContext next,
+	public static void invokeExceptionCaught(final AbstractChannelHandlerContext next,
 			final Throwable cause) {
 		ObjectUtil.checkNotNull(cause, "cause");
 		EventExecutor executor = next.executor();
@@ -332,7 +334,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeUserEventTriggered(
+	public static void invokeUserEventTriggered(
 			final AbstractChannelHandlerContext next, final Object event) {
 		ObjectUtil.checkNotNull(event, "event");
 		EventExecutor executor = next.executor();
@@ -367,7 +369,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeChannelRead(final AbstractChannelHandlerContext next,
+	public static void invokeChannelRead(final AbstractChannelHandlerContext next,
 			Object msg) {
 		final Object m = next.pipeline.touch(
 				ObjectUtil.checkNotNull(msg, "msg"), next);
@@ -402,7 +404,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeChannelReadComplete(
+	public static void invokeChannelReadComplete(
 			final AbstractChannelHandlerContext next) {
 		EventExecutor executor = next.executor();
 		if (executor.inEventLoop()) {
@@ -434,7 +436,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return this;
 	}
 
-	static void invokeChannelWritabilityChanged(
+	public static void invokeChannelWritabilityChanged(
 			final AbstractChannelHandlerContext next) {
 		EventExecutor executor = next.executor();
 		if (executor.inEventLoop()) {
@@ -889,7 +891,6 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return new DefaultChannelPromise(channel(), executor());
 	}
 
-
 	@Override
 	public ChannelFuture newSucceededFuture() {
 		ChannelFuture succeededFuture = this.succeededFuture;
@@ -970,11 +971,11 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		return channel().voidPromise();
 	}
 
-	final void setRemoved() {
+	public final void setRemoved() {
 		handlerState = REMOVE_COMPLETE;
 	}
 
-	final boolean setAddComplete() {
+	public final boolean setAddComplete() {
 		for (;;) {
 			int oldState = handlerState;
 			if (oldState == REMOVE_COMPLETE) {
@@ -992,14 +993,14 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		}
 	}
 
-	final void setAddPending() {
+	public final void setAddPending() {
 		boolean updated = HANDLER_STATE_UPDATER.compareAndSet(this, INIT,
 				ADD_PENDING);
 		assert updated; // This should always be true as it MUST be called
 						// before setAddComplete() or setRemoved().
 	}
 
-	final void callHandlerAdded() throws Exception {
+	public final void callHandlerAdded() throws Exception {
 		// We must call setAddComplete before calling handlerAdded. Otherwise if
 		// the handlerAdded method generates
 		// any pipeline events ctx.handler() will miss them because the state
@@ -1009,7 +1010,7 @@ abstract class AbstractChannelHandlerContext implements ChannelHandlerContext,
 		}
 	}
 
-	final void callHandlerRemoved() throws Exception {
+	public final void callHandlerRemoved() throws Exception {
 		try {
 			// Only call handlerRemoved(...) if we called handlerAdded(...)
 			// before.

@@ -13,7 +13,7 @@
  * License for the specific language governing permissions and limitations
  * under the License.
  */
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
 import static org.gogym.getty.util.internal.ObjectUtil.checkPositiveOrZero;
 
@@ -23,6 +23,7 @@ import java.io.RandomAccessFile;
 import java.nio.channels.FileChannel;
 import java.nio.channels.WritableByteChannel;
 
+import org.gogym.getty.channel.FileRegion;
 import org.gogym.getty.util.AbstractReferenceCounted;
 import org.gogym.getty.util.IllegalReferenceCountException;
 
@@ -187,7 +188,7 @@ public class DefaultFileRegion extends AbstractReferenceCounted implements FileR
         return this;
     }
 
-    static void validate(DefaultFileRegion region, long position) throws IOException {
+    public static void validate(DefaultFileRegion region, long position) throws IOException {
         // If the amount of written data is 0 we need to check if the requested count is bigger then the
         // actual file itself as it may have been truncated on disk.
         //

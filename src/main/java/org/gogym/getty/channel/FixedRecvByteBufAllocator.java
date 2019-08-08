@@ -17,6 +17,8 @@ package org.gogym.getty.channel;
 
 import static org.gogym.getty.util.internal.ObjectUtil.checkPositive;
 
+import org.gogym.getty.channel.defaults.DefaultMaxMessagesRecvByteBufAllocator;
+
 /**
  * The {@link RecvByteBufAllocator} that always yields the same buffer
  * size prediction.  This predictor ignores the feed back from the I/O thread.

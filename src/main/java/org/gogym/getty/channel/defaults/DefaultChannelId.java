@@ -14,7 +14,7 @@
  * under the License.
  */
 
-package org.gogym.getty.channel;
+package org.gogym.getty.channel.defaults;
 
 import static org.gogym.getty.util.internal.MacAddressUtil.defaultMachineId;
 import static org.gogym.getty.util.internal.MacAddressUtil.parseMAC;
@@ -24,6 +24,7 @@ import java.util.Arrays;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import org.gogym.getty.buffer.ByteBufUtil;
+import org.gogym.getty.channel.ChannelId;
 import org.gogym.getty.util.internal.EmptyArrays;
 import org.gogym.getty.util.internal.PlatformDependent;
 import org.gogym.getty.util.internal.SystemPropertyUtil;

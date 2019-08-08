@@ -19,7 +19,7 @@ import java.net.InetSocketAddress;
 
 import org.gogym.getty.buffer.ByteBuf;
 import org.gogym.getty.buffer.ByteBufHolder;
-import org.gogym.getty.channel.DefaultAddressedEnvelope;
+import org.gogym.getty.channel.defaults.DefaultAddressedEnvelope;
 
 /**
  * The message container that is used for {@link DatagramChannel} to communicate with the remote peer.
